@@ -19,6 +19,7 @@
         <module>vavr-trace</module>
         <module>vavr-alert</module>
         <module>vavr-error</module>
+        <module>vavr-cache</module>
     </modules>
 
     <properties>
@@ -83,27 +84,7 @@
         <dependencies>
             <dependency>
                 <groupId>com.ten.func</groupId>
-                <artifactId>vavr-core</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.ten.func</groupId>
-                <artifactId>vavr-metric</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.ten.func</groupId>
-                <artifactId>vavr-log</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.ten.func</groupId>
-                <artifactId>vavr-test</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.ten.func</groupId>
-                <artifactId>vavr-mock</artifactId>
+                <artifactId>vavr-alert</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -113,7 +94,47 @@
             </dependency>
             <dependency>
                 <groupId>com.ten.func</groupId>
+                <artifactId>vavr-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ten.func</groupId>
+                <artifactId>vavr-error</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ten.func</groupId>
+                <artifactId>vavr-eventbus</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ten.func</groupId>
+                <artifactId>vavr-log</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ten.func</groupId>
+                <artifactId>vavr-metric</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ten.func</groupId>
+                <artifactId>vavr-request</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ten.func</groupId>
+                <artifactId>vavr-test</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ten.func</groupId>
                 <artifactId>vavr-time</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ten.func</groupId>
+                <artifactId>vavr-trace</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

@@ -1,5 +1,7 @@
 package com.ten.func.vavr.request;
 
+import com.ten.func.vavr.request.config.RequestConfiguration;
+import com.ten.func.vavr.request.report.RequestReport;
 import io.vavr.CheckedRunnable;
 
 import java.util.Arrays;
@@ -10,26 +12,67 @@ import java.util.function.Supplier;
 
 import static com.ten.func.vavr.request.RequestModule.sneakyThrow;
 
-public interface Request<T> {
 
-    public static void main(String[] args) {
-        Request<Object> check = Request.of(() -> {
-            return null;
-        }).check(o -> {
-            if (o.equals("1")) {
-                throw new RuntimeException();
-            }
-        });
+/**
+ * <pre>
+ * Why do I provide this API?
+ *
+ * Because there are a lot of problems in the {@code soa} request.
+ *
+ * Please ask yourself:
+ *
+ * 1. 调用接口后，未抛出异常就视作成功吗？
+ * 2. 即使未抛出异常，考虑过返回状态码为非成功码的情况吗？
+ * 2. 考虑过统计非成功码的出现原因和出现频率吗？
+ *
+ * If you say "no!". I think you need this API to regulate your behavior.
+ *
+ * This will force you to think above all and provide support.
+ * </pre>
+ *
+ * @param <T> the type parameter
+ */
+public interface Requests<T> {
+
+    /**
+     * This is a API demo.
+     *
+     * @param args the args
+     */
+    static void main(String[] args) {
+        Object thisIsaResponse = new Object();
+        // response
+        Object response = Requests.of(() -> thisIsaResponse)
+                .check(o -> {
+                    // check response code and others
+                    if (Math.random() > 0.5) {
+                        // you can throws exception when check illegal
+                        throw new RuntimeException();
+                    }
+                })
+                .record(o -> {
+                    // record response
+                    return new RequestConfiguration.RequestReportValue
+                            // request name
+                            .ReportBuilder("default")
+                            // request value (you can supply response code)
+                            .recordValue(o.getClass().getSimpleName())
+                            // use remote config
+                            .useConfig()
+                            .build();
+                })
+                // throws when failure
+                .get();
     }
 
     /**
      * Creates a Request of a value.
      *
+     * @param <T>   component type
      * @param value A value
-     * @param <T>   Component type
      * @return {@code Success(value)}
      */
-    static <T> Request<T> of(T value) {
+    static <T> Requests<T> of(T value) {
         Objects.requireNonNull(value, "value is null");
         return new Success<>(value);
     }
@@ -37,12 +80,11 @@ public interface Request<T> {
     /**
      * Creates a Request of a Supplier.
      *
+     * @param <T>      component type
      * @param supplier A supplier
-     * @param <T>      Component type
-     * @return {@code Success(supplier.get())} if no exception occurs, otherwise {@code Failure(throwable)} if an
-     * exception occurs calling {@code supplier.get()}.
+     * @return {@code Success(supplier.get())} if no exception occurs, otherwise {@code Failure(throwable)} if an exception occurs calling {@code supplier.get()}.
      */
-    static <T> Request<T> of(Supplier<? extends T> supplier) {
+    static <T> Requests<T> of(Supplier<? extends T> supplier) {
         Objects.requireNonNull(supplier, "supplier is null");
         try {
             return new Success<>(supplier.get());
@@ -55,10 +97,9 @@ public interface Request<T> {
      * Creates a Request of a CheckedRunnable.
      *
      * @param runnable A checked runnable
-     * @return {@code Success(null)} if no exception occurs, otherwise {@code Failure(throwable)} if an exception occurs
-     * calling {@code runnable.run()}.
+     * @return {@code Success(null)} if no exception occurs, otherwise {@code Failure(throwable)} if an exception occurs calling {@code runnable.run()}.
      */
-    static Request<Void> of(CheckedRunnable runnable) {
+    static Requests<Void> of(CheckedRunnable runnable) {
         Objects.requireNonNull(runnable, "runnable is null");
         try {
             runnable.run();
@@ -108,13 +149,13 @@ public interface Request<T> {
      *
      * // prints "java.lang.Error"
      * Request.failure(new Error()).onFailure(System.out::println);
-     * }</pre>
+     * }*</pre>
      *
      * @param action An exception consumer
-     * @return this
+     * @return this requests
      * @throws NullPointerException if {@code action} is null
      */
-    default Request<T> onFailure(Consumer<? super Throwable> action) {
+    default Requests<T> onFailure(Consumer<? super Throwable> action) {
         Objects.requireNonNull(action, "action is null");
         if (isFailure()) {
             action.accept(getCause());
@@ -131,13 +172,13 @@ public interface Request<T> {
      *
      * // (does not print anything)
      * Request.failure(new Error()).onSuccess(System.out::println);
-     * }</pre>
+     * }*</pre>
      *
      * @param action A value consumer
-     * @return this
+     * @return this requests
      * @throws NullPointerException if {@code action} is null
      */
-    default Request<T> onSuccess(Consumer<? super T> action) {
+    default Requests<T> onSuccess(Consumer<? super T> action) {
         Objects.requireNonNull(action, "action is null");
         if (isSuccess()) {
             action.accept(get());
@@ -145,54 +186,18 @@ public interface Request<T> {
         return this;
     }
 
-    @SuppressWarnings("unchecked")
-    default Request<T> orElse(Request<? extends T> other) {
-        Objects.requireNonNull(other, "other is null");
-        return isSuccess() ? this : (Request<T>) other;
-    }
-
-    @SuppressWarnings("unchecked")
-    default Request<T> orElse(Supplier<? extends Request<? extends T>> supplier) {
-        Objects.requireNonNull(supplier, "supplier is null");
-        return isSuccess() ? this : (Request<T>) supplier.get();
-    }
-
-    default T getOrElseGet(Function<? super Throwable, ? extends T> other) {
-        Objects.requireNonNull(other, "other is null");
-        if (isFailure()) {
-            return other.apply(getCause());
-        } else {
-            return get();
-        }
-    }
-
-    default void orElseRun(Consumer<? super Throwable> action) {
-        Objects.requireNonNull(action, "action is null");
-        if (isFailure()) {
-            action.accept(getCause());
-        }
-    }
-
-    default <X extends Throwable> T getOrElseThrow(Function<? super Throwable, X> exceptionProvider) throws X {
-        Objects.requireNonNull(exceptionProvider, "exceptionProvider is null");
-        if (isFailure()) {
-            throw exceptionProvider.apply(getCause());
-        } else {
-            return get();
-        }
-    }
-
     /**
      * Applies the action to the value of a Success or does nothing in the case of a Failure.
      *
-     * @param action A Consumer
+     * @param record A Consumer
      * @return this {@code Request}
-     * @throws NullPointerException if {@code action} is null
+     * @throws NullPointerException if {@code record} is null
      */
-    default Request<T> peek(Consumer<? super T> action) {
-        Objects.requireNonNull(action, "action is null");
+    default Requests<T> record(Function<? super T, RequestConfiguration.RequestReportValue> record) {
+        Objects.requireNonNull(record, "record is null");
         if (isSuccess()) {
-            action.accept(get());
+            RequestConfiguration.RequestReportValue result = record.apply(get());
+            RequestReport.registerRequest(result);
         }
         return this;
     }
@@ -207,18 +212,106 @@ public interface Request<T> {
      *
      * // = Success(2147483647)
      * Request.of(() -> 1/0).recover(x -> Integer.MAX_VALUE);
-     * }</pre>
+     * }*</pre>
      *
-     * @param f A recovery function taking a Throwable
+     * @param recover A recovery function taking a Throwable
      * @return a {@code Request}
-     * @throws NullPointerException if {@code f} is null
+     * @throws NullPointerException if {@code recover} is null
      */
-    default Request<T> recover(Function<? super Throwable, ? extends T> f) {
-        Objects.requireNonNull(f, "f is null");
+    default Requests<T> recover(Function<? super Throwable, ? extends T> recover) {
+        Objects.requireNonNull(recover, "recover is null");
         if (isFailure()) {
-            return Request.of(() -> f.apply(getCause()));
+            return Requests.of(() -> recover.apply(getCause()));
         } else {
             return this;
+        }
+    }
+
+    /**
+     * Applies the action to the value of a Success or does nothing in the case of a Failure.
+     *
+     * @param check A Consumer check
+     * @return this {@code Request}
+     * @throws NullPointerException if {@code check} is null
+     */
+    default Requests<T> check(Consumer<? super T> check) {
+        Objects.requireNonNull(check, "check is null");
+        if (isSuccess()) {
+            return of(() -> {
+                check.accept(get());
+                return get();
+            });
+        }
+        return this;
+    }
+
+    // -- Get Value
+
+    /**
+     * Or else requests.
+     *
+     * @param other the other
+     * @return the requests
+     */
+    @SuppressWarnings("unchecked")
+    default Requests<T> orElse(Requests<? extends T> other) {
+        Objects.requireNonNull(other, "other is null");
+        return isSuccess() ? this : (Requests<T>) other;
+    }
+
+    /**
+     * Or else requests.
+     *
+     * @param supplier the supplier
+     * @return the requests
+     */
+    @SuppressWarnings("unchecked")
+    default Requests<T> orElse(Supplier<? extends Requests<? extends T>> supplier) {
+        Objects.requireNonNull(supplier, "supplier is null");
+        return isSuccess() ? this : (Requests<T>) supplier.get();
+    }
+
+    /**
+     * Gets or else get.
+     *
+     * @param other the other
+     * @return the or else get
+     */
+    default T getOrElseGet(Function<? super Throwable, ? extends T> other) {
+        Objects.requireNonNull(other, "other is null");
+        if (isFailure()) {
+            return other.apply(getCause());
+        } else {
+            return get();
+        }
+    }
+
+    /**
+     * Or else run.
+     *
+     * @param action the action
+     */
+    default void orElseRun(Consumer<? super Throwable> action) {
+        Objects.requireNonNull(action, "action is null");
+        if (isFailure()) {
+            action.accept(getCause());
+        }
+    }
+
+    /**
+     * Gets or else throw.
+     *
+     * @param <X>               the type parameter
+     * @param exceptionProvider the exception provider
+     * @return the or else throw
+     * @throws X the x
+     */
+    default <X extends Throwable> T getOrElseThrow(Function<? super Throwable, X> exceptionProvider) throws X {
+        Objects.requireNonNull(exceptionProvider, "exceptionProvider is null");
+        if (isFailure()) {
+            throw exceptionProvider.apply(getCause());
+        } else {
+            return get();
         }
     }
 
@@ -231,30 +324,14 @@ public interface Request<T> {
     @Override
     String toString();
 
-    /**
-     * Applies the action to the value of a Success or does nothing in the case of a Failure.
-     *
-     * @param check A Consumer check
-     * @return this {@code Request}
-     * @throws NullPointerException if {@code check} is null
-     */
-    default Request<T> check(Consumer<? super T> check) {
-        Objects.requireNonNull(check, "check is null");
-        if (isSuccess()) {
-            return of(() -> {
-                check.accept(get());
-                return get();
-            });
-        }
-        return this;
-    }
+    // -- CASE
 
     /**
      * A succeeded Request.
      *
      * @param <T> component type of this Success
      */
-    final class Success<T> implements Request<T> {
+    final class Success<T> implements Requests<T> {
 
         private final T value;
 
@@ -289,7 +366,7 @@ public interface Request<T> {
 
         @Override
         public boolean equals(Object obj) {
-            return (obj == this) || (obj instanceof Request.Success && Objects.equals(value, ((Success<?>) obj).value));
+            return (obj == this) || (obj instanceof Requests.Success && Objects.equals(value, ((Success<?>) obj).value));
         }
 
         @Override
@@ -309,7 +386,7 @@ public interface Request<T> {
      *
      * @param <T> component type of this Failure
      */
-    final class Failure<T> implements Request<T> {
+    final class Failure<T> implements Requests<T> {
 
         private final Throwable cause;
 
@@ -350,7 +427,7 @@ public interface Request<T> {
 
         @Override
         public boolean equals(Object obj) {
-            return (obj == this) || (obj instanceof Request.Failure && Arrays.deepEquals(cause.getStackTrace(), ((Failure<?>) obj).cause.getStackTrace()));
+            return (obj == this) || (obj instanceof Requests.Failure && Arrays.deepEquals(cause.getStackTrace(), ((Failure<?>) obj).cause.getStackTrace()));
         }
 
         @Override
@@ -370,6 +447,12 @@ public interface Request<T> {
  */
 interface RequestModule {
 
+    /**
+     * Is fatal boolean.
+     *
+     * @param throwable the throwable
+     * @return the boolean
+     */
     static boolean isFatal(Throwable throwable) {
         return throwable instanceof InterruptedException
                 || throwable instanceof LinkageError
@@ -377,6 +460,15 @@ interface RequestModule {
                 || throwable instanceof VirtualMachineError;
     }
 
+    /**
+     * Sneaky throw r.
+     *
+     * @param <T> the type parameter
+     * @param <R> the type parameter
+     * @param t   the t
+     * @return the r
+     * @throws T the t
+     */
     @SuppressWarnings("unchecked")
     static <T extends Throwable, R> R sneakyThrow(Throwable t) throws T {
         throw (T) t;
