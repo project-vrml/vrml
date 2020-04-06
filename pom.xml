@@ -21,6 +21,7 @@
         <module>vavr-error</module>
         <module>vavr-cache</module>
         <module>vavr-request</module>
+        <module>vavr-data</module>
     </modules>
 
     <properties>
@@ -97,6 +98,11 @@
             <dependency>
                 <groupId>com.ten.func</groupId>
                 <artifactId>vavr-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ten.func</groupId>
+                <artifactId>vavr-data</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

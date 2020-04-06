@@ -9,7 +9,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>vavr-trace</artifactId>
+    <artifactId>vavr-data</artifactId>
 
     <dependencies>
         <dependency>
@@ -18,7 +18,7 @@
         </dependency>
         <dependency>
             <groupId>com.ten.func</groupId>
-            <artifactId>vavr-data</artifactId>
+            <artifactId>vavr-error</artifactId>
         </dependency>
     </dependencies>
 
