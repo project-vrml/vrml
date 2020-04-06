@@ -16,6 +16,11 @@
             <groupId>com.ten.func</groupId>
             <artifactId>vavr-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.ten.func</groupId>
+            <artifactId>vavr-test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 </project>

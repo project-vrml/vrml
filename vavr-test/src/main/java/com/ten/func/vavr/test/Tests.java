@@ -1,5 +1,6 @@
 package com.ten.func.vavr.test;
 
+import com.google.gson.Gson;
 import com.ten.func.vavr.test.config.TestConfiguration;
 import io.vavr.CheckedRunnable;
 import io.vavr.control.Try;
@@ -10,6 +11,8 @@ import org.slf4j.LoggerFactory;
  * Unit test function helper。
  */
 public interface Tests extends TestConfiguration {
+
+    Gson GSON = new Gson();
 
     Logger logger = LoggerFactory.getLogger(Tests.class);
 

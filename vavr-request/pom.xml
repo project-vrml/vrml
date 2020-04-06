@@ -24,6 +24,11 @@
             <groupId>com.ten.func</groupId>
             <artifactId>vavr-error</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.ten.func</groupId>
+            <artifactId>vavr-test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 </project>

@@ -20,6 +20,11 @@
             <groupId>com.ten.func</groupId>
             <artifactId>vavr-data</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.ten.func</groupId>
+            <artifactId>vavr-test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 </project>
