@@ -1,4 +1,4 @@
-package com.ten.func.vavr.log;
 /**
- * 采样日志
+ * This package supply the API to log by key.
  */
+package com.ten.func.vavr.log;

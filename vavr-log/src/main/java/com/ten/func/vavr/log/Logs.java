@@ -1,17 +1,20 @@
 package com.ten.func.vavr.log;
 
 import com.ten.func.vavr.core.beans.SpringContextConfigurator;
+import com.ten.func.vavr.log.config.LogsConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Marker;
 
 /**
- * Logs module
+ * Logs module.
  */
-public class Logs implements Logger {
+public final class Logs implements Logger {
 
     /**
      * API demo.
+     *
+     * @param args the input arguments
      */
     public static void main(String[] args) {
         Logs logs = Factory.getLogs(Logs.class).key(Logs.class.getName());
@@ -25,6 +28,9 @@ public class Logs implements Logger {
 
         /**
          * Create Logs obj with delegated {@link Logger}
+         *
+         * @param clazz the clazz
+         * @return the logs
          */
         static Logs getLogs(Class<?> clazz) {
             return new Logs(clazz);
@@ -32,6 +38,9 @@ public class Logs implements Logger {
 
         /**
          * Create Logs obj with injected delegate {@link Logger}
+         *
+         * @param log the log
+         * @return the logs
          */
         static Logs getLogs(Logger log) {
             return new Logs(log);
@@ -67,6 +76,9 @@ public class Logs implements Logger {
 
     /**
      * Set key by class name
+     *
+     * @param clazz the clazz
+     * @return the logs
      */
     public Logs key(Class<?> clazz) {
         return this.key(clazz.getSimpleName());
@@ -74,6 +86,9 @@ public class Logs implements Logger {
 
     /**
      * Set custom key
+     *
+     * @param key the key
+     * @return the logs
      */
     public Logs key(String key) {
         Logs logs = this.initKey(key);
