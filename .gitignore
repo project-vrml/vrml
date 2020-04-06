@@ -3,4 +3,4 @@
 
 target/
 
-vavr-work.iml
+*.iml

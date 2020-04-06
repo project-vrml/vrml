@@ -20,6 +20,7 @@
         <module>vavr-alert</module>
         <module>vavr-error</module>
         <module>vavr-cache</module>
+        <module>vavr-request</module>
     </modules>
 
     <properties>
@@ -66,6 +67,7 @@
             <artifactId>spring-boot-starter</artifactId>
             <version>${springboot.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
