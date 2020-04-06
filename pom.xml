@@ -83,6 +83,11 @@
         <dependencies>
             <dependency>
                 <groupId>com.ten.func</groupId>
+                <artifactId>vavr-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ten.func</groupId>
                 <artifactId>vavr-metric</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -109,11 +114,6 @@
             <dependency>
                 <groupId>com.ten.func</groupId>
                 <artifactId>vavr-time</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.ten.func</groupId>
-                <artifactId>vavr-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
