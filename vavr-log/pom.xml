@@ -13,8 +13,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.sun</groupId>
-            <artifactId>tools</artifactId>
+            <groupId>com.ten.func</groupId>
+            <artifactId>vavr-core</artifactId>
         </dependency>
     </dependencies>
 

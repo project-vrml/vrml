@@ -6,27 +6,30 @@
 
     <groupId>com.ten.func</groupId>
     <artifactId>vavr-work</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
     <modules>
         <module>vavr-metric</module>
         <module>vavr-log</module>
         <module>vavr-test</module>
-        <module>vavr-mock</module>
-        <module>vavr-cache</module>
         <module>vavr-time</module>
         <module>vavr-core</module>
-        <module>vavr-validation</module>
+        <module>vavr-eventbus</module>
+        <module>vavr-trace</module>
+        <module>vavr-alert</module>
+        <module>vavr-error</module>
     </modules>
-    <packaging>pom</packaging>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>14</java.version>
         <file.encoding>UTF-8</file.encoding>
         <maven.version>3.8.1</maven.version>
         <lombok.version>1.18.10</lombok.version>
         <common.version>3.9</common.version>
         <vavr.version>0.10.2</vavr.version>
         <gson.version>2.8.6</gson.version>
+        <guava.version>28.2-jre</guava.version>
         <springboot.version>2.2.2.RELEASE</springboot.version>
         <junit.version>4.12</junit.version>
     </properties>
@@ -46,6 +49,11 @@
             <groupId>io.vavr</groupId>
             <artifactId>vavr</artifactId>
             <version>${vavr.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -107,14 +115,6 @@
                 <groupId>com.ten.func</groupId>
                 <artifactId>vavr-core</artifactId>
                 <version>${project.version}</version>
-            </dependency>
-            
-            <dependency>
-                <groupId>com.sun</groupId>
-                <artifactId>tools</artifactId>
-                <version>1.8</version>
-                <scope>system</scope>
-                <systemPath>${java.home}/../lib/tools.jar</systemPath>
             </dependency>
         </dependencies>
     </dependencyManagement>

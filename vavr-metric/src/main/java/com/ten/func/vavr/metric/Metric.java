@@ -1,7 +1,7 @@
 package com.ten.func.vavr.metric;
 
 import com.google.gson.Gson;
-import com.ten.func.vavr.core.config.SpringContextConfigurator;
+import com.ten.func.vavr.core.beans.SpringContextConfigurator;
 import io.vavr.API;
 import io.vavr.CheckedRunnable;
 import io.vavr.control.Option;
@@ -38,7 +38,7 @@ public final class Metric {
     private static final Gson GSON = new Gson();
 
     /**
-     * Configurator
+     * Metric configurator
      */
     private static MetricConfiguration configuration;
 
