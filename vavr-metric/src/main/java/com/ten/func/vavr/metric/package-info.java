@@ -1,7 +1,4 @@
 /**
- * Metric common approaches
- *
- * @author shihaowang
- * @date 2020/1/1
+ * This package supply the API to metrics.
  */
 package com.ten.func.vavr.metric;
