@@ -1,25 +1,22 @@
 package com.ten.func.vavr.test;
 
+import com.ten.func.vavr.test.config.TestConfiguration;
 import io.vavr.CheckedRunnable;
 import io.vavr.control.Try;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Unit test function helper
- *
- * @author shihaowang
- * @date 2019/12/10
+ * Unit test function helper。
  */
-public interface TestFunction extends TestConfiguration {
+public interface Tests extends TestConfiguration {
 
-    Logger logger = LoggerFactory.getLogger(TestFunction.class);
-
-    static void main(String[] args) {
-    }
+    Logger logger = LoggerFactory.getLogger(Tests.class);
 
     /**
      * Metric test failed msg when exception
+     *
+     * @throws RuntimeException when exception
      */
     default void test(CheckedRunnable test) {
         Try.run(test).onFailure(metricException).get();
@@ -40,24 +37,39 @@ public interface TestFunction extends TestConfiguration {
 
     // -------------------------------------------------------------- set value
 
+    /**
+     * Set value
+     */
     default void setValue(Runnable setter) {
         setter.run();
     }
 
+    /**
+     * Set illegal value
+     */
     default void setIllegalValue(Runnable setter) {
         setter.run();
     }
 
+    /**
+     * Set unusual value
+     */
     default void setUnusualValue(Runnable setter) {
         setter.run();
     }
 
     // -------------------------------------------------------------- check value
 
+    /**
+     * Check value is expected
+     */
     default void checkValue(Runnable checker) {
         checker.run();
     }
 
+    /**
+     * Check illegal value is expected
+     */
     default void checkIllegalValue(CheckedRunnable checker) {
         try {
             checker.run();
@@ -67,6 +79,9 @@ public interface TestFunction extends TestConfiguration {
         }
     }
 
+    /**
+     * Check unusual value is expected
+     */
     default void checkUnusualValue(CheckedRunnable checker) {
         try {
             checker.run();

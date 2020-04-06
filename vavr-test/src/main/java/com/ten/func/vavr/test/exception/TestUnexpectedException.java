@@ -1,4 +1,4 @@
-package com.ten.func.vavr.test;
+package com.ten.func.vavr.test.exception;
 
 import org.apache.logging.log4j.message.FormattedMessage;
 
@@ -8,9 +8,6 @@ import java.io.PrintWriter;
 /**
  * An <code>TestUnexpectedException</code> is thrown if the unit
  * test cache a unexpected result.
- *
- * @author shihaowang
- * @date 2020/1/8
  */
 public class TestUnexpectedException extends RuntimeException {
 

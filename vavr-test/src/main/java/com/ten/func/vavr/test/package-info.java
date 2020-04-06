@@ -1,7 +1,4 @@
 /**
- * Unit test common approaches
- *
- * @author shihaowang
- * @date 2019/12/26
+ * This package defined the API to run unit test.
  */
 package com.ten.func.vavr.test;
