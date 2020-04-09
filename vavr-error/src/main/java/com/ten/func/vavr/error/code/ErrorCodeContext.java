@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.Consumer;
 
 /**
  * Application error code context
@@ -169,15 +170,19 @@ public interface ErrorCodeContext {
          * Show error codes information like:
          * <pre>
          *        PARAMETER_ERROR  1E000  Invalid parameter error!
-         * PARAMETER_LOCALE_ERROR  1E001  Invalid locale error!
-         *    PARAMETER_UID_ERROR  1E002  Invalid uid error!
          * </pre>
          *
-         * @param errorContexts the error contexts
+         * @param errorCodeContexts the error contexts
          */
-        static void showErrorCodes(ErrorCodeContext[] errorContexts) {
+        static void showErrorCodes(ErrorCodeContext[] errorCodeContexts) {
+            showErrorCodes(errorCodeContexts, errorCodeContext -> {
+                System.out.printf("%70s  %5s  %s", errorCodeContext.name(), errorCodeContext.getCode(), errorCodeContext.getMessage());
+            });
+        }
+
+        static void showErrorCodes(ErrorCodeContext[] errorCodeContexts, Consumer<ErrorCodeContext> showingMsg) {
             Set<String> prefixSet = new HashSet<>(8);
-            Arrays.stream(errorContexts)
+            Arrays.stream(errorCodeContexts)
                     .sorted(Comparator.comparing(ErrorCodeContext::getCode))
                     .peek(value -> {
                         String prefix = value.getCode().substring(0, 1);
@@ -187,7 +192,7 @@ public interface ErrorCodeContext {
                         }
                     })
                     .forEach(value -> {
-                        System.out.printf("%70s  %5s  %s", value.name(), value.getCode(), value.getMessage());
+                        showingMsg.accept(value);
                         System.out.println();
                     });
         }

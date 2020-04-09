@@ -2,6 +2,7 @@ package com.ten.func.vavr.request;
 
 import com.ten.func.vavr.request.config.RequestConfiguration;
 import com.ten.func.vavr.request.report.RequestReport;
+import io.vavr.CheckedFunction0;
 import io.vavr.CheckedRunnable;
 
 import java.util.Arrays;
@@ -42,7 +43,7 @@ public interface Requests<T> {
     static void main(String[] args) {
         Object thisIsaResponse = new Object();
         // response
-        Object response = Requests.of(() -> thisIsaResponse)
+        Requests.of(() -> thisIsaResponse)
                 .check(o -> {
                     // check response code and others
                     if (Math.random() > 0.5) {
@@ -78,16 +79,16 @@ public interface Requests<T> {
     }
 
     /**
-     * Creates a Request of a Supplier.
+     * Creates a Request of a Checked Supplier.
      *
      * @param <T>      component type
-     * @param supplier A supplier
+     * @param supplier A Checked Supplier
      * @return {@code Success(supplier.get())} if no exception occurs, otherwise {@code Failure(throwable)} if an exception occurs calling {@code supplier.get()}.
      */
-    static <T> Requests<T> of(Supplier<? extends T> supplier) {
+    static <T> Requests<T> of(CheckedFunction0<? extends T> supplier) {
         Objects.requireNonNull(supplier, "supplier is null");
         try {
-            return new Success<>(supplier.get());
+            return new Success<>(supplier.apply());
         } catch (Throwable t) {
             return new Failure<>(t);
         }

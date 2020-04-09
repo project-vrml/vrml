@@ -62,17 +62,15 @@ public final class Metrics {
      */
     private static MetricConfiguration configuration;
 
-    private static final Object INIT_LOCK = new Object();
-
     private static void initSpringContextConfig() {
         if (configuration == null) {
-            synchronized (INIT_LOCK) {
+            synchronized (Metrics.class) {
                 if (configuration == null) {
                     // load metrics configuration from spring context
                     try {
                         configuration = SpringContextConfigurator.getBean(MetricConfiguration.class);
-                    } catch (Throwable throwable) {
-                        log.error("Metrics init spring context configuration failure.", throwable);
+                    } catch (Exception e) {
+                        log.error("Metrics init spring context configuration failure.", e);
                     }
                 }
             }

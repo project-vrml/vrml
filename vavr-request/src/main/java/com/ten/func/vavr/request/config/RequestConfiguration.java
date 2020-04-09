@@ -23,6 +23,11 @@ public interface RequestConfiguration {
     String DEFAULT_REQUEST_NAME = "default";
 
     /**
+     * The constant DEFAULT_REPORT_SWITCH.
+     */
+    boolean DEFAULT_REPORT_SWITCH = false;
+
+    /**
      * The constant DEFAULT_EXPIRE_SECONDS.
      */
     int DEFAULT_EXPIRE_SECONDS = 100;
@@ -56,6 +61,10 @@ public interface RequestConfiguration {
          */
         private String requestName;
         /**
+         * Requests record switch
+         */
+        private boolean openReport;
+        /**
          * Requests statistic value
          */
         private String recordValue;
@@ -66,6 +75,7 @@ public interface RequestConfiguration {
 
         private RequestReportValue(ReportBuilder builder) {
             this.requestName = builder.requestName;
+            this.openReport = builder.openReport;
             this.recordValue = builder.recordValue;
             this.strategy = builder.strategy;
         }
@@ -81,17 +91,15 @@ public interface RequestConfiguration {
              */
             private static RequestConfiguration configuration;
 
-            private static final Object LOCK = new Object();
-
             private static void initSpringContextConfig() {
                 if (configuration == null) {
-                    synchronized (LOCK) {
+                    synchronized (RequestConfiguration.class) {
                         if (configuration == null) {
                             // load requests configuration from spring context
                             try {
                                 configuration = SpringContextConfigurator.getBean(RequestConfiguration.class);
-                            } catch (Throwable throwable) {
-                                log.error("Report init spring context configuration failure.", throwable);
+                            } catch (Exception e) {
+                                log.error("Report init spring context configuration failure.", e);
                             }
                         }
                     }
@@ -104,6 +112,8 @@ public interface RequestConfiguration {
             }
 
             private final String requestName;
+
+            private boolean openReport;
 
             private String recordValue;
             /**
@@ -165,11 +175,13 @@ public interface RequestConfiguration {
                 if (this.strategy == null) {
                     this.strategy = new RequestReportConfig()
                             .requestReportName(requestName)
+                            .openRequestReport(DEFAULT_REPORT_SWITCH)
                             .reportTriggerCount(DEFAULT_TRIGGER_COUNT)
                             .reportExpiredSeconds(DEFAULT_EXPIRE_SECONDS)
                             .reportPoolMaxSize(DEFAULT_MAX_SIZE)
                             .noRecordKeys(new ArrayList<>());
                 }
+                this.openReport = this.strategy.openRequestReport;
                 return new RequestReportValue(this);
             }
         }
@@ -182,6 +194,7 @@ public interface RequestConfiguration {
     @Accessors(chain = true, fluent = true)
     final class RequestReportConfig {
         private String requestReportName;
+        private boolean openRequestReport;
         private int reportTriggerCount;
         private int reportExpiredSeconds;
         private int reportPoolMaxSize;

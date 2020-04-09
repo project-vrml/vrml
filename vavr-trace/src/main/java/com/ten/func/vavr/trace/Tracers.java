@@ -9,25 +9,25 @@ import java.util.Map;
 /**
  * The tracers.
  */
-public final class Tracers implements Traces {
+public abstract class Tracers implements Traces {
 
-    private static final ThreadLocalTracer INSTANCE = new ThreadLocalTracer();
+    private static final ThreadLocalTracer<Traceable> INSTANCE = new ThreadLocalTracer<>();
 
     /**
      * Use thread local tracer.
      *
      * @return the tracer
      */
-    public static ThreadLocalTracer useThreadLocal() {
+    public static ThreadLocalTracer<Traceable> useThreadLocal() {
         return INSTANCE;
     }
 
     /**
      * The thread local tracer.
      */
-    public static final class ThreadLocalTracer implements Traces.Tracer<Traceable> {
+    public static final class ThreadLocalTracer<TraceObj extends Traceable> implements Traces.Tracer<TraceObj> {
 
-        private ThreadLocal<Traceable> threadLocalTracer;
+        private ThreadLocal<TraceObj> threadLocalTracer;
 
         /**
          * Instantiates a new Thread local tracer.
@@ -44,11 +44,11 @@ public final class Tracers implements Traces {
          * @param scheme the scheme context reference
          */
         @Override
-        public void init(Traceable scheme) {
+        public void init(TraceObj scheme) {
             initTrace(scheme);
         }
 
-        private void initTrace(Traceable schemeReference) {
+        private void initTrace(TraceObj schemeReference) {
             threadLocalTracer.set(schemeReference);
         }
 
@@ -116,7 +116,7 @@ public final class Tracers implements Traces {
          * @return the abstract context
          */
         @Override
-        public Traceable get() {
+        public TraceObj get() {
             return threadLocalTracer.get();
         }
     }
