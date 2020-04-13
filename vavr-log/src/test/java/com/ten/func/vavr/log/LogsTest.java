@@ -17,11 +17,8 @@ public class LogsTest implements Tests {
     @Test
     public void getLogs1() {
         Logs logs = Logs.Factory.getLogs(LogsTest.class);
-        logs.trace("trace");
-        logs.debug("debug");
         logs.info("info");
-        logs.warn("warn");
-        logs.error("error");
+        logs.key("debug-hello").info("debug-hello-info");
     }
 
     /**
@@ -30,11 +27,8 @@ public class LogsTest implements Tests {
     @Test
     public void getLogs2() {
         Logs logs = Logs.Factory.getLogs(log);
-        logs.trace("trace");
-        logs.debug("debug");
         logs.info("info");
-        logs.warn("warn");
-        logs.error("error");
+        logs.key("debug-hello").info("debug-hello-info");
     }
 
     @Test

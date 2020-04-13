@@ -22,6 +22,7 @@
         <module>vavr-cache</module>
         <module>vavr-request</module>
         <module>vavr-data</module>
+        <module>vavr-demo</module>
     </modules>
 
     <properties>
