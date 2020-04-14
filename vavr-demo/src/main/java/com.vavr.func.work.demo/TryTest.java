@@ -13,17 +13,22 @@ public class TryTest {
      * Try catch.
      */
     public void tryCatch() {
+        boolean success = false;
+        String step1 = null;
         try {
             // 1. step1
-            String step1 = step1();
-
-            // 2. step2
-            log.info("success");
-            this.step2(step1);
+            step1 = step1();
+            success = true;
         } catch (Exception e) {
             // 2. step3
             log.warn("failure");
             this.step3(e);
+        }
+
+        if (success) {
+            // 2. step2
+            log.info("success");
+            this.step2(step1);
         }
 
         String step4;
@@ -62,9 +67,7 @@ public class TryTest {
         Try<String> step4 = Try.of(() -> {
             log.warn("step 4");
             return this.step4();
-        });
-        // 4. step4 recover
-        step4.recover(throwable -> {
+        }).recover(throwable -> {
             log.error("error, save data");
             return this.save();
         });
