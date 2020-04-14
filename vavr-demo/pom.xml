@@ -11,4 +11,24 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>vavr-demo</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.ten.func</groupId>
+            <artifactId>vavr-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.ten.func</groupId>
+            <artifactId>vavr-data</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.ten.func</groupId>
+            <artifactId>vavr-error</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.ten.func</groupId>
+            <artifactId>vavr-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
 </project>

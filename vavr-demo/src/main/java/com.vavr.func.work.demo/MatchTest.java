@@ -1,8 +1,10 @@
 package com.vavr.func.work.demo;
 
-import io.vavr.Predicates;
 import io.vavr.Tuple;
 import io.vavr.Tuple2;
+
+import java.util.Objects;
+import java.util.function.Predicate;
 
 import static com.google.common.base.Predicates.instanceOf;
 import static io.vavr.API.*;
@@ -25,7 +27,12 @@ public class MatchTest {
         System.out.println(switch (day) {
             case MON, TUE, WEN -> "上半周";
             case THU, FRI -> "下半周";
-            case SAT, SUN -> "周末";
+            case SAT, SUN ->
+                    """
+                    <html>
+                        <p>周末</p>
+                    </html>
+                    """;
         });
 
         // 2. 将表达式的值赋值给一个变量 => to old
@@ -85,6 +92,17 @@ public class MatchTest {
                 Case($(isNull()), o -> run(this::displayVersion)),
                 Case($(), o -> run(() -> {
                     throw new IllegalArgumentException(o);
+                }))
+        );
+
+        // 4. 值绑定 Predicate表达式
+        Match(Tuple.of(1, 2)).of(
+                // f(x)=x
+                Case($((tuple2) -> (Objects.equals(tuple2._1(), tuple2._2()))), o -> run(this::displayHelp)),
+                // f(x)=x^2
+                Case($((tuple2) -> (Objects.equals((int) Math.pow(tuple2._1(), 2), tuple2._2()))), o -> run(this::displayHelp)),
+                Case($(), o -> run(() -> {
+                    throw new IllegalArgumentException(o.toString());
                 }))
         );
     }
