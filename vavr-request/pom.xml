@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>vavr-work</artifactId>
-        <groupId>com.ten.func</groupId>
+        <groupId>com.vavr.func</groupId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -13,19 +13,19 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.ten.func</groupId>
+            <groupId>com.vavr.func</groupId>
             <artifactId>vavr-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.ten.func</groupId>
+            <groupId>com.vavr.func</groupId>
             <artifactId>vavr-cache</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.ten.func</groupId>
+            <groupId>com.vavr.func</groupId>
             <artifactId>vavr-error</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.ten.func</groupId>
+            <groupId>com.vavr.func</groupId>
             <artifactId>vavr-test</artifactId>
             <scope>test</scope>
         </dependency>
