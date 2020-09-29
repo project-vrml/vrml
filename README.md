@@ -1,43 +1,99 @@
-# Work Efficiently
+[![vrml-logo]()]()
 
-> Use tools like [vavr] to model common operations in your work.
+Vrml是基于Java 8的常用拓展工具集合，旨在提供更健壮和更方便易用的常用工具，以解决工作中常见的问题。
 
-## Alert 
+它提供了监控埋点，日志组件，网络请求代理，错误码设计规范，告警和事件监听等等。
 
-send alert message.
+Vrml对这些工作中常见的场景中可能遇到的问题给出了优雅和强大的解决方案。
 
-## Cache
+使用环境主要同Spring集成使用，基于Spring实现接口动态发现的机制，但也提供非Spring下的自定义配置功能。
 
-## Core
+Vrml主要基于Vavr库（以及其他常用库）进行构建，编码参考了Vavr的函数式风格。
 
-## Error
+由于Vrml提供了模块化的机制，您可以方便的引用所需要的功能到您的类路径中，或者使用-all引入所有。
 
-defined {@code exception} and {@code error code} of application.
+要保持最新状态，请关注[blog]() 。
 
-## EventBus
+## Using Vrml
 
-defined {@code eventbus} with spring application event context.
+See [User Guide](/blob/master/README.md).
 
-## Log
+-------------------------------------------------------------------------------
 
-supply the API to log by key.
+## Modules
 
-## Metric
+### [vrml-alert](./vrml-alert) 
 
-supply the API to metrics.
+[![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
 
-## Request
+[WIKI](./vrml-alert/WIKI.md)
 
-defined the API to wrap up remote request.
+An alert API that supports multiple methods for [vrml]() library
 
-## Test
+Alerts支持各种快捷灵活方式的告警API，避免过程式的调用告警service
 
-defined the API to run unit test.
+---------------------------------------------------------------------
 
-## Time
+### [vrml-api](./vrml-api)
 
-defined the API to calculate time.
+A Aspect to log request process for [vrml]() library
 
-## Trace
+### [vrml-data](./vrml-data)
 
-defined the API to trace data.
+[![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
+
+A common data structure extension API for [vrml]() library
+
+### [vrml-error](./vrml-error)
+
+[![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
+
+A set of error code definition specifications for [vrml]() library
+
+### [vrml-eventbus](./vrml-eventbus)
+
+TODO
+
+### [vrml-log](./vrml-log)
+
+A API to log by the key for [vrml]() library
+
+### [vrml-metric](./vrml-metric)
+
+A API to record application's metrics data for [vrml]() library
+
+### [vrml-request](./vrml-request)
+
+[![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
+
+A proxy API to wrap remote request with log/record/check/... for [vrml]() library
+
+### [vrml-time](./vrml-time)
+
+[![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
+
+A time API with timezone/cron for [vrml]() library
+
+### [vrml-trace](./vrml-trace)
+
+[![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
+
+A api of MDC/MAP traces for [vrml]() library
+
+-------------------------------------------------------------------------------
+
+### Maven
+
+You can import all vrml modules:
+
+```xml
+<dependency>
+  <groupId>com.github.kevinten10</groupId>
+  <artifactId>vrml-all</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
+
+### Contributing
+
+A small number of users have reported problems building vrml. Read our [contribution guide](./CONTRIBUTING.md) for details.
