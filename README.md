@@ -1,4 +1,4 @@
-[![vrml-logo]()]()
+[![vrml-logo](./resources/logo.png)](./README.md)
 
 Vrml是基于Java 8的常用拓展工具集合，旨在提供更健壮和更方便易用的常用工具，以解决工作中常见的问题。
 
@@ -12,11 +12,11 @@ Vrml主要基于Vavr库（以及其他常用库）进行构建，编码参考了
 
 由于Vrml提供了模块化的机制，您可以方便的引用所需要的功能到您的类路径中，或者使用-all引入所有。
 
-要保持最新状态，请关注[blog]() 。
+要保持最新状态，请关注[blog](./README.md) 。
 
 ## Using Vrml
 
-See [User Guide](/blob/master/README.md).
+See [User Guide](./README.md).
 
 -------------------------------------------------------------------------------
 
@@ -28,7 +28,7 @@ See [User Guide](/blob/master/README.md).
 
 [WIKI](./vrml-alert/WIKI.md)
 
-An alert API that supports multiple methods for [vrml]() library
+An alert API that supports multiple methods for [vrml](./README.md) library
 
 Alerts支持各种快捷灵活方式的告警API，避免过程式的调用告警service
 
@@ -36,19 +36,19 @@ Alerts支持各种快捷灵活方式的告警API，避免过程式的调用告�
 
 ### [vrml-api](./vrml-api)
 
-A Aspect to log request process for [vrml]() library
+A Aspect to log request process for [vrml](./README.md) library
 
 ### [vrml-data](./vrml-data)
 
 [![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
 
-A common data structure extension API for [vrml]() library
+A common data structure extension API for [vrml](./README.md) library
 
 ### [vrml-error](./vrml-error)
 
 [![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
 
-A set of error code definition specifications for [vrml]() library
+A set of error code definition specifications for [vrml](./README.md) library
 
 ### [vrml-eventbus](./vrml-eventbus)
 
@@ -56,29 +56,29 @@ TODO
 
 ### [vrml-log](./vrml-log)
 
-A API to log by the key for [vrml]() library
+A API to log by the key for [vrml](./README.md) library
 
 ### [vrml-metric](./vrml-metric)
 
-A API to record application's metrics data for [vrml]() library
+A API to record application's metrics data for [vrml](./README.md) library
 
 ### [vrml-request](./vrml-request)
 
 [![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
 
-A proxy API to wrap remote request with log/record/check/... for [vrml]() library
+A proxy API to wrap remote request with log/record/check/... for [vrml](./README.md) library
 
 ### [vrml-time](./vrml-time)
 
 [![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
 
-A time API with timezone/cron for [vrml]() library
+A time API with timezone/cron for [vrml](./README.md) library
 
 ### [vrml-trace](./vrml-trace)
 
 [![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
 
-A api of MDC/MAP traces for [vrml]() library
+A api of MDC/MAP traces for [vrml](./README.md) library
 
 -------------------------------------------------------------------------------
 
@@ -88,7 +88,7 @@ You can import all vrml modules:
 
 ```xml
 <dependency>
-  <groupId>com.github.kevinten10</groupId>
+  <groupId>io.vrml</groupId>
   <artifactId>vrml-all</artifactId>
   <version>1.0.0</version>
 </dependency>
