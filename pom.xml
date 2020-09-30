@@ -4,147 +4,201 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.vavr.func</groupId>
-    <artifactId>vavr-work</artifactId>
-    <version>1.0.0</version>
+    <groupId>io.vrml</groupId>
+    <artifactId>vrml</artifactId>
     <packaging>pom</packaging>
+    <version>1.0.0-SNAPSHOT</version>
 
     <modules>
-        <module>vavr-metric</module>
-        <module>vavr-log</module>
-        <module>vavr-test</module>
-        <module>vavr-time</module>
-        <module>vavr-core</module>
-        <module>vavr-eventbus</module>
-        <module>vavr-trace</module>
-        <module>vavr-alert</module>
-        <module>vavr-error</module>
-        <module>vavr-cache</module>
-        <module>vavr-request</module>
-        <module>vavr-data</module>
-        <module>vavr-demo</module>
+        <module>vrml-alert</module>
+        <module>vrml-api</module>
+        <module>vrml-core</module>
+        <module>vrml-data</module>
+        <module>vrml-error</module>
+        <module>vrml-eventbus</module>
+        <module>vrml-external</module>
+        <module>vrml-log</module>
+        <module>vrml-metric</module>
+        <module>vrml-request</module>
+        <module>vrml-time</module>
+        <module>vrml-trace</module>
     </modules>
 
     <properties>
-        <java.version>14</java.version>
+        <java.version>8</java.version>
         <file.encoding>UTF-8</file.encoding>
         <maven.version>3.8.1</maven.version>
         <lombok.version>1.18.12</lombok.version>
         <common.version>3.10</common.version>
         <vavr.version>0.10.2</vavr.version>
-        <gson.version>2.8.6</gson.version>
+        <gson.version>2.8.0</gson.version>
         <guava.version>28.2-jre</guava.version>
-        <springboot.version>2.2.6.RELEASE</springboot.version>
+        <springboot.version>2.2.0.RELEASE</springboot.version>
+        <jcip.version>1.0</jcip.version>
+        <log4j.version>1.7.30</log4j.version>
         <junit.version>4.13</junit.version>
+        <logback.version>1.2.3</logback.version>
+        <jmockito.version>1.49</jmockito.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${common.version}</version>
-        </dependency>
+        <!-- vavr -->
         <dependency>
             <groupId>io.vavr</groupId>
             <artifactId>vavr</artifactId>
             <version>${vavr.version}</version>
+            <optional>true</optional>
         </dependency>
+
+        <!-- tool -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- json -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>${gson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-            <version>${springboot.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <version>${springboot.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 
     <dependencyManagement>
         <dependencies>
+            <!-- module -->
             <dependency>
-                <groupId>com.vavr.func</groupId>
-                <artifactId>vavr-alert</artifactId>
+                <groupId>io.vrml</groupId>
+                <artifactId>vrml-alert</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.vavr.func</groupId>
-                <artifactId>vavr-cache</artifactId>
+                <groupId>io.vrml</groupId>
+                <artifactId>vrml-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.vavr.func</groupId>
-                <artifactId>vavr-core</artifactId>
+                <groupId>io.vrml</groupId>
+                <artifactId>vrml-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.vavr.func</groupId>
-                <artifactId>vavr-data</artifactId>
+                <groupId>io.vrml</groupId>
+                <artifactId>vrml-data</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.vavr.func</groupId>
-                <artifactId>vavr-error</artifactId>
+                <groupId>io.vrml</groupId>
+                <artifactId>vrml-error</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.vavr.func</groupId>
-                <artifactId>vavr-eventbus</artifactId>
+                <groupId>io.vrml</groupId>
+                <artifactId>vrml-eventbus</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.vavr.func</groupId>
-                <artifactId>vavr-log</artifactId>
+                <groupId>io.vrml</groupId>
+                <artifactId>vrml-external</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.vavr.func</groupId>
-                <artifactId>vavr-metric</artifactId>
+                <groupId>io.vrml</groupId>
+                <artifactId>vrml-log</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.vavr.func</groupId>
-                <artifactId>vavr-request</artifactId>
+                <groupId>io.vrml</groupId>
+                <artifactId>vrml-metric</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.vavr.func</groupId>
-                <artifactId>vavr-test</artifactId>
+                <groupId>io.vrml</groupId>
+                <artifactId>vrml-request</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.vavr.func</groupId>
-                <artifactId>vavr-time</artifactId>
+                <groupId>io.vrml</groupId>
+                <artifactId>vrml-time</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.vavr.func</groupId>
-                <artifactId>vavr-trace</artifactId>
+                <groupId>io.vrml</groupId>
+                <artifactId>vrml-trace</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+
+            <!-- lang3 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${common.version}</version>
+                <optional>true</optional>
+            </dependency>
+            <!-- guava -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+                <optional>true</optional>
+            </dependency>
+            <!-- jcip -->
+            <dependency>
+                <groupId>net.jcip</groupId>
+                <artifactId>jcip-annotations</artifactId>
+                <version>${jcip.version}</version>
+                <optional>true</optional>
+            </dependency>
+            <!-- spring -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>${springboot.version}</version>
+                <optional>true</optional>
+            </dependency>
+            <!-- spring test -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${springboot.version}</version>
+                <scope>test</scope>
+                <optional>true</optional>
+            </dependency>
+            <!-- test -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jmockit</groupId>
+                <artifactId>jmockit</artifactId>
+                <version>${jmockito.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- log -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${log4j.version}</version>
+                <optional>true</optional>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback.version}</version>
+                <optional>true</optional>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-access</artifactId>
+                <version>${logback.version}</version>
+                <optional>true</optional>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -165,6 +219,16 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${springboot.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <argLine>
+                        -javaagent:${settings.localRepository}/org/jmockit/jmockit/${jmockito.version}/jmockit-${jmockito.version}.jar
+                    </argLine>
+                </configuration>
             </plugin>
         </plugins>
     </build>

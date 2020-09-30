@@ -1,0 +1,10 @@
+[
+  {
+    "key": "default",
+    "trace": true,
+    "debug": true,
+    "info": true,
+    "warn": true,
+    "error": true
+  }
+]

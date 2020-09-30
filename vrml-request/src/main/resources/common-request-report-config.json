@@ -1,0 +1,12 @@
+[
+  {
+    "requestReportName": "default",
+    "openRequestReport": true,
+    "reportTriggerCount": 100,
+    "reportExpiredSeconds": 1000,
+    "reportPoolMaxSize": 1000,
+    "noRecordKeys": [
+      "0"
+    ]
+  }
+]

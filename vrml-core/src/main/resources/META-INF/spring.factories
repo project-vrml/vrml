@@ -1,0 +1,3 @@
+# Auto configure spring-context
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+io.vrml.core.beans.SpringContextConfigurator
