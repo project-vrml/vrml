@@ -24,11 +24,11 @@ public interface DefaultErrorCodeContext extends ErrorCodeContext {
          *
          * @apiNote Set a single unique code for your application.
          */
-        private static final String DEMO_APPLICATION_CODE = "0";
+        private static final String DEFAULT_APPLICATION_CODE = "0";
 
         @Override
         public String applicationErrorCode() {
-            return DEMO_APPLICATION_CODE;
+            return DEFAULT_APPLICATION_CODE;
         }
     }
 
