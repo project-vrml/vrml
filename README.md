@@ -88,7 +88,7 @@ You can import all vrml modules:
 
 ```xml
 <dependency>
-  <groupId>io.vrml</groupId>
+  <groupId>com.kevinten</groupId>
   <artifactId>vrml-all</artifactId>
   <version>1.0.0</version>
 </dependency>

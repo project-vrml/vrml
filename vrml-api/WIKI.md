@@ -174,7 +174,7 @@ public class ApiLogInterceptorAspectTest {
 
 ```xml
 <dependency>
-  <groupId>io.vrml</groupId>
+  <groupId>com.kevinten</groupId>
   <artifactId>vrml-api</artifactId>
   <version>1.0.0</version>
 </dependency>

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>io.vrml</groupId>
+        <groupId>com.kevinten</groupId>
         <artifactId>vrml</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
@@ -16,62 +16,62 @@
     <dependencies>
         <!-- module -->
         <dependency>
-            <groupId>io.vrml</groupId>
+            <groupId>com.kevinten</groupId>
             <artifactId>vrml-alert</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.vrml</groupId>
+            <groupId>com.kevinten</groupId>
             <artifactId>vrml-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.vrml</groupId>
+            <groupId>com.kevinten</groupId>
             <artifactId>vrml-core</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.vrml</groupId>
+            <groupId>com.kevinten</groupId>
             <artifactId>vrml-data</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.vrml</groupId>
+            <groupId>com.kevinten</groupId>
             <artifactId>vrml-error</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.vrml</groupId>
+            <groupId>com.kevinten</groupId>
             <artifactId>vrml-eventbus</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.vrml</groupId>
+            <groupId>com.kevinten</groupId>
             <artifactId>vrml-external</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.vrml</groupId>
+            <groupId>com.kevinten</groupId>
             <artifactId>vrml-log</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.vrml</groupId>
+            <groupId>com.kevinten</groupId>
             <artifactId>vrml-metric</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.vrml</groupId>
+            <groupId>com.kevinten</groupId>
             <artifactId>vrml-request</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.vrml</groupId>
+            <groupId>com.kevinten</groupId>
             <artifactId>vrml-time</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.vrml</groupId>
+            <groupId>com.kevinten</groupId>
             <artifactId>vrml-trace</artifactId>
             <version>${project.version}</version>
         </dependency>

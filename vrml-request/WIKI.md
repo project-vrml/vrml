@@ -202,7 +202,7 @@ public class HttpProxy extends AbstractHttpRequestProxy<Request, Response> {
 
 ```xml
 <dependency>
-  <groupId>io.vrml</groupId>
+  <groupId>com.kevinten</groupId>
   <artifactId>vrml-request</artifactId>
   <version>1.0.0</version>
 </dependency>

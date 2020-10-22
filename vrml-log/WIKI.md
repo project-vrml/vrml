@@ -38,7 +38,7 @@
 
 ```xml
 <dependency>
-  <groupId>io.vrml</groupId>
+  <groupId>com.kevinten</groupId>
   <artifactId>vrml-log</artifactId>
   <version>1.0.0</version>
 </dependency>

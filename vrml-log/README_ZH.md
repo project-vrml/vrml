@@ -10,7 +10,7 @@
 
 ```xml
 <dependency>
-  <groupId>io.vrml</groupId>
+  <groupId>com.kevinten</groupId>
   <artifactId>vrml-log</artifactId>
   <version>1.0.0</version>
 </dependency>
@@ -57,7 +57,7 @@ Developer repository can be found [here](https://github.com/kevinten10/vrml/tree
 
 ```xml
 <dependency>
-  <groupId>io.vrml</groupId>
+  <groupId>com.kevinten</groupId>
   <artifactId>vrml-logs</artifactId>
   <version>1.0.0-SNAPSHOT</version>
 </dependency>

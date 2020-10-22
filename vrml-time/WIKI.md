@@ -60,7 +60,7 @@ TimeZone -12 ~ +12 based on UTC.
 
 ```xml
 <dependency>
-  <groupId>io.vrml</groupId>
+  <groupId>com.kevinten</groupId>
   <artifactId>vrml-time</artifactId>
   <version>1.0.0</version>
 </dependency>

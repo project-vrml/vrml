@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.vrml</groupId>
+    <groupId>com.kevinten</groupId>
     <artifactId>vrml</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0-SNAPSHOT</version>
@@ -74,67 +74,67 @@
         <dependencies>
             <!-- module -->
             <dependency>
-                <groupId>io.vrml</groupId>
+                <groupId>com.kevinten</groupId>
                 <artifactId>vrml-alert</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.vrml</groupId>
+                <groupId>com.kevinten</groupId>
                 <artifactId>vrml-all</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.vrml</groupId>
+                <groupId>com.kevinten</groupId>
                 <artifactId>vrml-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.vrml</groupId>
+                <groupId>com.kevinten</groupId>
                 <artifactId>vrml-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.vrml</groupId>
+                <groupId>com.kevinten</groupId>
                 <artifactId>vrml-data</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.vrml</groupId>
+                <groupId>com.kevinten</groupId>
                 <artifactId>vrml-error</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.vrml</groupId>
+                <groupId>com.kevinten</groupId>
                 <artifactId>vrml-eventbus</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.vrml</groupId>
+                <groupId>com.kevinten</groupId>
                 <artifactId>vrml-external</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.vrml</groupId>
+                <groupId>com.kevinten</groupId>
                 <artifactId>vrml-log</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.vrml</groupId>
+                <groupId>com.kevinten</groupId>
                 <artifactId>vrml-metric</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.vrml</groupId>
+                <groupId>com.kevinten</groupId>
                 <artifactId>vrml-request</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.vrml</groupId>
+                <groupId>com.kevinten</groupId>
                 <artifactId>vrml-time</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.vrml</groupId>
+                <groupId>com.kevinten</groupId>
                 <artifactId>vrml-trace</artifactId>
                 <version>${project.version}</version>
             </dependency>

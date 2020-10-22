@@ -85,7 +85,7 @@ private static void metrics(BiConsumer<Map<String, String>, Map<String, String>>
 
 ```xml
 <dependency>
-  <groupId>io.vrml</groupId>
+  <groupId>com.kevinten</groupId>
   <artifactId>vrml-metric</artifactId>
   <version>1.0.0</version>
 </dependency>

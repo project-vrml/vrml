@@ -119,7 +119,7 @@ public enum ErrorCodes implements ErrorCodeContext {
 
 ```xml
 <dependency>
-  <groupId>io.vrml</groupId>
+  <groupId>com.kevinten</groupId>
   <artifactId>vrml-error</artifactId>
   <version>1.0.0</version>
 </dependency>

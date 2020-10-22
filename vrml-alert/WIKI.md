@@ -162,7 +162,7 @@ EmailAlertActor.onReceive(message);
 
 ```xml
 <dependency>
-  <groupId>io.vrml</groupId>
+  <groupId>com.kevinten</groupId>
   <artifactId>vrml-alert</artifactId>
   <version>1.0.0</version>
 </dependency>
