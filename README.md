@@ -36,7 +36,13 @@ Alerts支持各种快捷灵活方式的告警API，避免过程式的调用告�
 
 ### [vrml-api](./vrml-api)
 
+[![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
+
+[WIKI](./vrml-alert/WIKI.md)
+
 A Aspect to log request process for [vrml](./README.md) library
+
+---------------------------------------------------------------------
 
 ### [vrml-data](./vrml-data)
 
@@ -44,39 +50,73 @@ A Aspect to log request process for [vrml](./README.md) library
 
 A common data structure extension API for [vrml](./README.md) library
 
+---------------------------------------------------------------------
+
 ### [vrml-error](./vrml-error)
 
 [![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
 
+[WIKI](./vrml-error/WIKI.md)
+
 A set of error code definition specifications for [vrml](./README.md) library
+
+---------------------------------------------------------------------
 
 ### [vrml-eventbus](./vrml-eventbus)
 
 TODO
 
+---------------------------------------------------------------------
+
+### [vrml-external](./vrml-external)
+
+Other auxiliary tools library
+
+---------------------------------------------------------------------
+
 ### [vrml-log](./vrml-log)
 
 A API to log by the key for [vrml](./README.md) library
 
+[WIKI](./vrml-log/WIKI.md)
+
+---------------------------------------------------------------------
+
 ### [vrml-metric](./vrml-metric)
 
+[![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
+
+[WIKI](./vrml-metric/WIKI.md)
+
 A API to record application's metrics data for [vrml](./README.md) library
+
+---------------------------------------------------------------------
 
 ### [vrml-request](./vrml-request)
 
 [![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
 
+[WIKI](./vrml-request/WIKI.md)
+
 A proxy API to wrap remote request with log/record/check/... for [vrml](./README.md) library
+
+---------------------------------------------------------------------
 
 ### [vrml-time](./vrml-time)
 
 [![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
 
+[WIKI](./vrml-time/WIKI.md)
+
 A time API with timezone/cron for [vrml](./README.md) library
+
+---------------------------------------------------------------------
 
 ### [vrml-trace](./vrml-trace)
 
 [![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
+
+[WIKI](./vrml-trace/WIKI.md)
 
 A api of MDC/MAP traces for [vrml](./README.md) library
 
