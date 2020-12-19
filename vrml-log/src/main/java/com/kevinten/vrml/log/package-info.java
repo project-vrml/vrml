@@ -2,18 +2,17 @@
  * This package supply the API to log by the key.
  *
  * <pre>
- * LOG规范 : ①Tags ②基础信息 ③具体日志内容
+ * LOG : 1.Tags 2.basic info 3.content
  *
  * [[ <-- tag --> ]][ <- basic info -> ] [ content ]
  * [[messageId,key]][ClassName.FuncName] log content.
  * </pre>
- * -------------------------------------------------
  * <pre>
- * LOG约定 :
+ * LOG contract :
  *
- * 1. 动态参数小于3，并列一行
- * 2. 动态参数小于3，但表达式较长，参数作为单独一行
- * 3. 动态参数大于等于3，参数作为单独一行
+ * 1. dynamic params < 3, in 1 line.
+ * 2. dynamic params < 3, but expression is too lang, use another line.
+ * 3. dynamic params >=3, use another line.
  * </pre>
  */
 package com.kevinten.vrml.log;

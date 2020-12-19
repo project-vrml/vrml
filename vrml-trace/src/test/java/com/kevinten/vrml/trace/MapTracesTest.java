@@ -40,6 +40,7 @@ public class MapTracesTest extends TestCase {
      * Test trace.
      */
     public void testTrace() {
+        MapTraces.useThreadLocal().initObj(testTraceable);
         MapTraces.useThreadLocal().trace("test", "test");
         assertEquals("test", MapTraces.useThreadLocal().get().getTraceMap().get("test"));
     }
@@ -48,6 +49,7 @@ public class MapTracesTest extends TestCase {
      * Test trace add.
      */
     public void testTraceAdd() {
+        MapTraces.useThreadLocal().initObj(testTraceable);
         MapTraces.useThreadLocal().traceAdd("test2", "test2");
         assertEquals(",test2", MapTraces.useThreadLocal().get().getTraceMap().get("test2"));
     }
