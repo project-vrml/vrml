@@ -30,7 +30,7 @@ A set of error code definition specifications for [vrml](https://github.com/kevi
 * Clear classification of errors =>  Five categories + sub-categories
 * Compatible with commonalities between different systems =>  General API support 
 
-5 digit code : [Type code][System code][Subcategory code][CODE][CODE]
+6 digit code : [ApplicationCode*3]-[Type code][Module code][Subcategory code][CODE][CODE][CODE]
 1 : parameter error.
 2 : business error
 3 : repository service error
@@ -42,54 +42,54 @@ A set of error code definition specifications for [vrml](https://github.com/kevi
 ```java
 /**
  * Application error info context:
- * [20000] SUCCESS
- * [1Dxxx] {@code parameter} error. Define your parameter check exception
- * [2Dxxx] {@code business} error. Define your business logic exception
- * [3Dxxx] {@code repository service}. Define repository operation exception
- * [4Dxxx] {@code dependent service}. Define dependency service exception
- * [5Dxxx] {@code system} error. Define application system exception
+ * [SEC-200000] SUCCESS
+ * [SEC-10Xxxx] {@code parameter} error. Define your parameter check exception
+ * [SEC-20Xxxx] {@code business} error. Define your business logic exception
+ * [SEC-30Xxxx] {@code repository service}. Define repository operation exception
+ * [SEC-40Xxxx] {@code dependent service}. Define dependency service exception
+ * [SEC-50Xxxx] {@code system} error. Define application system exception
  */
 public enum ErrorCodes implements ErrorCodeContext {
 
     /**
      * The successful error code.
      */
-    SUCCESS("20000", "Success"),
+    SUCCESS("200000", "Success"),
 
     /*-------------------------------------------Parameter error as below---------------------------------------**/
     /**
      * Invalid basic parameter error, the code starts with 0.
      */
     PARAMETER_ERROR(
-            GENERATOR.createParameterErrorCode("000"), "Invalid parameter error!"),
+            GENERATOR.createParameterErrorCode("0000"), "Invalid parameter error!"),
 
     /*-------------------------------------------Business error as below---------------------------------------**/
     /**
      * Basic business error, the code starts with 0.
      */
     BUSINESS_ERROR(
-            GENERATOR.createBusinessProcessErrorCode("001"), "Business error!"),
+            GENERATOR.createBusinessProcessErrorCode("0001"), "Business error!"),
 
     /*-------------------------------------------Repository error as below---------------------------------------**/
     /**
      * Basic repository error, the code starts with 0.
      */
     REPOSITORY_ERROR(
-            GENERATOR.createRepositoryErrorCode("000"), "Repository error!"),
+            GENERATOR.createRepositoryErrorCode("0000"), "Repository error!"),
 
     /*-------------------------------------------Dependent service error as below---------------------------------------**/
     /**
      * Basic dependent service error, the code starts with 0.
      */
     DEPENDENT_SERVICE_ERROR(
-            GENERATOR.createDependentServiceErrorCode("000"), "Failed to call the dependent service!"),
+            GENERATOR.createDependentServiceErrorCode("0000"), "Failed to call the dependent service!"),
 
     /*-------------------------------------------System error as below---------------------------------------**/
     /**
      * Basic system error, the code starts with 0.
      */
     SYSTEM_ERROR(
-            GENERATOR.createSystemErrorCode("000"), "System error!"),
+            GENERATOR.createSystemErrorCode("0000"), "System error!"),
     ;
 
     // -- Encapsulation

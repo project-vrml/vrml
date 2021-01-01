@@ -43,27 +43,27 @@ public interface ErrorCodeContext extends Serializable {
         /**
          * The prefix of {@code parameter} error.
          */
-        String PARAMETER_ERROR_PREFIX = "1";
+        String PARAMETER_ERROR_PREFIX = "10";
 
         /**
          * The prefix of {@code business} error.
          */
-        String BUSINESS_ERROR_PREFIX = "2";
+        String BUSINESS_ERROR_PREFIX = "20";
 
         /**
          * The prefix of {@code repository service}, Such as DB、Redis or ES.
          */
-        String REPOSITORY_ERROR_PREFIX = "3";
+        String REPOSITORY_ERROR_PREFIX = "30";
 
         /**
          * The prefix of {@code dependent service}, Such as Http or Third api.
          */
-        String DEPENDENT_SERVICE_ERROR_PREFIX = "4";
+        String DEPENDENT_SERVICE_ERROR_PREFIX = "40";
 
         /**
          * The prefix of {@code system} error.
          */
-        String SYSTEM_ERROR_PREFIX = "5";
+        String SYSTEM_ERROR_PREFIX = "50";
 
         /**
          * The System Codes.
@@ -80,14 +80,14 @@ public interface ErrorCodeContext extends Serializable {
          * @return the error code.
          */
         default String createErrorCode(String prefix, String code) {
-            return prefix + applicationErrorCode().substring(0, 1) + code;
+            return applicationErrorCode() + "-" + prefix + code;
         }
 
         /**
          * Creates an error code because of invalid parameter.
          *
          * @param code the sub-code.
-         * @return 1[]xxx
+         * @return 10Xxxx
          */
         default String createParameterErrorCode(String code) {
             return createErrorCode(PARAMETER_ERROR_PREFIX, code);
@@ -97,7 +97,7 @@ public interface ErrorCodeContext extends Serializable {
          * Creates an error code because of failed to call the business process.
          *
          * @param code the sub-code.
-         * @return 2[]xxx
+         * @return 20Xxxx
          */
         default String createBusinessProcessErrorCode(String code) {
             return createErrorCode(BUSINESS_ERROR_PREFIX, code);
@@ -107,7 +107,7 @@ public interface ErrorCodeContext extends Serializable {
          * Creates an error code because of invalid repository operation. Such as the operation of DB, Redis or ES.
          *
          * @param code the sub-code.
-         * @return 3[]xxx
+         * @return 30Xxxx
          */
         default String createRepositoryErrorCode(String code) {
             return createErrorCode(REPOSITORY_ERROR_PREFIX, code);
@@ -117,7 +117,7 @@ public interface ErrorCodeContext extends Serializable {
          * Creates an error code because of failed to call the dependent services.
          *
          * @param code the sub-code.
-         * @return 4[]xxx
+         * @return 40Xxxx
          */
         default String createDependentServiceErrorCode(String code) {
             return createErrorCode(DEPENDENT_SERVICE_ERROR_PREFIX, code);
@@ -127,7 +127,7 @@ public interface ErrorCodeContext extends Serializable {
          * Creates an error code because of unknown system exception.
          *
          * @param code the sub-code.
-         * @return 5[]xxx
+         * @return 50Xxxx
          */
         default String createSystemErrorCode(String code) {
             return createErrorCode(SYSTEM_ERROR_PREFIX, code);
@@ -163,7 +163,7 @@ public interface ErrorCodeContext extends Serializable {
         /**
          * Show {@code ErrorCode} information like:
          * <pre>
-         *        PARAMETER_ERROR  10000  Invalid parameter error!
+         *        PARAMETER_ERROR  SEC-10000  Invalid parameter error!
          * </pre>
          *
          * @param errorCodeContext the {@code ErrorCode} context item
@@ -173,7 +173,7 @@ public interface ErrorCodeContext extends Serializable {
         /**
          * Show {@code ErrorCode} information like:
          * <pre>
-         *        PARAMETER_ERROR  10000  Invalid parameter error!
+         *        PARAMETER_ERROR  SEC-100000  Invalid parameter error!
          * </pre>
          *
          * @param errorCodeContexts the {@code ErrorCode} contexts

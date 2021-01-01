@@ -24,7 +24,7 @@ public interface DefaultErrorCodeContext extends ErrorCodeContext {
          *
          * @apiNote Set a single unique code for your application.
          */
-        private static final String DEFAULT_APPLICATION_CODE = "0";
+        private static final String DEFAULT_APPLICATION_CODE = "DEC";
 
         @Override
         public String applicationErrorCode() {
@@ -39,7 +39,7 @@ public interface DefaultErrorCodeContext extends ErrorCodeContext {
 
         @Override
         public void showErrorCodeItem(DefaultErrorCodeContext errorCodeContext) {
-            System.out.printf("%70s  %5s  %s", errorCodeContext.name(), errorCodeContext.getCode(), errorCodeContext.getMessage());
+            System.out.printf("%70s  %10s  %s", errorCodeContext.name(), errorCodeContext.getCode(), errorCodeContext.getMessage());
         }
     }
 }
