@@ -1,6 +1,8 @@
-package com.kevinten.vrml.intercept.aspect;
+package com.kevinten.vrml.api.intercept.aspect;
 
-import com.kevinten.vrml.intercept.annotation.ApiLogInterceptor;
+import com.kevinten.vrml.api.intercept.annotation.ApiLogInterceptor;
+import com.kevinten.vrml.data.ability.Traceable;
+import com.kevinten.vrml.trace.MapTraces;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,44 +28,67 @@ public class ApiLogInterceptorAspectTest {
 
         @Override
         public Object requestInvoker(ProceedingJoinPoint pjp) throws Throwable {
-            ApiLogInterceptorAspectTest.num++;
+            logChange();
             return super.requestInvoker(pjp);
         }
 
         @Override
+        protected BaseApiLogContext supplyTraceContext(ProceedingJoinPoint pjp) {
+            return new TestContext(pjp);
+        }
+
+        @Override
         protected boolean isDoBefore(ProceedingJoinPoint pjp, String logsKey) {
-            ApiLogInterceptorAspectTest.num++;
+            logChange();
             return super.isDoBefore(pjp, logsKey);
         }
 
         @Override
         protected void doBefore(ProceedingJoinPoint pjp, String logsKey) {
-            ApiLogInterceptorAspectTest.num++;
+            logChange();
             super.doBefore(pjp, logsKey);
         }
 
         @Override
+        protected Object doProcess(ProceedingJoinPoint pjp) throws Throwable {
+            return super.doProcess(pjp);
+        }
+
+        @Override
         protected boolean isDoAfter(ProceedingJoinPoint pjp, Object proceed, String logsKey) {
-            ApiLogInterceptorAspectTest.num++;
+            logChange();
             return super.isDoAfter(pjp, proceed, logsKey);
         }
 
         @Override
         protected void doAfter(ProceedingJoinPoint pjp, Object proceed, String logsKey) {
-            ApiLogInterceptorAspectTest.num++;
+            logChange();
             super.doAfter(pjp, proceed, logsKey);
         }
 
         @Override
         public boolean isDoException(ProceedingJoinPoint pjp, Throwable throwable, String logsKey) {
-            ApiLogInterceptorAspectTest.num++;
+            logChange();
             return super.isDoException(pjp, throwable, logsKey);
         }
 
         @Override
         public Object doException(ProceedingJoinPoint pjp, Throwable throwable, String logsKey) throws Throwable {
-            ApiLogInterceptorAspectTest.num++;
+            logChange();
             return super.doException(pjp, throwable, logsKey);
+        }
+
+        private void logChange() {
+            ApiLogInterceptorAspectTest.num++;
+            Traceable traceable = MapTraces.useThreadLocal().get();
+            traceable.addTrace("key" + ApiLogInterceptorAspectTest.num, "value" + ApiLogInterceptorAspectTest.num);
+        }
+
+        public static class TestContext extends BaseApiLogContext {
+
+            public TestContext(ProceedingJoinPoint proceedingJoinPoint) {
+                super(proceedingJoinPoint);
+            }
         }
     }
 

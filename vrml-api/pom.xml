@@ -29,6 +29,10 @@
             <groupId>com.kevinten</groupId>
             <artifactId>vrml-metric</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.kevinten</groupId>
+            <artifactId>vrml-trace</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.aspectj</groupId>

@@ -1,16 +1,21 @@
-package com.kevinten.vrml.intercept.aspect;
+package com.kevinten.vrml.api.intercept.aspect;
 
-import com.kevinten.vrml.intercept.annotation.ApiLogInterceptor;
-import com.kevinten.vrml.intercept.config.ApiLogConfiguration;
+import com.kevinten.vrml.api.intercept.annotation.ApiLogInterceptor;
+import com.kevinten.vrml.api.intercept.config.ApiLogConfiguration;
 import com.kevinten.vrml.core.beans.SpringContextConfigurator;
 import com.kevinten.vrml.core.serialization.Serialization;
+import com.kevinten.vrml.data.ability.Traceable;
 import com.kevinten.vrml.log.Logs;
+import com.kevinten.vrml.trace.MapTraces;
 import io.vavr.Lazy;
+import lombok.Data;
+import lombok.Getter;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -79,6 +84,13 @@ public abstract class AbstractApiLogInterceptorAspect {
     }
 
     /**
+     * Supply your trace context which extends {@link BaseApiLogContext}
+     */
+    protected BaseApiLogContext supplyTraceContext(ProceedingJoinPoint pjp) {
+        return new BaseApiLogContext(pjp);
+    }
+
+    /**
      * Request invoker proxy.
      *
      * @param pjp the pjp
@@ -89,6 +101,9 @@ public abstract class AbstractApiLogInterceptorAspect {
     public Object requestInvoker(ProceedingJoinPoint pjp) throws Throwable {
         final String logsKey = ApiLogInterceptorUtils.generateLogsKey(pjp);
         try {
+            // init trace context at ThreadLocal
+            MapTraces.useThreadLocal().initObj(this.supplyTraceContext(pjp));
+
             // whether to do the before process
             boolean execDoBefore = this.isDoBefore(pjp, logsKey);
             if (execDoBefore) {
@@ -97,7 +112,7 @@ public abstract class AbstractApiLogInterceptorAspect {
             }
 
             // process
-            Object proceed = pjp.proceed();
+            Object proceed = this.doProcess(pjp);
 
             // whether to do the after process
             boolean execDoAfter = this.isDoAfter(pjp, proceed, logsKey);
@@ -117,6 +132,8 @@ public abstract class AbstractApiLogInterceptorAspect {
                 // direct throws
                 throw throwable;
             }
+        } finally {
+            MapTraces.useThreadLocal().clear();
         }
     }
 
@@ -141,6 +158,13 @@ public abstract class AbstractApiLogInterceptorAspect {
         createKeyLogs(logsKey).info("[{}] api request[{}]",
                 logsKey,
                 Serialization.toJsonSafe(pjp.getArgs()));
+    }
+
+    /**
+     * Do process.
+     */
+    protected Object doProcess(ProceedingJoinPoint pjp) throws Throwable {
+        return pjp.proceed();
     }
 
     /**
@@ -195,6 +219,32 @@ public abstract class AbstractApiLogInterceptorAspect {
                 throwable.getMessage(),
                 throwable);
         throw throwable;
+    }
+
+    /**
+     * Base Api log interceptor {@code ThreadLocal} context.
+     */
+    @Data
+    public static class BaseApiLogContext implements Traceable {
+
+        private ProceedingJoinPoint proceedingJoinPoint;
+
+        @Getter(lazy = true)
+        private final Map<String, String> traceMap = new HashMap<>();
+
+        public BaseApiLogContext(ProceedingJoinPoint proceedingJoinPoint) {
+            this.proceedingJoinPoint = proceedingJoinPoint;
+        }
+
+        @Override
+        public void setTraceMap(Map<String, String> traceMap) {
+            // pass: lazy init
+        }
+
+        @Override
+        public void addTrace(String key, String value) {
+            this.getTraceMap().put(key, value);
+        }
     }
 }
 

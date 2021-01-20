@@ -1,4 +1,4 @@
-package com.kevinten.vrml.intercept.config;
+package com.kevinten.vrml.api.intercept.config;
 
 /**
  * The Api Log configuration.

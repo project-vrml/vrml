@@ -1,4 +1,4 @@
-package com.kevinten.vrml.intercept.annotation;
+package com.kevinten.vrml.api.intercept.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
