@@ -134,6 +134,16 @@ You can import all vrml modules:
 </dependency>
 ```
 
+Latest feature branch:
+
+```xml
+<dependency>
+  <groupId>com.kevinten</groupId>
+  <artifactId>vrml-all</artifactId>
+  <version>1.0.1-SNAPSHOT</version>
+</dependency>
+```
+
 ### Contributing
 
 A small number of users have reported problems building vrml. Read our [contribution guide](./CONTRIBUTING.md) for details.
