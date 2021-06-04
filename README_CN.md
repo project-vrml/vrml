@@ -1,24 +1,22 @@
 [![vrml-logo](./resources/logo.png)](./README.md)
 
-VRML is a set of common extension tools based on Java 8, designed to provide more robust and easy to use common tools to solve common problems in the workplace.
+Vrml是基于Java 8的常用拓展工具集合，旨在提供更健壮和更方便易用的常用工具，以解决工作中常见的问题。
 
-It provides monitoring metrics, logging components, network request agents, error code design specifications, alarms and event listening, and more.
+它提供了监控埋点，日志组件，网络请求代理，错误码设计规范，告警和事件监听等等。
 
-VRML provides elegant and powerful solutions to the problems you might encounter in a common scenario in these jobs.
+Vrml对这些工作中常见的场景中可能遇到的问题给出了优雅和强大的解决方案。
 
-The usage environment is mainly integrated with `Spring`, based on Spring to implement the mechanism of dynamic interface discovery, but also provides non-Spring custom configuration functions.
+使用环境主要同Spring集成使用，基于Spring实现接口动态发现的机制，但也提供非Spring下的自定义配置功能。
 
-VRML is built primarily on the `VAVR` library (and other commonly used libraries), and the coding references the functional style of VAVR.
+Vrml主要基于Vavr库（以及其他常用库）进行构建，编码参考了Vavr的函数式风格。
 
-Because VRML provides a modular mechanism, you can easily refer to the functionality you need in your classpath, or import all using -all.
+由于Vrml提供了模块化的机制，您可以方便的引用所需要的功能到您的类路径中，或者使用-all引入所有。
 
-To stay up to date, Please follow the [blog](./README.md).
+要保持最新状态，请关注[blog](./README.md) 。
 
 ## Using Vrml
 
 See [User Guide](./README.md).
-
-查看 [使用文档](./README_CN.md).
 
 -------------------------------------------------------------------------------
 
@@ -32,6 +30,8 @@ See [User Guide](./README.md).
 
 An alert API that supports multiple methods for [vrml](./README.md) library
 
+Alerts支持各种快捷灵活方式的告警API，避免过程式的调用告警service
+
 ---------------------------------------------------------------------
 
 ### [vrml-api](./vrml-api)
@@ -39,6 +39,8 @@ An alert API that supports multiple methods for [vrml](./README.md) library
 [![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
 
 [WIKI](./vrml-alert/WIKI.md)
+
+A Aspect to log request process for [vrml](./README.md) library
 
 ---------------------------------------------------------------------
 
