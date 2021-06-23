@@ -112,6 +112,7 @@
         <module>vrml-log</module>
         <module>vrml-metric</module>
         <module>vrml-request</module>
+        <module>vrml-switch</module>
         <module>vrml-time</module>
         <module>vrml-trace</module>
     </modules>
@@ -217,6 +218,11 @@
             <dependency>
                 <groupId>com.kevinten</groupId>
                 <artifactId>vrml-request</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kevinten</groupId>
+                <artifactId>vrml-switch</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
