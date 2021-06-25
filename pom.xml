@@ -7,7 +7,7 @@
     <groupId>com.kevinten</groupId>
     <artifactId>vrml</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
 
     <name>vrml</name>
     <description>Vrml is a useful api library for java work.</description>
