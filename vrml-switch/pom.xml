@@ -10,13 +10,21 @@
         <version>1.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>vrml-eventbus</artifactId>
+    <artifactId>vrml-switch</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
             <groupId>com.kevinten</groupId>
             <artifactId>vrml-core</artifactId>
+        </dependency>
+
+        <!-- junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 
