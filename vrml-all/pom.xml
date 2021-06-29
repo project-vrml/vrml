@@ -67,6 +67,11 @@
         </dependency>
         <dependency>
             <groupId>com.kevinten</groupId>
+            <artifactId>vrml-switch</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.kevinten</groupId>
             <artifactId>vrml-time</artifactId>
             <version>${project.version}</version>
         </dependency>
