@@ -16,11 +16,11 @@ import java.lang.reflect.ParameterizedType;
 public abstract class Computes<T extends ComputeConfiguration> implements Compute {
 
     /**
-     * The constant TimeCounterComputes.
+     * The {@link TimeCounterComputes} singleton.
      */
-    public static final TimeCounterComputes TimeCounterComputes = new TimeCounterComputes();
+    public static final TimeCounterComputes TC = new TimeCounterComputes();
 
-    private T configuration;
+    T configuration;
 
     /**
      * Use spring context to provide dynamic configuration.

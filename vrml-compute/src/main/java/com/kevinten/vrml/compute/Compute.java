@@ -16,9 +16,9 @@ public interface Compute {
     /**
      * Compute.
      *
-     * @param key the key
-     * @param f1  the f1 when compute failure
-     * @param f2  the f2 when compute success
+     * @param key   the key
+     * @param left  the left when compute failure
+     * @param right the right when compute success
      */
-    void compute(String key, Runnable f1, Runnable f2);
+    void compute(String key, Runnable left, Runnable right);
 }

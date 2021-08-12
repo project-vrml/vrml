@@ -38,7 +38,19 @@ An alert API that supports multiple methods for [vrml](./README.md) library
 
 [![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
 
-[WIKI](./vrml-alert/WIKI.md)
+[WIKI](./vrml-api/WIKI.md)
+
+A Aspect to log request process for [vrml](./README.md) library
+
+---------------------------------------------------------------------
+
+### [vrml-compute](./vrml-compute)
+
+[![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
+
+[WIKI](./vrml-compute/WIKI.md)
+
+The adaptor of statistical triggering, and different Runnable operations can be performed based on statistical indicators.
 
 ---------------------------------------------------------------------
 

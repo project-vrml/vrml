@@ -13,10 +13,6 @@
     <artifactId>vrml-request</artifactId>
     <packaging>jar</packaging>
 
-    <properties>
-        <caffeine.version>2.8.1</caffeine.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.kevinten</groupId>

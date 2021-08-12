@@ -33,7 +33,7 @@ public final class TimeCounterComputes extends Computes<com.kevinten.vrml.comput
     }
 
     @Override
-    public void compute(String key, Runnable f1, Runnable f2) {
+    public void compute(String key, Runnable left, Runnable right) {
         TimeCounterComputeConfig computeConfiguration = getConfiguration()
                 .getComputeConfiguration(key);
         Objects.requireNonNull(computeConfiguration, "computeConfiguration");
@@ -41,12 +41,12 @@ public final class TimeCounterComputes extends Computes<com.kevinten.vrml.comput
                 .computeIfAbsent(key, key1 -> new TimeCounterCache(key1, computeConfiguration))
                 .putAndCheckCount();
         if (checkCount.isLeft()) {
-            if (f1 != null) {
-                f1.run();
+            if (left != null) {
+                left.run();
             }
         } else {
-            if (f2 != null) {
-                f2.run();
+            if (right != null) {
+                right.run();
             }
         }
     }
@@ -128,12 +128,12 @@ public final class TimeCounterComputes extends Computes<com.kevinten.vrml.comput
                 Integer count = cache.getIfPresent(key);
                 if (count == null) {
                     // init
-                    cache.put(key, 0);
-                    return Either.left(0);
+                    cache.put(key, 1);
+                    return Either.left(1);
                 } else {
                     if (count >= timeCounterComputeConfig.getTriggerCount()) {
                         // clear
-                        cache.put(key, 0);
+                        cache.put(key, 1);
                         return Either.right(count);
                     } else {
                         // addition

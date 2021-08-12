@@ -38,9 +38,19 @@ Alerts支持各种快捷灵活方式的告警API，避免过程式的调用告�
 
 [![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
 
-[WIKI](./vrml-alert/WIKI.md)
+[WIKI](./vrml-api/WIKI.md)
 
 A Aspect to log request process for [vrml](./README.md) library
+
+---------------------------------------------------------------------
+
+### [vrml-compute](./vrml-compute)
+
+[![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
+
+[WIKI](./vrml-compute/WIKI.md)
+
+对统计触发的行为进行了封装，可以基于统计指标执行不同的Runnable操作。
 
 ---------------------------------------------------------------------
 
@@ -99,6 +109,14 @@ A API to record application's metrics data for [vrml](./README.md) library
 [WIKI](./vrml-request/WIKI.md)
 
 A proxy API to wrap remote request with log/record/check/... for [vrml](./README.md) library
+
+---------------------------------------------------------------------
+
+### [vrml-switch](./vrml-switch)
+
+[![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
+
+Different Runnable can be executed conveniently according to the switches configuration, avoiding a lot of if-else switches logic.
 
 ---------------------------------------------------------------------
 
