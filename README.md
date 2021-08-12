@@ -100,6 +100,14 @@ A proxy API to wrap remote request with log/record/check/... for [vrml](./README
 
 ---------------------------------------------------------------------
 
+### [vrml-switch](./vrml-switch)
+
+[![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
+
+Different Runnable can be executed conveniently according to the switches configuration, avoiding a lot of if-else switches logic.
+
+---------------------------------------------------------------------
+
 ### [vrml-time](./vrml-time)
 
 [![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
