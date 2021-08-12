@@ -1,12 +1,10 @@
 package com.kevinten.vrml.switches;
 
 import com.google.common.collect.ImmutableList;
-import com.google.gson.JsonObject;
 import com.kevinten.vrml.core.beans.SpringContextConfigurator;
 import com.kevinten.vrml.core.tags.Important;
-import io.vavr.CheckedFunction0;
-import io.vavr.CheckedRunnable;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.CollectionUtils;
 
 import java.util.Collections;
 import java.util.List;
@@ -30,7 +28,7 @@ public final class Switches implements SwitchApi {
     /**
      * Switches configurator
      */
-    private static volatile SwitchesConfiguration configuration;
+    static volatile SwitchesConfiguration configuration;
 
     /**
      * Use spring context to provide dynamic configuration.
@@ -61,16 +59,24 @@ public final class Switches implements SwitchApi {
     @Override
     public boolean getSwitch(SwitchKey switchKey) {
         final List<String> sortedKeys = switchKey.getSortedKeys();
-        JsonObject headerParams = getConfiguration().getParams();
-
-        for (String key : sortedKeys) {
-            headerParams = headerParams.getAsJsonObject(key);
-            if (headerParams == null) {
-                return false;
-            }
+        if (CollectionUtils.isEmpty(sortedKeys)) {
+            return false;
         }
+        if (sortedKeys.size() > 1) {
+            throw new IllegalArgumentException("Switches only support 1 param now");
+        }
+        return getConfiguration()
+                .checkSwitches(sortedKeys);
+    }
 
-        return headerParams.getAsBoolean();
+    @Override
+    public void runWithSwitch(String switchKey, Runnable runnable) {
+        runWithSwitch(new SwitchKey() {
+            @Override
+            public ImmutableList<String> getSortedKeys() {
+                return ImmutableList.of(switchKey);
+            }
+        }, runnable);
     }
 
     @Override
@@ -82,11 +88,13 @@ public final class Switches implements SwitchApi {
     }
 
     @Override
-    public void runWithSwitch(SwitchKey switchKey, CheckedRunnable runnable) throws Throwable {
-        boolean switchOpen = getSwitch(switchKey);
-        if (switchOpen) {
-            runnable.run();
-        }
+    public <T> T callWithSwitch(String switchKey, Supplier<T> supplier) {
+        return callWithSwitch(new SwitchKey() {
+            @Override
+            public ImmutableList<String> getSortedKeys() {
+                return ImmutableList.of(switchKey);
+            }
+        }, supplier);
     }
 
     @Override
@@ -99,12 +107,13 @@ public final class Switches implements SwitchApi {
     }
 
     @Override
-    public <T> T callWithSwitch(SwitchKey switchKey, CheckedFunction0<T> function) throws Throwable {
-        boolean switchOpen = getSwitch(switchKey);
-        if (switchOpen) {
-            return function.apply();
-        }
-        return null;
+    public <T> T callWithSwitchOrDefault(String switchKey, Supplier<T> supplier, T defaultValue) {
+        return callWithSwitchOrDefault(new SwitchKey() {
+            @Override
+            public ImmutableList<String> getSortedKeys() {
+                return ImmutableList.of(switchKey);
+            }
+        }, supplier, defaultValue);
     }
 
     @Override
@@ -112,15 +121,6 @@ public final class Switches implements SwitchApi {
         boolean switchOpen = getSwitch(switchKey);
         if (switchOpen) {
             return supplier.get();
-        }
-        return defaultValue;
-    }
-
-    @Override
-    public <T> T callWithSwitchOrDefault(SwitchKey switchKey, CheckedFunction0<T> function, T defaultValue) throws Throwable {
-        boolean switchOpen = getSwitch(switchKey);
-        if (switchOpen) {
-            return function.apply();
         }
         return defaultValue;
     }
@@ -137,9 +137,7 @@ public final class Switches implements SwitchApi {
          * @apiNote {@code header} key is empty.
          */
         static SwitchKeyWrapper builder() {
-            SwitchKeyWrapper.DefaultSwitchKeyWrapper headerOfChainWithEmptyKey =
-                    new SwitchKeyWrapper.DefaultSwitchKeyWrapper();
-            return headerOfChainWithEmptyKey;
+            return new SwitchKeyWrapper.DefaultSwitchKeyWrapper();
         }
     }
 
@@ -286,8 +284,9 @@ interface SwitchApi {
      *
      * @param switchKey the switch key
      * @param runnable  the runnable
+     * @throws Throwable the throwable
      */
-    void runWithSwitch(Switches.SwitchKey switchKey, Runnable runnable);
+    void runWithSwitch(String switchKey, Runnable runnable) throws Throwable;
 
     /**
      * Run with switch. run when switch is {@code true}.
@@ -296,7 +295,17 @@ interface SwitchApi {
      * @param runnable  the runnable
      * @throws Throwable the throwable
      */
-    void runWithSwitch(Switches.SwitchKey switchKey, CheckedRunnable runnable) throws Throwable;
+    void runWithSwitch(Switches.SwitchKey switchKey, Runnable runnable) throws Throwable;
+
+    /**
+     * Call with switch. call when switch is {@code true}.
+     *
+     * @param <T>       the type parameter
+     * @param switchKey the switch key
+     * @param supplier  the supplier
+     * @return the call result
+     */
+    <T> T callWithSwitch(String switchKey, Supplier<T> supplier);
 
     /**
      * Call with switch. call when switch is {@code true}.
@@ -309,15 +318,15 @@ interface SwitchApi {
     <T> T callWithSwitch(Switches.SwitchKey switchKey, Supplier<T> supplier);
 
     /**
-     * Call with switch. call when switch is {@code true}.
+     * Call with switch. call when switch is {@code true}. default value when switch is {@code false}.
      *
-     * @param <T>       the type parameter
-     * @param switchKey the switch key
-     * @param function  the function
-     * @return the function apply result
-     * @throws Throwable the throwable
+     * @param <T>          the type parameter
+     * @param switchKey    the switch key
+     * @param supplier     the supplier
+     * @param defaultValue the default value
+     * @return the call result
      */
-    <T> T callWithSwitch(Switches.SwitchKey switchKey, CheckedFunction0<T> function) throws Throwable;
+    <T> T callWithSwitchOrDefault(String switchKey, Supplier<T> supplier, T defaultValue);
 
     /**
      * Call with switch. call when switch is {@code true}. default value when switch is {@code false}.
@@ -329,16 +338,4 @@ interface SwitchApi {
      * @return the call result
      */
     <T> T callWithSwitchOrDefault(Switches.SwitchKey switchKey, Supplier<T> supplier, T defaultValue);
-
-    /**
-     * Call with switch. call when switch is {@code true}. default value when switch is {@code false}.
-     *
-     * @param <T>          the type parameter
-     * @param switchKey    the switch key
-     * @param function     the function
-     * @param defaultValue the default value
-     * @return the function apply result
-     * @throws Throwable the throwable
-     */
-    <T> T callWithSwitchOrDefault(Switches.SwitchKey switchKey, CheckedFunction0<T> function, T defaultValue) throws Throwable;
 }
