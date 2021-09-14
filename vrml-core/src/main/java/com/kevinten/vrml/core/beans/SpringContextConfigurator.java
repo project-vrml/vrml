@@ -9,8 +9,8 @@ import java.util.Map;
 
 /**
  * Spring application context static container.
- *
- * @apiNote Assemble context in your startup class
+ * 
+ *  Assemble context in your startup class
  */
 public final class SpringContextConfigurator implements ApplicationContextAware, DisposableBean {
 

@@ -6,7 +6,7 @@ import com.kevinten.vrml.error.code.ErrorCodeContext;
 /**
  * The abstract implementation of error code exception.
  *
- * @apiNote All exception must have {@link ErrorCodeContext}
+ *  All exception must have {@link ErrorCodeContext}
  */
 public abstract class ErrorCodeException extends RuntimeException {
 

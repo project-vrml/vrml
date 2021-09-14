@@ -48,7 +48,7 @@ public class ApiLogInterceptorAspectTest {
     /**
      * 自定义的切面类. 继承 {@link AbstractApiLogInterceptorAspect} 基础模板类.
      *
-     * @apiNote 所有的切面方法都会使num值+1.
+     *  所有的切面方法都会使num值+1.
      */
     @Aspect
     @Component

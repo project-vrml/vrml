@@ -134,7 +134,7 @@ public final class Switches implements SwitchApi {
          * Generate switch key wrapper builder chain.
          *
          * @return the header switch key wrapper
-         * @apiNote {@code header} key is empty.
+         *  {@code header} key is empty.
          */
         static SwitchKeyWrapper builder() {
             return new SwitchKeyWrapper.DefaultSwitchKeyWrapper();
@@ -229,7 +229,7 @@ public final class Switches implements SwitchApi {
             /**
              * The Header wrapper.
              *
-             * @apiNote {@code header} key is empty.
+             *  {@code header} key is empty.
              */
             SwitchKeyWrapper.DefaultSwitchKeyWrapper headerWrapper;
 

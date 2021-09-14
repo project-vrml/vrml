@@ -158,7 +158,7 @@ Latest feature branch:
 <dependency>
   <groupId>com.kevinten</groupId>
   <artifactId>vrml-all</artifactId>
-  <version>1.0.1-SNAPSHOT</version>
+  <version>1.0.1-RELEASE</version>
 </dependency>
 ```
 

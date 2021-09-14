@@ -68,7 +68,7 @@ public interface ErrorCodeContext extends Serializable {
         /**
          * The System Codes.
          *
-         * @apiNote Set a single unique code for your application.
+         *  Set a single unique code for your application.
          */
         String applicationErrorCode();
 

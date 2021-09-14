@@ -4,7 +4,6 @@ import com.kevinten.vrml.core.beans.SpringContextConfigurator;
 import com.kevinten.vrml.log.config.LogsConfiguration;
 import io.vavr.Lazy;
 import io.vavr.control.Try;
-import net.jcip.annotations.NotThreadSafe;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -126,7 +125,7 @@ public final class Logs implements Logger {
      * Init Logs configuration from spring context by key
      *
      * @param logs logs obj
-     * @apiNote lazy load spring context, avoid spring context delayed injection
+     *             lazy load spring context, avoid spring context delayed injection
      */
     private void initConfig(Logs logs) {
         logs.configuration = Lazy.of(() -> SpringContextConfigurator.getBean(LogsConfiguration.class));
@@ -175,10 +174,9 @@ public final class Logs implements Logger {
 
     /**
      * The Logs tag helper.
-     *
-     * @apiNote use {@code MDC} in {@code ThreadLocal}
+     * <p>
+     * use {@code MDC} in {@code ThreadLocal}
      */
-    @NotThreadSafe
     public static final class LogsTagHelper {
 
         private final Logs logs;
@@ -219,7 +217,7 @@ public final class Logs implements Logger {
         }
 
         /**
-         * @apiNote When you forget to remove MDC, take error to notify
+         * When you forget to remove MDC, take error to notify
          */
         @Override
         protected void finalize() throws Throwable {

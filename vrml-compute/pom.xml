@@ -7,7 +7,7 @@
     <parent>
         <artifactId>vrml</artifactId>
         <groupId>com.kevinten</groupId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>1.0.1-RELEASE</version>
     </parent>
 
     <artifactId>vrml-compute</artifactId>

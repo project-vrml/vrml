@@ -318,7 +318,7 @@ public abstract class ThreadLocalTimeUtils extends DateUtils {
      * @param A the a
      * @param B the b
      * @return (long) (A - B)
-     * @apiNote This days code is counting days based on {@code UTC}. The days elapsed may be a different count if considered with the time zone of the original Calendar objects. Better approach would convert using GregorianCalendar to ZonedDateTime, extract LocalDate, and calculate Period.
+     *  This days code is counting days based on {@code UTC}. The days elapsed may be a different count if considered with the time zone of the original Calendar objects. Better approach would convert using GregorianCalendar to ZonedDateTime, extract LocalDate, and calculate Period.
      */
     public static long differentDays(java.util.Date A, java.util.Date B) {
         Calendar cal1 = Calendar.getInstance();
@@ -334,7 +334,7 @@ public abstract class ThreadLocalTimeUtils extends DateUtils {
      * Gets date format.
      *
      * @return the date format
-     * @apiNote ThreadSafe
+     *  ThreadSafe
      */
     protected static DateFormat getDateFormat() {
         DateFormat df = DATE_FORMAT_THREAD_LOCAL.get();
@@ -349,7 +349,7 @@ public abstract class ThreadLocalTimeUtils extends DateUtils {
      * Gets time format.
      *
      * @return the time format
-     * @apiNote ThreadSafe
+     *  ThreadSafe
      */
     protected static DateFormat getTimeFormat() {
         DateFormat df = TIME_FORMAT_THREAD_LOCAL.get();
@@ -364,7 +364,7 @@ public abstract class ThreadLocalTimeUtils extends DateUtils {
      * Gets date time format.
      *
      * @return the date time format
-     * @apiNote ThreadSafe
+     *  ThreadSafe
      */
     protected static DateFormat getDateTimeFormat() {
         DateFormat df = DATE_TIME_FORMAT_THREAD_LOCAL.get();

@@ -7,7 +7,7 @@
     <parent>
         <groupId>com.kevinten</groupId>
         <artifactId>vrml</artifactId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>1.0.1-RELEASE</version>
     </parent>
 
     <artifactId>vrml-log</artifactId>
@@ -17,10 +17,6 @@
         <dependency>
             <groupId>com.kevinten</groupId>
             <artifactId>vrml-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>net.jcip</groupId>
-            <artifactId>jcip-annotations</artifactId>
         </dependency>
 
         <!-- junit -->

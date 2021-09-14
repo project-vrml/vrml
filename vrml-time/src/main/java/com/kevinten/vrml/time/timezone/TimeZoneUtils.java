@@ -24,7 +24,7 @@ public abstract class TimeZoneUtils {
      * @param sourceTimestamp    the source timestamp
      * @return the target timestamp
      * @throws ParseException the parse exception
-     * @apiNote https ://blog.csdn.net/wanglq0086/article/details/61920364
+     *  https ://blog.csdn.net/wanglq0086/article/details/61920364
      */
     public static Timestamp parseTimezoneTimestamp(@NonNull TimeZoneEnum sourceTimeZoneEnum,
                                                    @NonNull TimeZoneEnum targetTimeZoneEnum,

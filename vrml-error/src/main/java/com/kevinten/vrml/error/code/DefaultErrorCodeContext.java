@@ -22,7 +22,7 @@ public interface DefaultErrorCodeContext extends ErrorCodeContext {
         /**
          * Default system code.
          *
-         * @apiNote Set a single unique code for your application.
+         *  Set a single unique code for your application.
          */
         private static final String DEFAULT_APPLICATION_CODE = "DEC";
 

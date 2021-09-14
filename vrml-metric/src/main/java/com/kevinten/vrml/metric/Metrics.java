@@ -201,7 +201,7 @@ public final class Metrics {
      * @param pattern the {@code MetricItem} pattern
      * @param value   the value supplier
      * @return the option of {@code IndexCase} or {@code StoreCase}
-     * @apiNote Avoid exceptions that may be thrown by expressions,
+     *  Avoid exceptions that may be thrown by expressions,
      * use lazy evaluation by {@code Supplier} to catch possible exceptions.
      */
     public static Option<Tags.ItemCase> $(MetricItem pattern, Supplier<?> value) {
