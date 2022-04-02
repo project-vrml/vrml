@@ -1,5 +1,7 @@
 [![vrml-logo](./resources/logo.png)](./README.md)
 
+查看 [中文文档](./README_CN.md).
+
 VRML is a set of common extension tools based on Java 8, designed to provide more robust and easy to use common tools to solve common problems in the workplace.
 
 It provides monitoring metrics, logging components, network request agents, error code design specifications, alarms and event listening, and more.
@@ -17,8 +19,6 @@ To stay up to date, Please follow the [blog](./README.md).
 ## Using Vrml
 
 See [User Guide](./README.md).
-
-查看 [使用文档](./README_CN.md).
 
 -------------------------------------------------------------------------------
 
