@@ -74,7 +74,11 @@ A set of error code definition specifications for [vrml](./README.md) library
 
 ### [vrml-eventbus](./vrml-eventbus)
 
-TODO
+[![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
+
+[WIKI](./vrml-eventbus/README.md)
+
+A publish event API for [vrml](https://github.com/kevinten10/vrml) library
 
 ---------------------------------------------------------------------
 
@@ -146,9 +150,9 @@ You can import all vrml modules:
 
 ```xml
 <dependency>
-  <groupId>com.kevinten</groupId>
+  <groupId>group.rxcloud</groupId>
   <artifactId>vrml-all</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
 </dependency>
 ```
 
@@ -156,9 +160,9 @@ Latest feature branch:
 
 ```xml
 <dependency>
-  <groupId>com.kevinten</groupId>
+  <groupId>group.rxcloud</groupId>
   <artifactId>vrml-all</artifactId>
-  <version>1.0.1-RELEASE</version>
+  <version>1.0.1</version>
 </dependency>
 ```
 

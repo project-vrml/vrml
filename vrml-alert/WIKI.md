@@ -162,8 +162,8 @@ EmailAlertActor.onReceive(message);
 
 ```xml
 <dependency>
-  <groupId>com.kevinten</groupId>
+  <groupId>group.rxcloud</groupId>
   <artifactId>vrml-alert</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
 </dependency>
 ```

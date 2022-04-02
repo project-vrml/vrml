@@ -5,30 +5,42 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.kevinten</groupId>
+        <groupId>group.rxcloud</groupId>
         <artifactId>vrml</artifactId>
-        <version>1.0.1-RELEASE</version>
+        <version>1.0.1</version>
     </parent>
 
     <artifactId>vrml-core</artifactId>
     <packaging>jar</packaging>
 
+    <properties>
+    </properties>
+
     <dependencies>
-        <!-- lang3 -->
+        <!-- vavr -->
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
+            <groupId>io.vavr</groupId>
+            <artifactId>vavr</artifactId>
         </dependency>
-        <!-- guava -->
+        <!-- log -->
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
         </dependency>
+
         <!-- spring -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
+
+        <!-- json -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <optional>true</optional>
+        </dependency>
+
         <!-- test -->
         <dependency>
             <groupId>org.jmockit</groupId>

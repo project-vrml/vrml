@@ -146,9 +146,9 @@ You can import all vrml modules:
 
 ```xml
 <dependency>
-  <groupId>com.kevinten</groupId>
+  <groupId>group.rxcloud</groupId>
   <artifactId>vrml-all</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
 </dependency>
 ```
 
@@ -156,9 +156,9 @@ Latest feature branch:
 
 ```xml
 <dependency>
-  <groupId>com.kevinten</groupId>
+  <groupId>group.rxcloud</groupId>
   <artifactId>vrml-all</artifactId>
-  <version>1.0.1-RELEASE</version>
+  <version>1.0.1</version>
 </dependency>
 ```
 

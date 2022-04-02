@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.kevinten</groupId>
+        <groupId>group.rxcloud</groupId>
         <artifactId>vrml</artifactId>
-        <version>1.0.1-RELEASE</version>
+        <version>1.0.1</version>
     </parent>
 
     <artifactId>vrml-all</artifactId>
@@ -16,69 +16,60 @@
     <dependencies>
         <!-- module -->
         <dependency>
-            <groupId>com.kevinten</groupId>
+            <groupId>group.rxcloud</groupId>
             <artifactId>vrml-alert</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.kevinten</groupId>
+            <groupId>group.rxcloud</groupId>
             <artifactId>vrml-api</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.kevinten</groupId>
+            <groupId>group.rxcloud</groupId>
+            <artifactId>vrml-compute</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>group.rxcloud</groupId>
             <artifactId>vrml-core</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.kevinten</groupId>
+            <groupId>group.rxcloud</groupId>
             <artifactId>vrml-data</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.kevinten</groupId>
+            <groupId>group.rxcloud</groupId>
             <artifactId>vrml-error</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.kevinten</groupId>
+            <groupId>group.rxcloud</groupId>
             <artifactId>vrml-eventbus</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.kevinten</groupId>
+            <groupId>group.rxcloud</groupId>
             <artifactId>vrml-external</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.kevinten</groupId>
+            <groupId>group.rxcloud</groupId>
             <artifactId>vrml-log</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.kevinten</groupId>
+            <groupId>group.rxcloud</groupId>
             <artifactId>vrml-metric</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.kevinten</groupId>
+            <groupId>group.rxcloud</groupId>
             <artifactId>vrml-request</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.kevinten</groupId>
+            <groupId>group.rxcloud</groupId>
             <artifactId>vrml-switch</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.kevinten</groupId>
+            <groupId>group.rxcloud</groupId>
             <artifactId>vrml-time</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.kevinten</groupId>
+            <groupId>group.rxcloud</groupId>
             <artifactId>vrml-trace</artifactId>
-            <version>${project.version}</version>
         </dependency>
     </dependencies>
 

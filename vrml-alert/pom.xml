@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.kevinten</groupId>
+        <groupId>group.rxcloud</groupId>
         <artifactId>vrml</artifactId>
-        <version>1.0.1-RELEASE</version>
+        <version>1.0.1</version>
     </parent>
 
     <artifactId>vrml-alert</artifactId>
@@ -15,8 +15,22 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.kevinten</groupId>
+            <groupId>group.rxcloud</groupId>
             <artifactId>vrml-core</artifactId>
+        </dependency>
+
+        <!-- json -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 

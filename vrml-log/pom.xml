@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.kevinten</groupId>
+        <groupId>group.rxcloud</groupId>
         <artifactId>vrml</artifactId>
-        <version>1.0.1-RELEASE</version>
+        <version>1.0.1</version>
     </parent>
 
     <artifactId>vrml-log</artifactId>
@@ -15,7 +15,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.kevinten</groupId>
+            <groupId>group.rxcloud</groupId>
             <artifactId>vrml-core</artifactId>
         </dependency>
 
@@ -24,7 +24,6 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
-            <optional>true</optional>
         </dependency>
     </dependencies>
 

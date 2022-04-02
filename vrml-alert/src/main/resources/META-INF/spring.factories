@@ -1,4 +1,4 @@
 # Auto configure alerts.default-actor
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.kevinten.vrml.alert.actor.crash.DefaultCrashAlertActor,\
-com.kevinten.vrml.alert.actor.log.DefaultLogAlertActor
+group.rxcloud.vrml.alert.actor.crash.DefaultCrashAlertActor,\
+group.rxcloud.vrml.alert.actor.log.DefaultLogAlertActor

@@ -5,50 +5,42 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.kevinten</groupId>
+        <groupId>group.rxcloud</groupId>
         <artifactId>vrml</artifactId>
-        <version>1.0.1-RELEASE</version>
+        <version>1.0.1</version>
     </parent>
 
     <artifactId>vrml-trace</artifactId>
     <packaging>jar</packaging>
 
+    <properties>
+    </properties>
+
     <dependencies>
         <dependency>
-            <groupId>com.kevinten</groupId>
+            <groupId>group.rxcloud</groupId>
             <artifactId>vrml-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.kevinten</groupId>
+            <groupId>group.rxcloud</groupId>
             <artifactId>vrml-data</artifactId>
         </dependency>
 
-        <!-- log -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${log4j.version}</version>
-            <optional>true</optional>
-        </dependency>
+        <!-- test -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
-            <version>${logback.version}</version>
-            <optional>true</optional>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-access</artifactId>
-            <version>${logback.version}</version>
-            <optional>true</optional>
+            <scope>test</scope>
         </dependency>
-
-        <!-- junit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
-            <optional>true</optional>
         </dependency>
     </dependencies>
 
