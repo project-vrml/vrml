@@ -12,7 +12,7 @@ A API to record application's metrics data for [vrml](https://github.com/kevinte
 <dependency>
   <groupId>group.rxcloud</groupId>
   <artifactId>vrml-metric</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
 </dependency>
 ```
 
@@ -90,7 +90,7 @@ Developer repository can be found [here](https://github.com/kevinten10/vrml/tree
 <dependency>
   <groupId>group.rxcloud</groupId>
   <artifactId>vrml-metrics</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
 </dependency>
 ```
 

@@ -7,7 +7,7 @@
     <groupId>group.rxcloud</groupId>
     <artifactId>vrml</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 
     <name>vrml</name>
     <description>Vrml is a useful api library for java work.</description>
@@ -56,7 +56,9 @@
         <module>vrml-external</module>
         <module>vrml-log</module>
         <module>vrml-metric</module>
+        <module>vrml-netty</module>
         <module>vrml-request</module>
+        <module>vrml-spi</module>
         <module>vrml-switch</module>
         <module>vrml-time</module>
         <module>vrml-trace</module>
@@ -146,7 +148,17 @@
             </dependency>
             <dependency>
                 <groupId>group.rxcloud</groupId>
+                <artifactId>vrml-netty</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>group.rxcloud</groupId>
                 <artifactId>vrml-request</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>group.rxcloud</groupId>
+                <artifactId>vrml-spi</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

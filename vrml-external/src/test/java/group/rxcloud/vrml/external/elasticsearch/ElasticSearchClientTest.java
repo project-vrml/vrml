@@ -1,20 +1,21 @@
 package group.rxcloud.vrml.external.elasticsearch;
 
-import group.rxcloud.vrml.core.serialization.Serialization;
-import group.rxcloud.vrml.external.elasticsearch.config.ElasticSearchConfiguration;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import group.rxcloud.vrml.core.serialization.Serialization;
+import group.rxcloud.vrml.core.tags.Todo;
+import group.rxcloud.vrml.external.elasticsearch.config.ElasticSearchConfiguration;
 import io.vavr.Tuple2;
 import lombok.Data;
 import mockit.Mock;
 import mockit.MockUp;
 import org.junit.Before;
-import org.junit.Test;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
+@Todo
 public class ElasticSearchClientTest {
 
     /**
@@ -35,6 +36,7 @@ public class ElasticSearchClientTest {
 
     @Before
     public void before() {
+        // mock();
         queryRequest = new ElasticSearchQueryRequest.Builder()
                 .index(TEST_INDEX)
                 .queryPageProp(new ElasticSearchQueryRequest.ElasticSearchPageProp.Builder()
@@ -52,10 +54,9 @@ public class ElasticSearchClientTest {
                 .querySortTerm(TEST_RANGE_TERM)
                 .queryAggregationCardinalityTerm(TEST_AGGRE_TERM)
                 .build();
-        mock();
     }
 
-    @Test
+    // @Test
     public void search() {
         Optional<Tuple2<Long, List<TestElasticSearchResponse>>> search = ElasticSearchClient.search(queryRequest, TestElasticSearchResponse.class);
         search.ifPresent(longListTuple2 -> {
@@ -81,12 +82,12 @@ public class ElasticSearchClientTest {
         new MockUp<ElasticSearchClient>() {
 
             @Mock
-            ElasticSearchConfiguration getElasticSearchConfiguration() {
+            public ElasticSearchConfiguration getElasticSearchConfiguration() {
                 return MockElasticSearchConfiguration.INSTANCE;
             }
 
             @Mock
-            ElasticSearchQueryRestClient getElasticSearchQueryRestClient() {
+            public ElasticSearchQueryRestClient getElasticSearchQueryRestClient() {
                 return new ElasticSearchQueryRestClient(MockElasticSearchConfiguration.INSTANCE.supplyRestConfig());
             }
         };

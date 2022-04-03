@@ -176,6 +176,6 @@ public class ApiLogInterceptorAspectTest {
 <dependency>
   <groupId>group.rxcloud</groupId>
   <artifactId>vrml-api</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
 </dependency>
 ```

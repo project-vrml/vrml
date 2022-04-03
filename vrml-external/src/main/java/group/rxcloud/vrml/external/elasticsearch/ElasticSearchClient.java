@@ -41,14 +41,14 @@ public final class ElasticSearchClient {
         initElasticSearchQueryRestClient();
     }
 
-    static ElasticSearchConfiguration getElasticSearchConfiguration() {
+    public static ElasticSearchConfiguration getElasticSearchConfiguration() {
         if (elasticSearchConfiguration == null) {
             initElasticSearchConfiguration();
         }
         return elasticSearchConfiguration;
     }
 
-    static ElasticSearchQueryRestClient getElasticSearchQueryRestClient() {
+    public static ElasticSearchQueryRestClient getElasticSearchQueryRestClient() {
         if (elasticSearchQueryRestClient == null) {
             initElasticSearchQueryRestClient();
         }

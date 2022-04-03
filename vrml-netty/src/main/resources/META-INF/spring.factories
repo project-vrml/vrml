@@ -1,0 +1,3 @@
+# Auto configure netty.indicator
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+group.rxcloud.vrml.netty.DirectMemoryIndicator

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>vrml</artifactId>
+        <groupId>group.rxcloud</groupId>
+        <version>1.0.2</version>
+    </parent>
+
+    <artifactId>vrml-netty</artifactId>
+
+    <properties>
+        <netty-all.version>4.1.75.Final</netty-all.version>
+    </properties>
+
+    <dependencies>
+        <!-- module -->
+        <dependency>
+            <groupId>group.rxcloud</groupId>
+            <artifactId>vrml-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>group.rxcloud</groupId>
+            <artifactId>vrml-log</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>${netty-all.version}</version>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+</project>
