@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import java.util.ServiceLoader;
 
 /**
  * The Java Spi loader.
  */
-public class JavaSpiLoader {
+final class JavaSpiLoader {
 
     /**
      * Load java spi list.
@@ -18,7 +19,8 @@ public class JavaSpiLoader {
      * @param spiClass the spi class
      * @return the impl list
      */
-    public static <T> List<T> loadJavaSpi(Class<T> spiClass) {
+    static <T> List<T> loadJavaSpi(Class<T> spiClass) {
+        Objects.requireNonNull(spiClass, "spiClass not found.");
         try {
             ServiceLoader<T> loader = ServiceLoader.load(spiClass);
             Iterator<T> iterator = loader.iterator();

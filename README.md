@@ -153,6 +153,14 @@ A proxy API to wrap remote request with log/record/check/... for [vrml](./README
 
 ---------------------------------------------------------------------
 
+### [vrml-resource](./vrml-resource)
+
+[![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
+
+Java File utils for [vrml](./README.md) library
+
+---------------------------------------------------------------------
+
 ### [vrml-spi](./vrml-spi)
 
 [![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
@@ -199,7 +207,7 @@ You can import all vrml modules:
 <dependency>
     <groupId>group.rxcloud</groupId>
     <artifactId>vrml</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <type>pom</type>
     <scope>import</scope>
 </dependency>
@@ -211,7 +219,7 @@ Latest feature branch:
 <dependency>
     <groupId>group.rxcloud</groupId>
     <artifactId>vrml</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <type>pom</type>
     <scope>import</scope>
 </dependency>

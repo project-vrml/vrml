@@ -7,7 +7,7 @@
     <parent>
         <artifactId>vrml</artifactId>
         <groupId>group.rxcloud</groupId>
-        <version>1.0.2</version>
+        <version>1.0.3</version>
     </parent>
 
     <artifactId>vrml-api</artifactId>

@@ -13,7 +13,7 @@
 <dependency>
     <groupId>group.rxcloud</groupId>
     <artifactId>vrml-compute</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
 </dependency>
 ```
 
@@ -62,7 +62,7 @@ Developer repository can be found [here](https://github.com/kevinten10/vrml/tree
 <dependency>
     <groupId>group.rxcloud</groupId>
     <artifactId>vrml-compute</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
 </dependency>
 ```
 

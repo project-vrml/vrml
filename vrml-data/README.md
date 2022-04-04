@@ -12,7 +12,7 @@ A common data structure extension API for [vrml](https://github.com/kevinten10/v
 <dependency>
   <groupId>group.rxcloud</groupId>
   <artifactId>vrml-data</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.3</version>
 </dependency>
 ```
 
@@ -101,7 +101,7 @@ Developer repository can be found [here](https://github.com/kevinten10/vrml/tree
 <dependency>
   <groupId>group.rxcloud</groupId>
   <artifactId>vrml-data</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.3</version>
 </dependency>
 ```
 

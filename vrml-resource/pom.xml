@@ -5,25 +5,28 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>group.rxcloud</groupId>
         <artifactId>vrml</artifactId>
+        <groupId>group.rxcloud</groupId>
         <version>1.0.3</version>
     </parent>
 
-    <artifactId>vrml-log</artifactId>
-    <packaging>jar</packaging>
+    <artifactId>vrml-resource</artifactId>
+
+    <properties>
+    </properties>
 
     <dependencies>
+        <!-- vavr -->
         <dependency>
-            <groupId>group.rxcloud</groupId>
-            <artifactId>vrml-core</artifactId>
+            <groupId>io.vavr</groupId>
+            <artifactId>vavr</artifactId>
         </dependency>
 
-        <!-- junit -->
+        <!-- jackson -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 

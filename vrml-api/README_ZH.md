@@ -16,7 +16,7 @@ Api模块提供一个可拓展的切面，使用LogsAPI记录网络请求的日�
 <dependency>
   <groupId>group.rxcloud</groupId>
   <artifactId>vrml-api</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.3</version>
 </dependency>
 ```
 
@@ -158,7 +158,7 @@ Developer repository can be found [here](https://github.com/kevinten10/vrml/tree
 <dependency>
   <groupId>group.rxcloud</groupId>
   <artifactId>vrml-api</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.3</version>
 </dependency>
 ```
 

@@ -53,7 +53,7 @@ Vrml设计的核心理念同 [cloud-runtimes](https://github.com/capa-cloud/clou
 
 ## Modules
 
-### [vrml-alert](./vrml-alert) 
+### [vrml-alert](./vrml-alert)
 
 [![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
 
@@ -151,6 +151,14 @@ Netty拓展工具集。
 
 ---------------------------------------------------------------------
 
+### [vrml-resource](./vrml-resource)
+
+[![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
+
+Java File工具集。
+
+---------------------------------------------------------------------
+
 ### [vrml-spi](./vrml-spi)
 
 [![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
@@ -194,10 +202,11 @@ Java SPI工具集。
 You can import all vrml modules:
 
 ```xml
+
 <dependency>
     <groupId>group.rxcloud</groupId>
     <artifactId>vrml</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <type>pom</type>
     <scope>import</scope>
 </dependency>
@@ -206,10 +215,11 @@ You can import all vrml modules:
 Latest feature branch:
 
 ```xml
+
 <dependency>
     <groupId>group.rxcloud</groupId>
     <artifactId>vrml</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <type>pom</type>
     <scope>import</scope>
 </dependency>
@@ -217,4 +227,5 @@ Latest feature branch:
 
 ### Contributing
 
-A small number of users have reported problems building vrml. Read our [contribution guide](./CONTRIBUTING.md) for details.
+A small number of users have reported problems building vrml. Read our [contribution guide](./CONTRIBUTING.md) for
+details.

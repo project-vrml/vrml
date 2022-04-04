@@ -1,8 +1,8 @@
 [![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
 
-# vrml-spi
+# vrml-resource
 
-Java SPI工具集。
+Java File工具集。
 
 ## Usage
 
@@ -12,28 +12,28 @@ Java SPI工具集。
 
 <dependency>
     <groupId>group.rxcloud</groupId>
-    <artifactId>vrml-spi</artifactId>
+    <artifactId>vrml-resource</artifactId>
     <version>1.0.3</version>
 </dependency>
 ```
 
-### SPI
+### Resources
 
-Java SPI加载器。
+Java Resources文件加载器。
 
 #### 使用
 
-引入`vrml-spi`依赖包即可。
+引入`vrml-resource`依赖包即可。
 
-#### SPI加载
+#### File资源加载
 
 ```java
-SPI.loadXXX()
+Resources.loadXXX()
 ```
 
 ## Become a Developer
 
-Developer repository can be found [here](https://github.com/kevinten10/vrml/tree/develop/vrml-spi).
+Developer repository can be found [here](https://github.com/kevinten10/vrml/tree/develop/vrml-resource).
 
 ### Maven
 
@@ -41,7 +41,7 @@ Developer repository can be found [here](https://github.com/kevinten10/vrml/tree
 
 <dependency>
     <groupId>group.rxcloud</groupId>
-    <artifactId>vrml-spi</artifactId>
+    <artifactId>vrml-resource</artifactId>
     <version>1.0.3</version>
 </dependency>
 ```

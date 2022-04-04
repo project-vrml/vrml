@@ -7,7 +7,7 @@
     <groupId>group.rxcloud</groupId>
     <artifactId>vrml</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
 
     <name>vrml</name>
     <description>Vrml is a useful api library for java work.</description>
@@ -58,6 +58,7 @@
         <module>vrml-metric</module>
         <module>vrml-netty</module>
         <module>vrml-request</module>
+        <module>vrml-resource</module>
         <module>vrml-spi</module>
         <module>vrml-switch</module>
         <module>vrml-time</module>
@@ -72,21 +73,11 @@
         <!-- 2022.4.2 lasted version -->
         <vavr.version>0.10.4</vavr.version>
         <guava.version>31.1-jre</guava.version>
-        <lombok.version>1.18.22</lombok.version>
         <spring.version>5.3.18</spring.version>
         <springboot.version>2.6.6</springboot.version>
 
         <jmockito.version>1.49</jmockito.version>
     </properties>
-
-    <dependencies>
-        <!-- tool -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-        </dependency>
-    </dependencies>
 
     <dependencyManagement>
         <dependencies>
@@ -158,6 +149,11 @@
             </dependency>
             <dependency>
                 <groupId>group.rxcloud</groupId>
+                <artifactId>vrml-resource</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>group.rxcloud</groupId>
                 <artifactId>vrml-spi</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -217,6 +213,14 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <dependencies>
+        <!-- tool -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
