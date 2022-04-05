@@ -37,6 +37,7 @@
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 

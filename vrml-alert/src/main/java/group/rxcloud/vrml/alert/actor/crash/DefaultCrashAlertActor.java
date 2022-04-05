@@ -5,11 +5,13 @@ import group.rxcloud.vrml.alert.actor.AlertMessage;
 import group.rxcloud.vrml.alert.actor.log.DefaultLogAlertActor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 /**
  * The default crash alert actor.
  */
 @Slf4j
+@Component
 public class DefaultCrashAlertActor extends AbstractAlertActor<DefaultCrashAlertActor.DefaultCrashAlertMessage> {
 
     /**

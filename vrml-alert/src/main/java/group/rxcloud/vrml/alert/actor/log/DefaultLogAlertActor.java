@@ -4,11 +4,13 @@ import group.rxcloud.vrml.alert.actor.AbstractAlertActor;
 import group.rxcloud.vrml.alert.actor.AlertMessage;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 /**
  * The default log alert actor.
  */
 @Slf4j
+@Component
 public class DefaultLogAlertActor extends AbstractAlertActor<DefaultLogAlertActor.DefaultLogAlertMessage> {
 
     /**
