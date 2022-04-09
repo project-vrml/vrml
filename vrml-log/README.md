@@ -12,7 +12,7 @@ A API to log by the key for [vrml](https://github.com/kevinten10/vrml) library
 <dependency>
   <groupId>group.rxcloud</groupId>
   <artifactId>vrml-log</artifactId>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
 </dependency>
 ```
 
@@ -59,7 +59,7 @@ Developer repository can be found [here](https://github.com/kevinten10/vrml/tree
 <dependency>
   <groupId>group.rxcloud</groupId>
   <artifactId>vrml-logs</artifactId>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
 </dependency>
 ```
 
