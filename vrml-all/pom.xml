@@ -57,7 +57,19 @@
         </dependency>
         <dependency>
             <groupId>group.rxcloud</groupId>
+            <artifactId>vrml-netty</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>group.rxcloud</groupId>
             <artifactId>vrml-request</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>group.rxcloud</groupId>
+            <artifactId>vrml-resource</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>group.rxcloud</groupId>
+            <artifactId>vrml-spi</artifactId>
         </dependency>
         <dependency>
             <groupId>group.rxcloud</groupId>

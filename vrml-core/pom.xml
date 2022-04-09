@@ -22,6 +22,7 @@
             <groupId>io.vavr</groupId>
             <artifactId>vavr</artifactId>
         </dependency>
+
         <!-- log -->
         <dependency>
             <groupId>org.slf4j</groupId>
