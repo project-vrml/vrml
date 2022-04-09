@@ -1,4 +1,0 @@
-{
-  "metricSwitch": true, // {@code Metrics.metric}
-  "debugSwitch": true   // {@code Metrics.debug}
-}
