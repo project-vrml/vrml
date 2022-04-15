@@ -7,7 +7,7 @@
     <parent>
         <artifactId>vrml</artifactId>
         <groupId>group.rxcloud</groupId>
-        <version>1.0.5</version>
+        <version>1.0.7</version>
     </parent>
 
     <artifactId>vrml-external</artifactId>
@@ -75,11 +75,13 @@
             <groupId>org.jmockit</groupId>
             <artifactId>jmockit</artifactId>
             <scope>test</scope>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 

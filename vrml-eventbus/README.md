@@ -13,7 +13,7 @@ A publish event API for [vrml](https://github.com/kevinten10/vrml) library
 <dependency>
     <groupId>group.rxcloud</groupId>
     <artifactId>vrml-eventbus</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.7</version>
 </dependency>
 ```
 
@@ -92,7 +92,7 @@ Developer repository can be found [here](https://github.com/kevinten10/vrml/tree
 <dependency>
     <groupId>group.rxcloud</groupId>
     <artifactId>vrml-eventbus</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.7</version>
 </dependency>
 ```
 

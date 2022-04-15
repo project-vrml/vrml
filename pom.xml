@@ -7,7 +7,7 @@
     <groupId>group.rxcloud</groupId>
     <artifactId>vrml</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.5</version>
+    <version>1.0.7</version>
 
     <name>vrml</name>
     <description>Vrml is a useful api library for java work.</description>
@@ -71,11 +71,16 @@
         <maven.version>3.8.1</maven.version>
 
         <!-- 2022.4.2 lasted version -->
-        <vavr.version>0.10.4</vavr.version>
+        <commons-lang3.version>3.12.0</commons-lang3.version>
+        <gson.version>2.9.0</gson.version>
         <guava.version>31.1-jre</guava.version>
-        <spring.version>5.3.18</spring.version>
+        <jackson-databind.version>2.13.2.2</jackson-databind.version>
+        <lombok.version>1.18.22</lombok.version>
+        <slf4j-api.version>1.7.36</slf4j-api.version>
         <springboot.version>2.6.6</springboot.version>
+        <vavr.version>0.10.4</vavr.version>
 
+        <junit.version>4.13.2</junit.version>
         <jmockito.version>1.49</jmockito.version>
     </properties>
 
@@ -176,24 +181,41 @@
             <!-- spring -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
+                <artifactId>spring-boot-starter</artifactId>
                 <version>${springboot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-framework-bom</artifactId>
-                <version>${spring.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
+                <optional>true</optional>
             </dependency>
 
-            <!-- vavr -->
+            <!--slf4j-api -->
             <dependency>
-                <groupId>io.vavr</groupId>
-                <artifactId>vavr</artifactId>
-                <version>${vavr.version}</version>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j-api.version}</version>
+                <optional>true</optional>
+            </dependency>
+
+            <!-- commons-lang3 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+                <optional>true</optional>
+            </dependency>
+
+            <!-- jackson-databind -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson-databind.version}</version>
+                <optional>true</optional>
+            </dependency>
+
+            <!-- gson -->
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${gson.version}</version>
+                <optional>true</optional>
             </dependency>
 
             <!-- guava -->
@@ -210,15 +232,32 @@
                 <artifactId>jmockit</artifactId>
                 <version>${jmockito.version}</version>
                 <scope>test</scope>
+                <optional>true</optional>
+            </dependency><!-- https://mvnrepository.com/artifact/junit/junit -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+                <optional>true</optional>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
+        <!-- vavr -->
+        <dependency>
+            <groupId>io.vavr</groupId>
+            <artifactId>vavr</artifactId>
+            <version>${vavr.version}</version>
+            <optional>true</optional>
+        </dependency>
+
         <!-- tool -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
             <optional>true</optional>
         </dependency>
     </dependencies>

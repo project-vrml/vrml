@@ -7,13 +7,14 @@
     <parent>
         <groupId>group.rxcloud</groupId>
         <artifactId>vrml</artifactId>
-        <version>1.0.5</version>
+        <version>1.0.7</version>
     </parent>
 
     <artifactId>vrml-trace</artifactId>
     <packaging>jar</packaging>
 
     <properties>
+        <logback.version>1.2.11</logback.version>
     </properties>
 
     <dependencies>
@@ -37,12 +38,14 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
             <scope>test</scope>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
             <scope>test</scope>
             <optional>true</optional>
         </dependency>
@@ -50,6 +53,7 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 

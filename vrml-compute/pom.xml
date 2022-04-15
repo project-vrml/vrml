@@ -7,7 +7,7 @@
     <parent>
         <artifactId>vrml</artifactId>
         <groupId>group.rxcloud</groupId>
-        <version>1.0.5</version>
+        <version>1.0.7</version>
     </parent>
 
     <artifactId>vrml-compute</artifactId>
@@ -50,6 +50,7 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 

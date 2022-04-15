@@ -7,7 +7,7 @@
     <parent>
         <artifactId>vrml</artifactId>
         <groupId>group.rxcloud</groupId>
-        <version>1.0.5</version>
+        <version>1.0.7</version>
     </parent>
 
     <artifactId>vrml-resource</artifactId>
@@ -16,12 +16,6 @@
     </properties>
 
     <dependencies>
-        <!-- vavr -->
-        <dependency>
-            <groupId>io.vavr</groupId>
-            <artifactId>vavr</artifactId>
-        </dependency>
-
         <!-- jackson -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>

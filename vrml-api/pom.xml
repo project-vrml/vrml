@@ -7,13 +7,14 @@
     <parent>
         <artifactId>vrml</artifactId>
         <groupId>group.rxcloud</groupId>
-        <version>1.0.5</version>
+        <version>1.0.7</version>
     </parent>
 
     <artifactId>vrml-api</artifactId>
     <packaging>jar</packaging>
 
     <properties>
+        <aspectjweaver.version>1.9.9.1</aspectjweaver.version>
     </properties>
 
     <dependencies>
@@ -52,6 +53,7 @@
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
+            <version>${aspectjweaver.version}</version>
             <optional>true</optional>
         </dependency>
     </dependencies>
