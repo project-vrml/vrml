@@ -12,7 +12,7 @@ The core API for all vrml lib for [vrml](https://github.com/kevinten10/vrml) lib
 <dependency>
   <groupId>group.rxcloud</groupId>
   <artifactId>vrml-core</artifactId>
-  <version>1.0.4</version>
+  <version>1.0.5</version>
 </dependency>
 ```
 
@@ -150,7 +150,7 @@ Developer repository can be found [here](https://github.com/kevinten10/vrml/tree
 <dependency>
   <groupId>group.rxcloud</groupId>
   <artifactId>vrml-core</artifactId>
-  <version>1.0.4</version>
+  <version>1.0.5</version>
 </dependency>
 ```
 

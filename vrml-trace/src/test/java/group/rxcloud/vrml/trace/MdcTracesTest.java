@@ -1,7 +1,6 @@
 package group.rxcloud.vrml.trace;
 
 import junit.framework.TestCase;
-import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.slf4j.MDC;
 

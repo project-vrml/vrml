@@ -12,7 +12,7 @@ A tracing Api base on MDC for [vrml](https://github.com/kevinten10/vrml) library
 <dependency>
   <groupId>group.rxcloud</groupId>
   <artifactId>vrml-trace</artifactId>
-  <version>1.0.4</version>
+  <version>1.0.5</version>
 </dependency>
 ```
 
@@ -146,7 +146,7 @@ Developer repository can be found [here](https://github.com/kevinten10/vrml/tree
 <dependency>
   <groupId>group.rxcloud</groupId>
   <artifactId>vrml-trace</artifactId>
-  <version>1.0.4</version>
+  <version>1.0.5</version>
 </dependency>
 ```
 
