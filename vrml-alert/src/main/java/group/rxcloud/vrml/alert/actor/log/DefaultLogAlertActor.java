@@ -97,7 +97,7 @@ public class DefaultLogAlertActor extends AbstractAlertActor<DefaultLogAlertActo
         },
         ;
 
-        protected static final String ALERTS_PREFIX = "[Alerts] {}";
+        protected static final String ALERTS_PREFIX = "[Vrml][Alerts] {}";
 
         /**
          * Logging.

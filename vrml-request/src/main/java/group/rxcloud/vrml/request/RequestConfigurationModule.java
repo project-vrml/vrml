@@ -53,7 +53,7 @@ public abstract class RequestConfigurationModule {
                     try {
                         configuration = SpringContextConfigurator.getBean(RequestConfiguration.class);
                     } catch (Exception e) {
-                        log.error("Requests init spring context configuration failure.", e);
+                        log.error("[Vrml]Requests init spring context configuration failure.", e);
                     }
                 }
             }

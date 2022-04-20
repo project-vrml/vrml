@@ -55,7 +55,7 @@ public abstract class AbstractApiLogInterceptorAspect {
 
     private static ApiLogConfiguration applyDefaultConfig(ApiLogConfiguration apiLogConfiguration) {
         if (apiLogConfiguration == null) {
-            defaultLogs.error("[AbstractApiLogInterceptorAspect.static] ApiLogConfiguration is null! Please supply the configuration bean, otherwise will close all api log.");
+            defaultLogs.error("[Vrml][AbstractApiLogInterceptorAspect.static] ApiLogConfiguration is null! Please supply the configuration bean, otherwise will close all api log.");
             apiLogConfiguration = new ApiLogConfiguration() {
 
                 /* default close all api log. */

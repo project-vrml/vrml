@@ -67,7 +67,7 @@ public abstract class AbstractAsyncEventPublisher<Type extends AsyncEventBusEven
             try {
                 this.applicationContext.publishEvent(cloneEvent);
             } catch (Exception e) {
-                log.error("[AsyncEventPublisher] publish event[{}] error.", Serialization.GSON.toJson(cloneEvent), e);
+                log.error("[Vrml][AsyncEventPublisher] publish event[{}] error.", Serialization.GSON.toJson(cloneEvent), e);
             }
         };
     }
@@ -76,7 +76,7 @@ public abstract class AbstractAsyncEventPublisher<Type extends AsyncEventBusEven
         try {
             return Optional.ofNullable(event.cloneEvent());
         } catch (Exception e) {
-            log.error("[AsyncEventPublisher] clone event[{}] error.", Serialization.GSON.toJson(event), e);
+            log.error("[Vrml][AsyncEventPublisher] clone event[{}] error.", Serialization.GSON.toJson(event), e);
             return Optional.empty();
         }
     }

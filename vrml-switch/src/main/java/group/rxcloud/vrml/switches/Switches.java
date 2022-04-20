@@ -41,7 +41,7 @@ public final class Switches implements SwitchApi {
                     try {
                         configuration = SpringContextConfigurator.getBean(SwitchesConfiguration.class);
                     } catch (Exception e) {
-                        log.error("Switches init spring context configuration failure.", e);
+                        log.error("[Vrml]Switches init spring context configuration failure.", e);
                     }
                 }
             }

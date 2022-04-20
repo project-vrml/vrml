@@ -206,7 +206,7 @@ You can import all vrml modules:
 <dependency>
     <groupId>group.rxcloud</groupId>
     <artifactId>vrml</artifactId>
-    <version>1.0.7</version>
+    <version>1.0.8</version>
     <type>pom</type>
     <scope>import</scope>
 </dependency>
@@ -219,7 +219,7 @@ Latest feature branch:
 <dependency>
     <groupId>group.rxcloud</groupId>
     <artifactId>vrml</artifactId>
-    <version>1.0.7</version>
+    <version>1.0.8</version>
     <type>pom</type>
     <scope>import</scope>
 </dependency>

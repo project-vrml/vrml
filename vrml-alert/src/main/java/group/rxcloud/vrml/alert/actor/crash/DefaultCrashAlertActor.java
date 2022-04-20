@@ -32,7 +32,7 @@ public class DefaultCrashAlertActor extends AbstractAlertActor<DefaultCrashAlert
     @Override
     protected void onReceive(DefaultCrashAlertMessage message) {
         String messageAlert = String.format(
-                "[Alerts.DefaultCrashAlertActor.onReceive] crash happening, see message[%s] with exception[%s]",
+                "[Vrml][Alerts.DefaultCrashAlertActor.onReceive] crash happening, see message[%s] with exception[%s]",
                 message.getMessage(), message.getException());
         tell(new DefaultLogAlertActor.DefaultLogAlertMessage(messageAlert));
     }

@@ -159,7 +159,7 @@ class AppContext {
 
     private static void checkApplicationContext() {
         if (ctx == null) {
-            throw new IllegalStateException("[vrml.SpringContextConfigurator.AppContext] applicationContext not injected.");
+            throw new IllegalStateException("[Vrml][SpringContextConfigurator.AppContext] applicationContext not injected.");
         }
     }
 }

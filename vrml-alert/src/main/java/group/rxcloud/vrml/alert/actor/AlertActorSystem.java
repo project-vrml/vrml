@@ -79,7 +79,7 @@ public abstract class AlertActorSystem {
             alertActor.receive(message);
         } else {
             // illegal situation
-            log.warn("[Alerts.AlertActorSystem.send] alert actor not found by message type[{}]", message.getClass().getSimpleName());
+            log.warn("[Vrml][Alerts.AlertActorSystem.send] alert actor not found by message type[{}]", message.getClass().getSimpleName());
         }
     }
 
@@ -104,7 +104,7 @@ public abstract class AlertActorSystem {
                 }
             } else {
                 // illegal situation
-                log.warn("[Alerts.AlertActorSystem.tell] alert configuration not found");
+                log.warn("[Vrml][Alerts.AlertActorSystem.tell] alert configuration not found");
             }
         }
     }
@@ -192,7 +192,7 @@ public abstract class AlertActorSystem {
                                     .map(alertActor -> (AlertActor<? extends AlertMessage>) alertActor);
                             ACTOR_CONTAINER = mapToAlertContainer(alertActorStream);
                         } catch (Exception exception) {
-                            log.error("[Alerts.AlertActorSystem.initSpringContextConfig] alert actor system init spring context configuration failure.", exception);
+                            log.error("[Vrml][Alerts.AlertActorSystem.initSpringContextConfig] alert actor system init spring context configuration failure.", exception);
                         }
                     }
                 }

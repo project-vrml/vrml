@@ -37,7 +37,7 @@ public abstract class Computes<T extends ComputeConfiguration> implements Comput
                                                 .getActualTypeArguments()[0]);
                         configuration = (T) SpringContextConfigurator.getBean(actualTypeArgument);
                     } catch (Exception e) {
-                        log.error("Computes init spring context configuration failure.", e);
+                        log.error("[Vrml]Computes init spring context configuration failure.", e);
                     }
                 }
             }

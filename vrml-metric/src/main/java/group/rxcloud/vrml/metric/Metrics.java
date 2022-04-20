@@ -69,7 +69,7 @@ public final class Metrics {
                     try {
                         configuration = SpringContextConfigurator.getBean(MetricConfiguration.class);
                     } catch (Exception e) {
-                        log.error("Metrics init spring context configuration failure.", e);
+                        log.error("[Vrml]Metrics init spring context configuration failure.", e);
                     }
                 }
             }
@@ -132,7 +132,7 @@ public final class Metrics {
         try {
             runnable.run();
         } catch (Throwable throwable) {
-            log.warn("Metrics runnable exception!", throwable);
+            log.warn("[Vrml]Metrics runnable exception!", throwable);
         }
     }
 
@@ -654,7 +654,7 @@ public final class Metrics {
 
             return Optional.of(value);
         } catch (Exception e) {
-            log.warn("Metrics failed to read [{}], error[{}]", field.getName(), e.getMessage(), e);
+            log.warn("[Vrml]Metrics failed to read [{}], error[{}]", field.getName(), e.getMessage(), e);
             return Optional.empty();
         }
     }

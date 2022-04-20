@@ -12,7 +12,7 @@ public abstract class AbstractEventListener implements ApplicationListener<Appli
 
     @Override
     public void onApplicationEvent(ApplicationPreparedEvent event) {
-        log.info("[{}] prepared.", this.getClass().getSimpleName());
+        log.info("[Vrml][{}] prepared.", this.getClass().getSimpleName());
     }
 
     /*

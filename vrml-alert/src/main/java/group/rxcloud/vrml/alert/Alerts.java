@@ -21,7 +21,7 @@ public final class Alerts {
             try {
                 AlertActorSystem.tell(message);
             } catch (Exception exception) {
-                log.warn("[Alerts.tell] tell message[{}] failure!", Serialization.GSON.toJson(message), exception);
+                log.warn("[Vrml][Alerts.tell] tell message[{}] failure!", Serialization.GSON.toJson(message), exception);
             }
         }
     }

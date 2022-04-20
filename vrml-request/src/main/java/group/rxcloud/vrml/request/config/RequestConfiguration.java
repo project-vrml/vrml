@@ -37,7 +37,7 @@ public interface RequestConfiguration {
      */
     default void requestReportAlert(String requestName, String value, Integer count) {
         // default alert take a warn log
-        log.warn("[RequestRecordMaxAlert] request[{}] value[{}] count[{}]", requestName, value, count);
+        log.warn("[Vrml][RequestRecordMaxAlert] request[{}] value[{}] count[{}]", requestName, value, count);
     }
 
     /**

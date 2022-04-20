@@ -21,7 +21,7 @@ public abstract class AbstractSyncEventPublisher<T extends EventBusEvent> extend
         try {
             this.applicationContext.publishEvent(event);
         } catch (Exception e) {
-            log.error("[SyncEventPublisher] publish event[{}] error.", Serialization.GSON.toJson(event), e);
+            log.error("[Vrml][SyncEventPublisher] publish event[{}] error.", Serialization.GSON.toJson(event), e);
         }
     }
 }

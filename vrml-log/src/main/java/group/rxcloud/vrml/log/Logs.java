@@ -128,7 +128,41 @@ public final class Logs implements Logger {
      *             lazy load spring context, avoid spring context delayed injection
      */
     private void initConfig(Logs logs) {
-        logs.configuration = Lazy.of(() -> SpringContextConfigurator.getBean(LogsConfiguration.class));
+        logs.configuration = Lazy.of(() -> {
+            try {
+                return SpringContextConfigurator.getBean(LogsConfiguration.class);
+            } catch (Exception e) {
+                if (log.isInfoEnabled()) {
+                    log.error("[Vrml]Logs init spring context configuration failure.", e);
+                }
+                return new LogsConfiguration() {
+                    @Override
+                    public boolean isTraceEnabled(String key) {
+                        return true;
+                    }
+
+                    @Override
+                    public boolean isDebugEnabled(String key) {
+                        return true;
+                    }
+
+                    @Override
+                    public boolean isInfoEnabled(String key) {
+                        return true;
+                    }
+
+                    @Override
+                    public boolean isWarnEnabled(String key) {
+                        return true;
+                    }
+
+                    @Override
+                    public boolean isErrorEnabled(String key) {
+                        return true;
+                    }
+                };
+            }
+        });
     }
 
     // -- Tag
