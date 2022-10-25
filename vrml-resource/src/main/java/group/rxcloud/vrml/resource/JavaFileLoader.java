@@ -22,11 +22,8 @@ final class JavaFileLoader {
      */
     static InputStreamReader loadJavaResources(String fileName) throws NullPointerException, IllegalArgumentException {
         Objects.requireNonNull(fileName, "fileName not found.");
-        try (InputStream in = JavaFileLoader.class.getResourceAsStream(fileName)) {
-            return new InputStreamReader(in, StandardCharsets.UTF_8);
-        } catch (Exception e) {
-            throw new IllegalArgumentException(fileName + " file not found.", e);
-        }
+        InputStream in = JavaFileLoader.class.getResourceAsStream(fileName);
+        return new InputStreamReader(in, StandardCharsets.UTF_8);
     }
 
     /**
@@ -42,9 +39,8 @@ final class JavaFileLoader {
         try {
             File file = new File(fileName);
             if (file.exists() && file.canRead()) {
-                try (FileInputStream fis = new FileInputStream(file)) {
-                    return new InputStreamReader(fis, StandardCharsets.UTF_8);
-                }
+                FileInputStream fis = new FileInputStream(file);
+                return new InputStreamReader(fis, StandardCharsets.UTF_8);
             }
         } catch (Exception e) {
             throw new IllegalArgumentException(fileName + " file not found.", e);
