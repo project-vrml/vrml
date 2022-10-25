@@ -74,11 +74,11 @@
         <gson.version>2.9.0</gson.version>
         <guava.version>31.1-jre</guava.version>
         <jackson-databind.version>2.13.4.1</jackson-databind.version>
-        <lombok.version>1.18.22</lombok.version>
         <slf4j-api.version>1.7.36</slf4j-api.version>
         <springboot.version>2.6.6</springboot.version>
         <vavr.version>0.10.4</vavr.version>
 
+        <lombok.version>1.18.22</lombok.version>
         <junit.version>4.13.2</junit.version>
         <jmockito.version>1.49</jmockito.version>
     </properties>
