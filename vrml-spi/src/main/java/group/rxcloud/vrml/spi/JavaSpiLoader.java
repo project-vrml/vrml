@@ -20,7 +20,7 @@ final class JavaSpiLoader {
      * @return the impl list
      */
     static <T> List<T> loadJavaSpi(Class<T> spiClass) {
-        Objects.requireNonNull(spiClass, "spiClass not found.");
+        Objects.requireNonNull(spiClass, "spiClass is null.");
         try {
             ServiceLoader<T> loader = ServiceLoader.load(spiClass);
             Iterator<T> iterator = loader.iterator();
@@ -34,7 +34,7 @@ final class JavaSpiLoader {
             }
             return objs;
         } catch (Exception e) {
-            throw new IllegalArgumentException(spiClass.getName() + " spi file not found.", e);
+            throw new IllegalArgumentException(spiClass.getName() + " spiClass not found.", e);
         }
     }
 }

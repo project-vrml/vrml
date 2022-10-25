@@ -18,7 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class Resources {
 
     private static final Map<String, Object> fileCache;
-    private static final ObjectMapper OBJECT_MAPPER;
+    private static ObjectMapper OBJECT_MAPPER;
 
     static {
         fileCache = new ConcurrentHashMap<>();
@@ -26,6 +26,10 @@ public final class Resources {
         OBJECT_MAPPER = new ObjectMapper()
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
                 .setSerializationInclusion(JsonInclude.Include.NON_NULL);
+    }
+
+    public static void setObjectMapper(ObjectMapper objectMapper) {
+        OBJECT_MAPPER = objectMapper;
     }
 
     /**
@@ -44,7 +48,7 @@ public final class Resources {
                             properties.load(inputStreamReader);
                             return properties;
                         } catch (IOException e) {
-                            throw new IllegalArgumentException(fileName + " load to .properties error.", e);
+                            throw new IllegalArgumentException(fileName + " load to '.properties' file error.", e);
                         }
                     });
         });
@@ -66,7 +70,7 @@ public final class Resources {
                             InputStreamReader inputStreamReader = JavaFileLoader.loadJavaResources(fileName);
                             return OBJECT_MAPPER.readValue(inputStreamReader, fileType);
                         } catch (IOException e) {
-                            throw new IllegalArgumentException(fileName + " load to ." + fileType.getSimpleName() + " error.", e);
+                            throw new IllegalArgumentException(fileName + " load to '." + fileType.getSimpleName() + "' file error.", e);
                         }
                     });
         });
@@ -88,7 +92,7 @@ public final class Resources {
                             InputStreamReader inputStreamReader = JavaFileLoader.loadSystemFile(fileName);
                             return OBJECT_MAPPER.readValue(inputStreamReader, fileType);
                         } catch (IOException e) {
-                            throw new IllegalArgumentException(fileName + " load to ." + fileType.getSimpleName() + " error.", e);
+                            throw new IllegalArgumentException(fileName + " load to '." + fileType.getSimpleName() + "' file error.", e);
                         }
                     });
         });

@@ -13,13 +13,13 @@ Java SPI工具集。
 <dependency>
     <groupId>group.rxcloud</groupId>
     <artifactId>vrml-spi</artifactId>
-    <version>1.0.8</version>
+    <version>1.0.9</version>
 </dependency>
 ```
 
 ### SPI
 
-Java SPI加载器。
+Java SPI加载器。带有线程安全的缓存效果。
 
 #### 使用
 
@@ -42,7 +42,7 @@ Developer repository can be found [here](https://github.com/kevinten10/vrml/tree
 <dependency>
     <groupId>group.rxcloud</groupId>
     <artifactId>vrml-spi</artifactId>
-    <version>1.0.8</version>
+    <version>1.0.9</version>
 </dependency>
 ```
 

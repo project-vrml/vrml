@@ -204,6 +204,6 @@ public class HttpProxy extends AbstractHttpRequestProxy<Request, Response> {
 <dependency>
   <groupId>group.rxcloud</groupId>
   <artifactId>vrml-request</artifactId>
-  <version>1.0.8</version>
+  <version>1.0.9</version>
 </dependency>
 ```

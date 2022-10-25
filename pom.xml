@@ -7,7 +7,7 @@
     <groupId>group.rxcloud</groupId>
     <artifactId>vrml</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.8</version>
+    <version>1.0.9</version>
 
     <name>vrml</name>
     <description>Vrml is a useful api library for java work.</description>
@@ -232,7 +232,8 @@
                 <version>${jmockito.version}</version>
                 <scope>test</scope>
                 <optional>true</optional>
-            </dependency><!-- https://mvnrepository.com/artifact/junit/junit -->
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/junit/junit -->
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>

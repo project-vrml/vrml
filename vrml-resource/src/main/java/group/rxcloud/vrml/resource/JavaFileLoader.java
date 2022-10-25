@@ -21,7 +21,7 @@ final class JavaFileLoader {
      * @throws IllegalArgumentException the illegal argument exception
      */
     static InputStreamReader loadJavaResources(String fileName) throws NullPointerException, IllegalArgumentException {
-        Objects.requireNonNull(fileName, "fileName not found.");
+        Objects.requireNonNull(fileName, "fileName is null.");
         InputStream in = JavaFileLoader.class.getResourceAsStream(fileName);
         return new InputStreamReader(in, StandardCharsets.UTF_8);
     }
@@ -35,7 +35,7 @@ final class JavaFileLoader {
      * @throws IllegalArgumentException the illegal argument exception
      */
     static InputStreamReader loadSystemFile(String fileName) throws NullPointerException, IllegalArgumentException {
-        Objects.requireNonNull(fileName, "fileName not found.");
+        Objects.requireNonNull(fileName, "fileName is null.");
         try {
             File file = new File(fileName);
             if (file.exists() && file.canRead()) {
