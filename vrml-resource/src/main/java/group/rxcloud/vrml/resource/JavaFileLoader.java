@@ -23,6 +23,9 @@ final class JavaFileLoader {
     static InputStreamReader loadJavaResources(String fileName) throws NullPointerException, IllegalArgumentException {
         Objects.requireNonNull(fileName, "fileName is null.");
         InputStream in = JavaFileLoader.class.getResourceAsStream(fileName);
+        if (in == null) {
+            throw new IllegalArgumentException(fileName + " file not found.");
+        }
         return new InputStreamReader(in, StandardCharsets.UTF_8);
     }
 

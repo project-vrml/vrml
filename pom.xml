@@ -55,6 +55,7 @@
         <module>vrml-eventbus</module>
         <module>vrml-external</module>
         <module>vrml-log</module>
+        <module>vrml-maven</module>
         <module>vrml-metric</module>
         <module>vrml-netty</module>
         <module>vrml-request</module>
@@ -134,6 +135,11 @@
             <dependency>
                 <groupId>group.rxcloud</groupId>
                 <artifactId>vrml-log</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>group.rxcloud</groupId>
+                <artifactId>vrml-maven</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
