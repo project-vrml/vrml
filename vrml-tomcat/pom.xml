@@ -11,5 +11,6 @@
     </parent>
 
     <artifactId>vrml-tomcat</artifactId>
+    <packaging>jar</packaging>
 
 </project>
