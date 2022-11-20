@@ -64,6 +64,10 @@
         <module>vrml-switch</module>
         <module>vrml-time</module>
         <module>vrml-trace</module>
+        <module>vrml-stopwatch</module>
+        <module>vrml-jmx</module>
+        <module>vrml-tomcat</module>
+        <module>vrml-shutdown</module>
     </modules>
 
     <properties>
@@ -160,6 +164,11 @@
             <dependency>
                 <groupId>group.rxcloud</groupId>
                 <artifactId>vrml-resource</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>group.rxcloud</groupId>
+                <artifactId>vrml-shutdown</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

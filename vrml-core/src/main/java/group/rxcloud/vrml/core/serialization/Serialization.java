@@ -11,7 +11,16 @@ public abstract class Serialization {
     /**
      * The Gson Tool.
      */
-    public static final Gson GSON = new Gson();
+    public static Gson GSON = new Gson();
+
+    /**
+     * Sets gson.
+     *
+     * @param gson the gson
+     */
+    public static void setGson(Gson gson) {
+        Serialization.GSON = gson;
+    }
 
     /**
      * Serialize object by Gson safely.
