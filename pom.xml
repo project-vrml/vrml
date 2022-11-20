@@ -59,6 +59,7 @@
         <module>vrml-maven</module>
         <module>vrml-metric</module>
         <module>vrml-netty</module>
+        <module>vrml-reactor</module>
         <module>vrml-request</module>
         <module>vrml-resource</module>
         <module>vrml-shutdown</module>
@@ -159,6 +160,11 @@
             <dependency>
                 <groupId>group.rxcloud</groupId>
                 <artifactId>vrml-netty</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>group.rxcloud</groupId>
+                <artifactId>vrml-reactor</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
