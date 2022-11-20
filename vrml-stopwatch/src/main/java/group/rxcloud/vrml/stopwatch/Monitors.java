@@ -1,27 +1,41 @@
 package group.rxcloud.vrml.stopwatch;
 
 import group.rxcloud.vrml.spi.SPI;
-import group.rxcloud.vrml.stopwatch.config.DefaultMonitorConfiguration;
-import group.rxcloud.vrml.stopwatch.config.MonitorConfiguration;
+import group.rxcloud.vrml.stopwatch.config.DefaultStopWatchLoggerMonitorConfiguration;
+import group.rxcloud.vrml.stopwatch.config.StopWatchMonitorConfiguration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.Optional;
+/**
+ * The StopWatch Monitors.
+ */
+final class Monitors {
 
-@Slf4j
-public class Monitors {
+    private static final Logger LOG = LoggerFactory.getLogger(Monitors.class);
 
-    private static MonitorConfiguration monitorConfiguration;
+    private static StopWatchMonitorConfiguration monitorConfiguration;
 
     static {
         try {
             monitorConfiguration = SPI.loadSpiImpl(
-                    MonitorConfiguration.class,
-                    DefaultMonitorConfiguration::new);
+                    StopWatchMonitorConfiguration.class,
+                    // use default configuration when non spi impl
+                    DefaultStopWatchLoggerMonitorConfiguration::new);
         } catch (Exception e) {
-            monitorConfiguration = new DefaultMonitorConfiguration();
+            // use default configuration when non spi impl
+            monitorConfiguration = new DefaultStopWatchLoggerMonitorConfiguration();
+            LOG.warn("[Vrml][StopWatchMonitors.init] load monitor configuration spi failure! use default.", e);
         }
     }
 
+    /**
+     * Monitor StopWatch execution.
+     *
+     * @param monitorInfo the monitor info
+     */
     public static void monitor(MonitorInfo monitorInfo) {
-        monitorConfiguration.doMonitor(monitorInfo);
+        if (monitorConfiguration.shouldMonitorStopWatch(monitorInfo)) {
+            monitorConfiguration.doStopWatchMonitor(monitorInfo);
+        }
     }
 }

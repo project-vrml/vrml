@@ -2,6 +2,9 @@ package group.rxcloud.vrml.stopwatch;
 
 import org.springframework.util.StopWatch;
 
+/**
+ * Properties from {@link StopWatch}
+ */
 public class MonitorInfo {
 
     private String id;

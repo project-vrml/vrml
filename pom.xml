@@ -54,20 +54,20 @@
         <module>vrml-error</module>
         <module>vrml-eventbus</module>
         <module>vrml-external</module>
+        <module>vrml-jmx</module>
         <module>vrml-log</module>
         <module>vrml-maven</module>
         <module>vrml-metric</module>
         <module>vrml-netty</module>
         <module>vrml-request</module>
         <module>vrml-resource</module>
+        <module>vrml-shutdown</module>
         <module>vrml-spi</module>
+        <module>vrml-stopwatch</module>
         <module>vrml-switch</module>
         <module>vrml-time</module>
-        <module>vrml-trace</module>
-        <module>vrml-stopwatch</module>
-        <module>vrml-jmx</module>
         <module>vrml-tomcat</module>
-        <module>vrml-shutdown</module>
+        <module>vrml-trace</module>
     </modules>
 
     <properties>
@@ -174,6 +174,11 @@
             <dependency>
                 <groupId>group.rxcloud</groupId>
                 <artifactId>vrml-spi</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>group.rxcloud</groupId>
+                <artifactId>vrml-stopwatch</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

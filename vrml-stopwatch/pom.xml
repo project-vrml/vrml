@@ -33,17 +33,10 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- json -->
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <optional>true</optional>
-        </dependency>
-
         <!-- test -->
         <dependency>
-            <groupId>org.jmockit</groupId>
-            <artifactId>jmockit</artifactId>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
             <scope>test</scope>
             <optional>true</optional>
         </dependency>
