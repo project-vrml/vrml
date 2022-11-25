@@ -18,7 +18,7 @@ import java.util.Map;
  * original tomcat server
  * </pre>
  *
- * @link <a href="https://tomcat.apache.org/tomcat-8.5-doc/config/http.html">tomcat</a>
+ * @see <a href="https://tomcat.apache.org/tomcat-8.5-doc/config/http.html">tomcat</a>
  */
 public final class Tomcats {
 
