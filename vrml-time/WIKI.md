@@ -62,6 +62,6 @@ TimeZone -12 ~ +12 based on UTC.
 <dependency>
   <groupId>group.rxcloud</groupId>
   <artifactId>vrml-time</artifactId>
-  <version>1.1.0</version>
+  <version>1.1.1</version>
 </dependency>
 ```

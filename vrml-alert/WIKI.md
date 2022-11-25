@@ -164,6 +164,6 @@ EmailAlertActor.onReceive(message);
 <dependency>
   <groupId>group.rxcloud</groupId>
   <artifactId>vrml-alert</artifactId>
-  <version>1.1.0</version>
+  <version>1.1.1</version>
 </dependency>
 ```
