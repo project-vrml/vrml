@@ -1,9 +1,15 @@
 package group.rxcloud.vrml.resource;
 
-import lombok.Data;
 
-@Data
 public class TestJson {
 
     private String key;
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
 }

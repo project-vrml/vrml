@@ -10,9 +10,10 @@ import group.rxcloud.vrml.metric.store.MetricStore;
 import io.vavr.API;
 import io.vavr.CheckedRunnable;
 import io.vavr.control.Option;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.reflect.FieldUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
@@ -32,8 +33,9 @@ import static io.vavr.Predicates.instanceOf;
 /**
  * Metric module API.
  */
-@Slf4j
 public final class Metrics {
+
+    private static final Logger log = LoggerFactory.getLogger(Metrics.class);
 
     /**
      * Recommend initial map size

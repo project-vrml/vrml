@@ -3,14 +3,17 @@ package group.rxcloud.vrml.time.cron;
 import group.rxcloud.vrml.time.calculation.ThreadLocalTimeUtils;
 import group.rxcloud.vrml.time.timezone.TimeZoneEnum;
 import group.rxcloud.vrml.time.timezone.TimeZoneUtils;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.SneakyThrows;
 
 import java.sql.Timestamp;
+import java.text.ParseException;
 import java.util.Date;
 
-import static group.rxcloud.vrml.time.cron.CronValueEnum.*;
+import static group.rxcloud.vrml.time.cron.CronValueEnum.EVERY_DAY;
+import static group.rxcloud.vrml.time.cron.CronValueEnum.MONDAY;
+import static group.rxcloud.vrml.time.cron.CronValueEnum.MONTH_01;
+import static group.rxcloud.vrml.time.cron.CronValueEnum.MONTH_31;
+import static group.rxcloud.vrml.time.cron.CronValueEnum.SUNDAY;
+import static group.rxcloud.vrml.time.cron.CronValueEnum.get;
 
 /**
  * The Cron expression utils.
@@ -22,7 +25,6 @@ public abstract class CronExpressionUtils {
     /**
      * The Cron parse builder.
      */
-    @Data
     public static class CronParseBuilder {
         /**
          * Cron mode
@@ -36,25 +38,53 @@ public abstract class CronExpressionUtils {
          * Month value if needed
          */
         private Integer dayOfMonth;
+
+        public CronModeEnum getCronModeEnum() {
+            return cronModeEnum;
+        }
+
+        public void setCronModeEnum(CronModeEnum cronModeEnum) {
+            this.cronModeEnum = cronModeEnum;
+        }
+
+        public Integer getDayOfWeek() {
+            return dayOfWeek;
+        }
+
+        public void setDayOfWeek(Integer dayOfWeek) {
+            this.dayOfWeek = dayOfWeek;
+        }
+
+        public Integer getDayOfMonth() {
+            return dayOfMonth;
+        }
+
+        public void setDayOfMonth(Integer dayOfMonth) {
+            this.dayOfMonth = dayOfMonth;
+        }
     }
 
     /**
      * The Simple cron parse builder.
      */
-    @EqualsAndHashCode(callSuper = true)
-    @Data
     public static class SimpleCronParseBuilder extends CronParseBuilder {
         /**
          * Execute time
          */
         private Timestamp executeTime;
+
+        public Timestamp getExecuteTime() {
+            return executeTime;
+        }
+
+        public void setExecuteTime(Timestamp executeTime) {
+            this.executeTime = executeTime;
+        }
     }
 
     /**
      * The Time zone cron parse builder.
      */
-    @EqualsAndHashCode(callSuper = true)
-    @Data
     public static class TimeZoneCronParseBuilder extends CronParseBuilder {
         /**
          * Source execute time
@@ -68,6 +98,30 @@ public abstract class CronExpressionUtils {
          * Target timezone
          */
         private TimeZoneEnum targetTimeZone;
+
+        public Timestamp getSourceExecuteTime() {
+            return sourceExecuteTime;
+        }
+
+        public void setSourceExecuteTime(Timestamp sourceExecuteTime) {
+            this.sourceExecuteTime = sourceExecuteTime;
+        }
+
+        public TimeZoneEnum getSourceTimeZone() {
+            return sourceTimeZone;
+        }
+
+        public void setSourceTimeZone(TimeZoneEnum sourceTimeZone) {
+            this.sourceTimeZone = sourceTimeZone;
+        }
+
+        public TimeZoneEnum getTargetTimeZone() {
+            return targetTimeZone;
+        }
+
+        public void setTargetTimeZone(TimeZoneEnum targetTimeZone) {
+            this.targetTimeZone = targetTimeZone;
+        }
     }
 
     // -- Cron parser
@@ -78,8 +132,7 @@ public abstract class CronExpressionUtils {
      * @param builder the builder
      * @return the target timezone cron
      */
-    @SneakyThrows
-    public static String parseCronToTargetTimeZone(TimeZoneCronParseBuilder builder) {
+    public static String parseCronToTargetTimeZone(TimeZoneCronParseBuilder builder) throws ParseException {
         Timestamp targetTimestamp = TimeZoneUtils.parseTimezoneTimestamp(builder.getSourceTimeZone(), builder.getTargetTimeZone(), builder.getSourceExecuteTime());
 
         CronValueEnum cronValueEnum = CronParseHelper.parseTimeZoneCronValueBy(builder, targetTimestamp);

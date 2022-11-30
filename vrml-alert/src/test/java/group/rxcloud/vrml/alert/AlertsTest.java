@@ -4,9 +4,6 @@ import group.rxcloud.vrml.alert.actor.AbstractAlertActor;
 import group.rxcloud.vrml.alert.actor.AlertActorSystem;
 import group.rxcloud.vrml.alert.actor.AlertMessage;
 import group.rxcloud.vrml.alert.actor.log.DefaultLogAlertActor;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 /**
@@ -25,10 +22,17 @@ public class AlertsTest {
          * Defined your custom {@code alert message} which always tied to the actor.
          * impl {@link AlertMessage} so that received by the {@link AlertActorSystem}.
          */
-        @Data
-        @AllArgsConstructor
         public static class TestAlertMessage implements AlertMessage {
+
             private final String message;
+
+            public String getMessage() {
+                return message;
+            }
+
+            public TestAlertMessage(String message) {
+                this.message = message;
+            }
         }
 
         /**
@@ -42,7 +46,7 @@ public class AlertsTest {
 
     /**
      * Tell {@code default log alert message} to {@code default log alert actor}.
-     * It will logging the alert message by {@link Slf4j} with different log level.
+     * It will logging the alert message by {@code Slf4j} with different log level.
      */
     public void tellDefault() {
         // default log level is ERROR

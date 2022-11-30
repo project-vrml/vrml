@@ -87,6 +87,6 @@ private static void metrics(BiConsumer<Map<String, String>, Map<String, String>>
 <dependency>
   <groupId>group.rxcloud</groupId>
   <artifactId>vrml-metric</artifactId>
-  <version>1.1.1</version>
+  <version>1.1.2</version>
 </dependency>
 ```

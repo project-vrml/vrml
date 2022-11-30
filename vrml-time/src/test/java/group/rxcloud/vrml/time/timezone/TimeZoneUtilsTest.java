@@ -2,10 +2,10 @@ package group.rxcloud.vrml.time.timezone;
 
 import group.rxcloud.vrml.time.calculation.ThreadLocalTimeUtils;
 import junit.framework.TestCase;
-import lombok.SneakyThrows;
 import org.junit.Test;
 
 import java.sql.Timestamp;
+import java.text.ParseException;
 import java.util.Date;
 
 import static org.junit.Assert.assertNotEquals;
@@ -18,9 +18,8 @@ public class TimeZoneUtilsTest extends TestCase {
     /**
      * Parse timezone timestamp.
      */
-    @SneakyThrows
     @Test
-    public void testParseTimezoneTimestamp() {
+    public void testParseTimezoneTimestamp() throws ParseException {
         Timestamp current = ThreadLocalTimeUtils.currentTimestamp();
         String currentFormat = ThreadLocalTimeUtils.formatDateTime(current);
         Date currentDate = ThreadLocalTimeUtils.parseDateTime(currentFormat);

@@ -1,11 +1,11 @@
 package group.rxcloud.vrml.time.calculation;
 
 import junit.framework.TestCase;
-import lombok.SneakyThrows;
 import org.junit.Test;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.Date;
 
 /**
@@ -58,9 +58,8 @@ public class ThreadLocalTimeUtilsTest extends TestCase {
     /**
      * Parse date.
      */
-    @SneakyThrows
     @Test
-    public void testParseDate() {
+    public void testParseDate() throws ParseException {
         // current date time
         long currentTimeMillis = System.currentTimeMillis();
 
@@ -78,9 +77,8 @@ public class ThreadLocalTimeUtilsTest extends TestCase {
     /**
      * Parse time.
      */
-    @SneakyThrows
     @Test
-    public void testParseTime() {
+    public void testParseTime() throws ParseException {
         // current date time
         long currentTimeMillis = System.currentTimeMillis();
 
@@ -98,9 +96,8 @@ public class ThreadLocalTimeUtilsTest extends TestCase {
     /**
      * Parse date time.
      */
-    @SneakyThrows
     @Test
-    public void testParseDateTime() {
+    public void testParseDateTime() throws ParseException {
         // current date time
         long currentTimeMillis = System.currentTimeMillis();
 
@@ -191,9 +188,8 @@ public class ThreadLocalTimeUtilsTest extends TestCase {
     /**
      * Test different days.
      */
-    @SneakyThrows
     @Test
-    public void testDifferentDays() {
+    public void testDifferentDays() throws ParseException {
         Date currentDate = ThreadLocalTimeUtils.currentDate();
 
         long same1 = ThreadLocalTimeUtils.differentDays(currentDate, currentDate);

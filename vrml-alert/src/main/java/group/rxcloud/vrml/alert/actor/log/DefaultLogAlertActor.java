@@ -2,21 +2,21 @@ package group.rxcloud.vrml.alert.actor.log;
 
 import group.rxcloud.vrml.alert.actor.AbstractAlertActor;
 import group.rxcloud.vrml.alert.actor.AlertMessage;
-import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
  * The default log alert actor.
  */
-@Slf4j
 @Component
 public class DefaultLogAlertActor extends AbstractAlertActor<DefaultLogAlertActor.DefaultLogAlertMessage> {
+
+    private static final Logger log = LoggerFactory.getLogger(DefaultLogAlertActor.class);
 
     /**
      * The default log alert message.
      */
-    @Data
     public static class DefaultLogAlertMessage implements AlertMessage {
 
         private final String message;
@@ -48,6 +48,14 @@ public class DefaultLogAlertActor extends AbstractAlertActor<DefaultLogAlertActo
             if (this.logLevel == null) {
                 this.logLevel = AlertsLogLevelType.ERROR;
             }
+        }
+
+        public String getMessage() {
+            return message;
+        }
+
+        public AlertsLogLevelType getLogLevel() {
+            return logLevel;
         }
     }
 

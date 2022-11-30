@@ -4,10 +4,10 @@ import group.rxcloud.vrml.time.calculation.ThreadLocalTimeUtils;
 import group.rxcloud.vrml.time.timezone.TimeZoneEnum;
 import group.rxcloud.vrml.time.timezone.TimeZoneUtils;
 import junit.framework.TestCase;
-import lombok.SneakyThrows;
 import org.junit.Test;
 
 import java.sql.Timestamp;
+import java.text.ParseException;
 
 /**
  * The Cron expression utils test.
@@ -18,7 +18,7 @@ public class CronExpressionUtilsTest extends TestCase {
      * Parse cron with time zone.
      */
     @Test
-    public void testParseCronWithTimeZone() {
+    public void testParseCronWithTimeZone() throws ParseException {
         // current time
         Timestamp currentTimestamp = ThreadLocalTimeUtils.currentTimestamp();
 
@@ -31,8 +31,7 @@ public class CronExpressionUtilsTest extends TestCase {
     /**
      * EVERY_DAY: x x x * * ?
      */
-    @SneakyThrows
-    public void testParseCronWithTimeZoneEveryDay(Timestamp currentTimestamp) {
+    public void testParseCronWithTimeZoneEveryDay(Timestamp currentTimestamp) throws ParseException {
         CronExpressionUtils.TimeZoneCronParseBuilder builder = new CronExpressionUtils.TimeZoneCronParseBuilder();
         builder.setCronModeEnum(CronModeEnum.EVERY_DAY);
         builder.setSourceExecuteTime(currentTimestamp);
@@ -69,8 +68,7 @@ public class CronExpressionUtilsTest extends TestCase {
     /**
      * EVERY_WEEK: x x x ? * week+1
      */
-    @SneakyThrows
-    public void testParseCronWithTimeZoneEveryWeek(Timestamp currentTimestamp) {
+    public void testParseCronWithTimeZoneEveryWeek(Timestamp currentTimestamp) throws ParseException {
         CronExpressionUtils.TimeZoneCronParseBuilder builder = new CronExpressionUtils.TimeZoneCronParseBuilder();
         builder.setCronModeEnum(CronModeEnum.EVERY_WEEK);
         builder.setDayOfWeek(1);
@@ -116,8 +114,7 @@ public class CronExpressionUtilsTest extends TestCase {
     /**
      * EVERY_MONTH: x x x month * ?
      */
-    @SneakyThrows
-    public void testParseCronWithTimeZoneEveryMonth(Timestamp currentTimestamp) {
+    public void testParseCronWithTimeZoneEveryMonth(Timestamp currentTimestamp) throws ParseException {
         CronExpressionUtils.TimeZoneCronParseBuilder builder = new CronExpressionUtils.TimeZoneCronParseBuilder();
         builder.setCronModeEnum(CronModeEnum.EVERY_MONTH);
         builder.setDayOfMonth(1);

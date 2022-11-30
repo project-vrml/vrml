@@ -1,6 +1,5 @@
 package group.rxcloud.vrml.time.cron;
 
-import lombok.Getter;
 
 /**
  * The Cron value enum.
@@ -64,8 +63,11 @@ public enum CronValueEnum {
     MONTH_30(30),
     MONTH_31(31);
 
-    @Getter
     private final int cronValue;
+
+    public int getCronValue() {
+        return cronValue;
+    }
 
     CronValueEnum(int cronValue) {
         this.cronValue = cronValue;

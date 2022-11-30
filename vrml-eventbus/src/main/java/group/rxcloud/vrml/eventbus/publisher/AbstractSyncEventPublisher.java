@@ -2,15 +2,17 @@ package group.rxcloud.vrml.eventbus.publisher;
 
 import group.rxcloud.vrml.core.serialization.Serialization;
 import group.rxcloud.vrml.eventbus.event.EventBusEvent;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * To publish the eventbus event sync.
  *
  * @param <T> the event type
  */
-@Slf4j
 public abstract class AbstractSyncEventPublisher<T extends EventBusEvent> extends AbstractEventPublisher {
+
+    private static final Logger log = LoggerFactory.getLogger(AbstractSyncEventPublisher.class);
 
     /**
      * Publish the event.

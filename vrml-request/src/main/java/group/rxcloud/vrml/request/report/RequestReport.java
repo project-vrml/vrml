@@ -1,11 +1,12 @@
 package group.rxcloud.vrml.request.report;
 
+import com.github.benmanes.caffeine.cache.Cache;
+import com.github.benmanes.caffeine.cache.Caffeine;
 import group.rxcloud.vrml.core.tags.Fixme;
 import group.rxcloud.vrml.request.RequestConfigurationModule;
 import group.rxcloud.vrml.request.config.RequestConfiguration;
-import com.github.benmanes.caffeine.cache.Cache;
-import com.github.benmanes.caffeine.cache.Caffeine;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -17,8 +18,9 @@ import static group.rxcloud.vrml.request.RequestConfigurationModule.DEFAULT_MAX_
 /**
  * The report holder of {@code Requests}.
  */
-@Slf4j
 public class RequestReport {
+
+    private static final Logger log = LoggerFactory.getLogger(RequestReport.class);
 
     /**
      * The report cache holder.
@@ -75,12 +77,12 @@ public class RequestReport {
          */
         private void initCache() {
             cache = Caffeine.newBuilder()
-                    .expireAfterWrite(requestReportConfig.reportExpiredSeconds() <= 0 ?
+                    .expireAfterWrite(requestReportConfig.getReportExpiredSeconds() <= 0 ?
                             DEFAULT_EXPIRE_SECONDS :
-                            requestReportConfig.reportExpiredSeconds(), TimeUnit.SECONDS)
-                    .maximumSize(requestReportConfig.reportPoolMaxSize() <= 0 ?
+                            requestReportConfig.getReportExpiredSeconds(), TimeUnit.SECONDS)
+                    .maximumSize(requestReportConfig.getReportPoolMaxSize() <= 0 ?
                             DEFAULT_MAX_SIZE :
-                            requestReportConfig.reportPoolMaxSize())
+                            requestReportConfig.getReportPoolMaxSize())
                     .build();
         }
 
@@ -91,7 +93,7 @@ public class RequestReport {
          */
         @Fixme(fixme = "optimize synchronized key")
         void put(String value) {
-            if (requestReportConfig.noRecordKeys().contains(value)) {
+            if (requestReportConfig.getNoRecordKeys().contains(value)) {
                 return;
             }
             Runnable alert = null;
@@ -101,7 +103,7 @@ public class RequestReport {
                     // init
                     cache.put(value, 0);
                 } else {
-                    if (count > requestReportConfig.reportTriggerCount()) {
+                    if (count > requestReportConfig.getReportTriggerCount()) {
                         // alert & init
                         cache.put(value, 0);
                         Integer finalCount = count;

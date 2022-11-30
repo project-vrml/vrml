@@ -2,7 +2,8 @@ package group.rxcloud.vrml.switches;
 
 import group.rxcloud.vrml.core.beans.SpringContextConfigurator;
 import group.rxcloud.vrml.core.tags.Important;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
@@ -14,8 +15,9 @@ import java.util.function.Supplier;
 /**
  * The Switches API.
  */
-@Slf4j
 public final class Switches implements SwitchApi {
+
+    private static final Logger log = LoggerFactory.getLogger(Switches.class);
 
     /**
      * The INSTANCE obj.

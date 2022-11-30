@@ -1,10 +1,11 @@
 package group.rxcloud.vrml.alert.actor;
 
+import com.google.common.util.concurrent.MoreExecutors;
 import group.rxcloud.vrml.alert.config.AlertConfiguration;
 import group.rxcloud.vrml.core.beans.SpringContextConfigurator;
 import group.rxcloud.vrml.core.tags.Important;
-import com.google.common.util.concurrent.MoreExecutors;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.Map;
@@ -19,8 +20,9 @@ import java.util.stream.Stream;
 /**
  * The alert actor system.
  */
-@Slf4j
 public abstract class AlertActorSystem {
+
+    private static final Logger log = LoggerFactory.getLogger(AlertActorSystem.class);
 
     // -- Alert async
 

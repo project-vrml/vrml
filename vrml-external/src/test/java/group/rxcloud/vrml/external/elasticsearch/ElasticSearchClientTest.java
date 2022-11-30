@@ -6,7 +6,6 @@ import group.rxcloud.vrml.core.serialization.Serialization;
 import group.rxcloud.vrml.core.tags.Todo;
 import group.rxcloud.vrml.external.elasticsearch.config.ElasticSearchConfiguration;
 import io.vavr.Tuple2;
-import lombok.Data;
 import mockit.Mock;
 import mockit.MockUp;
 import org.junit.Before;
@@ -68,11 +67,18 @@ public class ElasticSearchClientTest {
     /**
      * Test response
      */
-    @Data
     @ElasticSearchIndex(index = TEST_INDEX)
     private static class TestElasticSearchResponse {
 
         private Long createTime;
+
+        public Long getCreateTime() {
+            return createTime;
+        }
+
+        public void setCreateTime(Long createTime) {
+            this.createTime = createTime;
+        }
     }
 
     /**

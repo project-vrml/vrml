@@ -5,8 +5,8 @@ import com.github.benmanes.caffeine.cache.Caffeine;
 import group.rxcloud.vrml.compute.config.ComputeConfiguration;
 import group.rxcloud.vrml.core.tags.Fixme;
 import io.vavr.control.Either;
-import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 import java.util.Objects;
@@ -16,8 +16,9 @@ import java.util.concurrent.TimeUnit;
 /**
  * The Time+Counter computes.
  */
-@Slf4j
 public final class TimeCounterComputes extends Computes<group.rxcloud.vrml.compute.TimeCounterComputes.TimeCounterComputeConfiguration> {
+
+    private static final Logger log = LoggerFactory.getLogger(TimeCounterComputes.class);
 
     private static final Map<String, TimeCounterCache> TIME_COUNTER_CACHE_CONCURRENT_HASH_MAP = new ConcurrentHashMap<>();
 
@@ -65,7 +66,6 @@ public final class TimeCounterComputes extends Computes<group.rxcloud.vrml.compu
     /**
      * The Time+Counter compute config.
      */
-    @Data
     public static class TimeCounterComputeConfig implements ComputeConfiguration.ComputeConfig {
 
         /**
@@ -84,6 +84,26 @@ public final class TimeCounterComputes extends Computes<group.rxcloud.vrml.compu
         @Override
         public String getKey() {
             return key;
+        }
+
+        public void setKey(String key) {
+            this.key = key;
+        }
+
+        public Long getExpirationTime() {
+            return expirationTime;
+        }
+
+        public void setExpirationTime(Long expirationTime) {
+            this.expirationTime = expirationTime;
+        }
+
+        public Long getTriggerCount() {
+            return triggerCount;
+        }
+
+        public void setTriggerCount(Long triggerCount) {
+            this.triggerCount = triggerCount;
         }
     }
 

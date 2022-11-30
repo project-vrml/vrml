@@ -1,6 +1,5 @@
 package group.rxcloud.vrml.shutdown;
 
-import lombok.SneakyThrows;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -8,7 +7,6 @@ import static org.junit.Assert.assertEquals;
 
 public class ShutdownHooksTest {
 
-    @SneakyThrows
     @org.junit.Test
     public void addShutdownHook() {
         AtomicInteger i = new AtomicInteger();
@@ -28,7 +26,6 @@ public class ShutdownHooksTest {
         assertEquals(0, x);
     }
 
-    @SneakyThrows
     @org.junit.Test
     public void addShutdownHookDaemon() {
         AtomicInteger i = new AtomicInteger();

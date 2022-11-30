@@ -7,7 +7,7 @@
     <groupId>group.rxcloud</groupId>
     <artifactId>vrml</artifactId>
     <packaging>pom</packaging>
-    <version>1.1.1</version>
+    <version>1.1.2</version>
 
     <name>vrml</name>
     <description>Vrml is a useful api library for java work.</description>
@@ -277,6 +277,14 @@
                 <scope>test</scope>
                 <optional>true</optional>
             </dependency>
+
+            <!-- tool -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <optional>true</optional>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -286,14 +294,6 @@
             <groupId>io.vavr</groupId>
             <artifactId>vavr</artifactId>
             <version>${vavr.version}</version>
-            <optional>true</optional>
-        </dependency>
-
-        <!-- tool -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
             <optional>true</optional>
         </dependency>
     </dependencies>

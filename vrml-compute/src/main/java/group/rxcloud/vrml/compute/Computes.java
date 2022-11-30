@@ -3,7 +3,8 @@ package group.rxcloud.vrml.compute;
 import group.rxcloud.vrml.compute.config.ComputeConfiguration;
 import group.rxcloud.vrml.core.beans.SpringContextConfigurator;
 import group.rxcloud.vrml.core.tags.Important;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.ParameterizedType;
 
@@ -12,8 +13,9 @@ import java.lang.reflect.ParameterizedType;
  *
  * @param <T> the configuration type parameter
  */
-@Slf4j
 public abstract class Computes<T extends ComputeConfiguration> implements Compute {
+
+    private static final Logger log = LoggerFactory.getLogger(Computes.class);
 
     /**
      * The {@link TimeCounterComputes} singleton.

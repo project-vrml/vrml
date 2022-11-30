@@ -3,13 +3,15 @@ package group.rxcloud.vrml.alert;
 import group.rxcloud.vrml.alert.actor.AlertActorSystem;
 import group.rxcloud.vrml.alert.actor.AlertMessage;
 import group.rxcloud.vrml.core.serialization.Serialization;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The Alerts API.
  */
-@Slf4j
 public final class Alerts {
+
+    private static final Logger log = LoggerFactory.getLogger(Alerts.class);
 
     /**
      * Tell alert messages.

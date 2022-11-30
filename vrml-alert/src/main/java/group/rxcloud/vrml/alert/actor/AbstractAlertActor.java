@@ -1,15 +1,17 @@
 package group.rxcloud.vrml.alert.actor;
 
 import group.rxcloud.vrml.alert.actor.crash.DefaultCrashAlertActor;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The abstract alert actor.
  *
  * @param <T> the message type
  */
-@Slf4j
 public abstract class AbstractAlertActor<T extends AlertMessage> implements AlertActor<T> {
+
+    private static final Logger log = LoggerFactory.getLogger(AbstractAlertActor.class);
 
     /**
      * Tell message to actor.

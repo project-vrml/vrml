@@ -3,25 +3,33 @@ package group.rxcloud.vrml.alert.actor.crash;
 import group.rxcloud.vrml.alert.actor.AbstractAlertActor;
 import group.rxcloud.vrml.alert.actor.AlertMessage;
 import group.rxcloud.vrml.alert.actor.log.DefaultLogAlertActor;
-import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
  * The default crash alert actor.
  */
-@Slf4j
 @Component
 public class DefaultCrashAlertActor extends AbstractAlertActor<DefaultCrashAlertActor.DefaultCrashAlertMessage> {
+
+    private static final Logger log = LoggerFactory.getLogger(DefaultCrashAlertActor.class);
 
     /**
      * The default crash alert message.
      */
-    @Data
     public static class DefaultCrashAlertMessage implements AlertMessage {
 
         private final AlertMessage message;
         private final Exception exception;
+
+        public AlertMessage getMessage() {
+            return message;
+        }
+
+        public Exception getException() {
+            return exception;
+        }
 
         public DefaultCrashAlertMessage(AlertMessage message, Exception exception) {
             this.message = message;

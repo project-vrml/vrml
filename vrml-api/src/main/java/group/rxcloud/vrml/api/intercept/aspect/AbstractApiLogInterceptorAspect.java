@@ -8,8 +8,6 @@ import group.rxcloud.vrml.data.ability.Traceable;
 import group.rxcloud.vrml.log.Logs;
 import group.rxcloud.vrml.trace.MapTraces;
 import io.vavr.Lazy;
-import lombok.Data;
-import lombok.Getter;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -224,16 +222,23 @@ public abstract class AbstractApiLogInterceptorAspect {
     /**
      * Base Api log interceptor {@code ThreadLocal} context.
      */
-    @Data
     public static class BaseApiLogContext implements Traceable {
 
         private ProceedingJoinPoint proceedingJoinPoint;
 
-        @Getter(lazy = true)
         private final Map<String, String> traceMap = new HashMap<>();
 
         public BaseApiLogContext(ProceedingJoinPoint proceedingJoinPoint) {
             this.proceedingJoinPoint = proceedingJoinPoint;
+        }
+
+        public ProceedingJoinPoint getProceedingJoinPoint() {
+            return proceedingJoinPoint;
+        }
+
+        @Override
+        public Map<String, String> getTraceMap() {
+            return traceMap;
         }
 
         @Override

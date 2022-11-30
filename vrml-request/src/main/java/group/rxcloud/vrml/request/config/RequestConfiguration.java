@@ -1,15 +1,18 @@
 package group.rxcloud.vrml.request.config;
 
 import group.rxcloud.vrml.request.RequestConfigurationModule;
-import lombok.Data;
-import lombok.Getter;
-import lombok.experimental.Accessors;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static group.rxcloud.vrml.request.RequestConfigurationModule.*;
+import static group.rxcloud.vrml.request.RequestConfigurationModule.DEFAULT_EXPIRE_SECONDS;
+import static group.rxcloud.vrml.request.RequestConfigurationModule.DEFAULT_MAX_SIZE;
+import static group.rxcloud.vrml.request.RequestConfigurationModule.DEFAULT_REPORT_SWITCH;
+import static group.rxcloud.vrml.request.RequestConfigurationModule.DEFAULT_TRIGGER_COUNT;
+import static group.rxcloud.vrml.request.RequestConfigurationModule.getConfiguration;
+import static group.rxcloud.vrml.request.RequestConfigurationModule.log;
 
 
 /**
@@ -43,7 +46,6 @@ public interface RequestConfiguration {
     /**
      * The request report value.
      */
-    @Getter
     final class RequestReportValue {
 
         /**
@@ -70,12 +72,28 @@ public interface RequestConfiguration {
             this.strategy = builder.strategy;
         }
 
+        public String getRequestName() {
+            return requestName;
+        }
+
+        public boolean isOpenReport() {
+            return openReport;
+        }
+
+        public String getRecordValue() {
+            return recordValue;
+        }
+
+        public RequestReportConfig getStrategy() {
+            return strategy;
+        }
+
         /**
          * The requests report builder.
          */
-        @Slf4j
         public static final class ReportBuilder {
 
+            private static final Logger log = LoggerFactory.getLogger(ReportBuilder.class);
 
             private final String requestName;
 
@@ -138,13 +156,13 @@ public interface RequestConfiguration {
                     this.strategy = getConfiguration().getRequestReportConfig(requestName);
                 }
                 if (this.strategy == null) {
-                    this.strategy = new RequestReportConfig()
-                            .requestReportName(requestName)
-                            .openRequestReport(DEFAULT_REPORT_SWITCH)
-                            .reportTriggerCount(DEFAULT_TRIGGER_COUNT)
-                            .reportExpiredSeconds(DEFAULT_EXPIRE_SECONDS)
-                            .reportPoolMaxSize(DEFAULT_MAX_SIZE)
-                            .noRecordKeys(new ArrayList<>());
+                    this.strategy = new RequestReportConfig();
+                    this.strategy.setRequestReportName(requestName);
+                    this.strategy.setOpenRequestReport(DEFAULT_REPORT_SWITCH);
+                    this.strategy.setReportTriggerCount(DEFAULT_TRIGGER_COUNT);
+                    this.strategy.setReportExpiredSeconds(DEFAULT_EXPIRE_SECONDS);
+                    this.strategy.setReportPoolMaxSize(DEFAULT_MAX_SIZE);
+                    this.strategy.setNoRecordKeys(new ArrayList<>());
                 }
                 this.openReport = this.strategy.openRequestReport;
                 return new RequestReportValue(this);
@@ -155,8 +173,6 @@ public interface RequestConfiguration {
     /**
      * Requests report strategy config.
      */
-    @Data
-    @Accessors(chain = true, fluent = true)
     final class RequestReportConfig {
 
         /**
@@ -183,5 +199,53 @@ public interface RequestConfiguration {
          * Statistics ignored key's value.
          */
         private List<String> noRecordKeys = new ArrayList<>();
+
+        public String getRequestReportName() {
+            return requestReportName;
+        }
+
+        public void setRequestReportName(String requestReportName) {
+            this.requestReportName = requestReportName;
+        }
+
+        public boolean isOpenRequestReport() {
+            return openRequestReport;
+        }
+
+        public void setOpenRequestReport(boolean openRequestReport) {
+            this.openRequestReport = openRequestReport;
+        }
+
+        public int getReportTriggerCount() {
+            return reportTriggerCount;
+        }
+
+        public void setReportTriggerCount(int reportTriggerCount) {
+            this.reportTriggerCount = reportTriggerCount;
+        }
+
+        public int getReportExpiredSeconds() {
+            return reportExpiredSeconds;
+        }
+
+        public void setReportExpiredSeconds(int reportExpiredSeconds) {
+            this.reportExpiredSeconds = reportExpiredSeconds;
+        }
+
+        public int getReportPoolMaxSize() {
+            return reportPoolMaxSize;
+        }
+
+        public void setReportPoolMaxSize(int reportPoolMaxSize) {
+            this.reportPoolMaxSize = reportPoolMaxSize;
+        }
+
+        public List<String> getNoRecordKeys() {
+            return noRecordKeys;
+        }
+
+        public void setNoRecordKeys(List<String> noRecordKeys) {
+            this.noRecordKeys = noRecordKeys;
+        }
     }
 }

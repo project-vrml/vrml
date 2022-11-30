@@ -1,6 +1,5 @@
 package group.rxcloud.vrml.time.cron;
 
-import lombok.Getter;
 
 /**
  * The Cron mode enum.
@@ -22,8 +21,11 @@ public enum CronModeEnum {
     EVERY_WEEK("EVERY_WEEK"),
     EVERY_MONTH("EVERY_MONTH");
 
-    @Getter
     private final String cronMode;
+
+    public String getCronMode() {
+        return cronMode;
+    }
 
     CronModeEnum(String cronMode) {
         this.cronMode = cronMode;

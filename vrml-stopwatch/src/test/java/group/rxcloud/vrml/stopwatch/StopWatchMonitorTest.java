@@ -1,14 +1,12 @@
 package group.rxcloud.vrml.stopwatch;
 
 import group.rxcloud.vrml.stopwatch.config.DefaultStopWatchLoggerMonitorConfiguration;
-import lombok.SneakyThrows;
 import org.junit.Test;
 
 public class StopWatchMonitorTest {
 
-    @SneakyThrows
     @Test
-    public void test_success() {
+    public void test_success() throws InterruptedException {
         DefaultStopWatchLoggerMonitorConfiguration.setTunedStopwatchExecutionTimeoutMs(2000);
         DefaultStopWatchLoggerMonitorConfiguration.setMonitorLoggerLevel("ERROR");
 
@@ -21,9 +19,8 @@ public class StopWatchMonitorTest {
         stopWatchMonitor.stop();
     }
 
-    @SneakyThrows
     @Test
-    public void test_failure() {
+    public void test_failure() throws InterruptedException {
         DefaultStopWatchLoggerMonitorConfiguration.setTunedStopwatchExecutionTimeoutMs(2000);
         DefaultStopWatchLoggerMonitorConfiguration.setMonitorLoggerLevel("ERROR");
 

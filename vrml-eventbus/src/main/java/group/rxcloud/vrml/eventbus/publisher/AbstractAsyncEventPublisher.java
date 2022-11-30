@@ -2,7 +2,8 @@ package group.rxcloud.vrml.eventbus.publisher;
 
 import group.rxcloud.vrml.core.serialization.Serialization;
 import group.rxcloud.vrml.eventbus.event.AsyncEventBusEvent;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Optional;
 import java.util.concurrent.ExecutorService;
@@ -16,8 +17,9 @@ import java.util.concurrent.atomic.AtomicInteger;
  *
  * @param <Type> the async event type
  */
-@Slf4j
 public abstract class AbstractAsyncEventPublisher<Type extends AsyncEventBusEvent<Type>> extends AbstractEventPublisher {
+
+    private static final Logger log = LoggerFactory.getLogger(AbstractAsyncEventPublisher.class);
 
     /**
      * The serial number of thread in thread pool.
