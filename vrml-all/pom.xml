@@ -73,6 +73,10 @@
         </dependency>
         <dependency>
             <groupId>group.rxcloud</groupId>
+            <artifactId>vrml-reflect</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>group.rxcloud</groupId>
             <artifactId>vrml-request</artifactId>
         </dependency>
         <dependency>

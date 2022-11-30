@@ -42,16 +42,64 @@ public final class VrFlux {
     }
 
     /**
-     * 非必须的
+     * Flux: Subscribe after init not essential.
+     *
+     * @param <T>      the type parameter
+     * @param flux     the flux
+     * @param consumer the consumer
+     * @return {@code true} if subscribe success.
      */
-    public static <T> void subscribeAfterInitNonEssential(Flux<T> flux, Consumer<? super T> consumer) {
-        T t = null;
+    public static <T> boolean subscribeAfterInitNonEssential(Flux<T> flux, Consumer<? super T> consumer) {
         try {
-            t = flux.blockFirst();
+            T t = flux.blockFirst();
+            if (t != null) {
+                consumer.accept(t);
+            }
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            if (log.isWarnEnabled()) {
+                log.warn("[Vrml.flux] [subscribeAfterInitNonEssential] blockFirst error", e);
+            }
         }
-        consumer.accept(t);
-        flux.subscribe(consumer);
+        try {
+            flux.subscribe(consumer);
+            return true;
+        } catch (Exception e) {
+            if (log.isWarnEnabled()) {
+                log.warn("[Vrml.flux] [subscribeAfterInitNonEssential] subscribe error", e);
+            }
+            return false;
+        }
+    }
+
+    /**
+     * Flux: Subscribe after init not essential.
+     *
+     * @param <T>       the type parameter
+     * @param flux      the flux
+     * @param firstLoad the first load timeout
+     * @param consumer  the consumer
+     * @return {@code true} if subscribe success.
+     */
+    public static <T> boolean subscribeAfterInitNonEssential(Flux<T> flux, Duration firstLoad, Consumer<? super T> consumer) {
+        try {
+            T t = flux.blockFirst(firstLoad);
+            if (t != null) {
+                consumer.accept(t);
+            }
+        } catch (Exception e) {
+            if (log.isWarnEnabled()) {
+                log.warn("[Vrml.flux] [subscribeAfterInitNonEssential] blockFirst error, firstLoad[{}]",
+                        firstLoad, e);
+            }
+        }
+        try {
+            flux.subscribe(consumer);
+            return true;
+        } catch (Exception e) {
+            if (log.isWarnEnabled()) {
+                log.warn("[Vrml.flux] [subscribeAfterInitNonEssential] subscribe error", e);
+            }
+            return false;
+        }
     }
 }
