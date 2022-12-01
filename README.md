@@ -81,6 +81,14 @@ The adaptor of statistical triggering, and different Runnable operations can be 
 
 ---------------------------------------------------------------------
 
+### [vrml-core](./vrml-core)
+
+[![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
+
+It encapsulates Spring's Bean operations and provides some basic tools such as: safe log printing, mark annotations, etc.
+
+---------------------------------------------------------------------
+
 ### [vrml-data](./vrml-data)
 
 [![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
@@ -115,6 +123,12 @@ Other auxiliary tools library
 
 ---------------------------------------------------------------------
 
+### [vrml-jmx](./vrml-jmx)
+
+Operation encapsulation of Java JMX.
+
+---------------------------------------------------------------------
+
 ### [vrml-log](./vrml-log)
 
 [![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
@@ -135,11 +149,29 @@ A API to record application's metrics data for [vrml](./README.md) library
 
 ---------------------------------------------------------------------
 
+### [vrml-maven](./vrml-maven)
+
+Maven related operation tool class.
+
+---------------------------------------------------------------------
+
 ### [vrml-netty](./vrml-netty)
 
 [![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
 
 Netty helper utils for [vrml](./README.md) library
+
+---------------------------------------------------------------------
+
+### [vrml-reactor](./vrml-reactor)
+
+Reactor Reactive library extension tool set.
+
+---------------------------------------------------------------------
+
+### [vrml-reflect](./vrml-reflect)
+
+Java reflection extension toolset.
 
 ---------------------------------------------------------------------
 
@@ -161,11 +193,23 @@ Java File utils for [vrml](./README.md) library
 
 ---------------------------------------------------------------------
 
+### [vrml-shutdown](./vrml-shutdown)
+
+JVM Shutdown extension tool set.
+
+---------------------------------------------------------------------
+
 ### [vrml-spi](./vrml-spi)
 
 [![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
 
 Java SPI utils for [vrml](./README.md) library
+
+---------------------------------------------------------------------
+
+### [vrml-stopwatch](./vrml-stopwatch)
+
+Extended Stop Watch execution monitor.
 
 ---------------------------------------------------------------------
 
@@ -186,6 +230,12 @@ Different Runnable can be executed conveniently according to the switches config
 [WIKI](./vrml-time/WIKI.md)
 
 A time API with timezone/cron for [vrml](./README.md) library
+
+---------------------------------------------------------------------
+
+### [vrml-tomcat](./vrml-tomcat)
+
+An extended toolset for the Tomcat container.
 
 ---------------------------------------------------------------------
 
