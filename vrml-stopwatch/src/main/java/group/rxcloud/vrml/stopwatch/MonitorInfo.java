@@ -15,7 +15,27 @@ public class MonitorInfo {
 
     private long lastTaskTimeMillis;
 
+    private Throwable throwable;
+
+    private String info;
+
     private StopWatch stopWatch;
+
+    public Throwable getThrowable() {
+        return throwable;
+    }
+
+    public void setThrowable(Throwable throwable) {
+        this.throwable = throwable;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
 
     public StopWatch getStopWatch() {
         return stopWatch;

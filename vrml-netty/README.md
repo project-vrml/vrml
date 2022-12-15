@@ -13,7 +13,7 @@ Netty拓展工具集。
 <dependency>
     <groupId>group.rxcloud</groupId>
     <artifactId>vrml-netty</artifactId>
-    <version>1.1.2</version>
+    <version>1.1.3</version>
 </dependency>
 ```
 
@@ -42,7 +42,7 @@ Developer repository can be found [here](https://github.com/kevinten10/vrml/tree
 <dependency>
     <groupId>group.rxcloud</groupId>
     <artifactId>vrml-netty</artifactId>
-    <version>1.1.2</version>
+    <version>1.1.3</version>
 </dependency>
 ```
 

@@ -6,6 +6,7 @@ import reactor.core.publisher.Flux;
 
 import java.time.Duration;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 /**
  * The Vrml {@link Flux} utils.
@@ -98,6 +99,48 @@ public final class VrFlux {
         } catch (Exception e) {
             if (log.isWarnEnabled()) {
                 log.warn("[Vrml.flux] [subscribeAfterInitNonEssential] subscribe error", e);
+            }
+            return false;
+        }
+    }
+
+    /**
+     * Flux: Subscribe after init not essential.
+     *
+     * @param <T>          the type parameter
+     * @param fluxSupplier the flux supplier
+     * @param firstLoad    the first load timeout
+     * @param consumer     the consumer
+     * @return {@code true} if subscribe success.
+     */
+    public static <T> boolean subscribeAfterInitNonEssential(Supplier<Flux<T>> fluxSupplier, Duration firstLoad, Consumer<? super T> consumer) {
+        Flux<T> flux;
+        try {
+            flux = fluxSupplier.get();
+        } catch (Exception e) {
+            if (log.isWarnEnabled()) {
+                log.warn("[Vrml.flux] [subscribeAfterInitNonEssential] generate flux error.",
+                        e);
+            }
+            return false;
+        }
+        try {
+            T t = flux.blockFirst(firstLoad);
+            if (t != null) {
+                consumer.accept(t);
+            }
+        } catch (Exception e) {
+            if (log.isWarnEnabled()) {
+                log.warn("[Vrml.flux] [subscribeAfterInitNonEssential] blockFirst error, firstLoad[{}].",
+                        firstLoad, e);
+            }
+        }
+        try {
+            flux.subscribe(consumer);
+            return true;
+        } catch (Exception e) {
+            if (log.isWarnEnabled()) {
+                log.warn("[Vrml.flux] [subscribeAfterInitNonEssential] subscribe error.", e);
             }
             return false;
         }

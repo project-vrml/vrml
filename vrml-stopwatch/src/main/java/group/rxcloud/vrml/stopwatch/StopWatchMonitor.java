@@ -7,6 +7,9 @@ import org.springframework.util.StopWatch;
  */
 public class StopWatchMonitor extends StopWatch {
 
+    private Throwable throwable;
+    private String info;
+
     /**
      * Instantiates a new Stop watch monitor.
      */
@@ -23,6 +26,14 @@ public class StopWatchMonitor extends StopWatch {
         super(id);
     }
 
+    public void withError(Throwable throwable) {
+        this.throwable = throwable;
+    }
+
+    public void withInfo(String info) {
+        this.info = info;
+    }
+
     /**
      * Overwrite stop so that add execution monitor.
      */
@@ -36,16 +47,13 @@ public class StopWatchMonitor extends StopWatch {
     }
 
     private MonitorInfo getMonitorInfo() {
-        String id = this.getId();
-        String lastTaskName = this.getLastTaskName();
-        long totalTimeMillis = this.getTotalTimeMillis();
-        long lastTaskTimeMillis = this.getLastTaskTimeMillis();
-
         MonitorInfo monitorInfo = new MonitorInfo();
-        monitorInfo.setId(id);
-        monitorInfo.setLastTaskName(lastTaskName);
-        monitorInfo.setTotalTimeMillis(totalTimeMillis);
-        monitorInfo.setTotalTimeMillis(lastTaskTimeMillis);
+        monitorInfo.setId(this.getId());
+        monitorInfo.setLastTaskName(this.getLastTaskName());
+        monitorInfo.setTotalTimeMillis(this.getTotalTimeMillis());
+        monitorInfo.setTotalTimeMillis(this.getLastTaskTimeMillis());
+        monitorInfo.setThrowable(this.throwable);
+        monitorInfo.setInfo(this.info);
         monitorInfo.setStopWatch(this);
         return monitorInfo;
     }
