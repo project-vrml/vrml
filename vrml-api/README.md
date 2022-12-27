@@ -12,7 +12,7 @@ A Aspect to log request process for [vrml](https://github.com/kevinten10/vrml) l
 <dependency>
   <groupId>group.rxcloud</groupId>
   <artifactId>vrml-api</artifactId>
-  <version>1.1.3</version>
+  <version>2.0.0</version>
 </dependency>
 ```
 
@@ -150,7 +150,7 @@ Developer repository can be found [here](https://github.com/kevinten10/vrml/tree
 <dependency>
   <groupId>group.rxcloud</groupId>
   <artifactId>vrml-api</artifactId>
-  <version>1.1.3</version>
+  <version>2.0.0</version>
 </dependency>
 ```
 

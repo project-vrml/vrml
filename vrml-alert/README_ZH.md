@@ -16,7 +16,7 @@ Alert支持各种快捷灵活方式的告警API，避免过程式的调用告警
 <dependency>
   <groupId>group.rxcloud</groupId>
   <artifactId>vrml-alert</artifactId>
-  <version>1.1.3</version>
+  <version>2.0.0</version>
 </dependency>
 ```
 
@@ -177,7 +177,7 @@ Developer repository can be found [here](https://github.com/kevinten10/vrml/tree
 <dependency>
   <groupId>group.rxcloud</groupId>
   <artifactId>vrml-alert</artifactId>
-  <version>1.1.3</version>
+  <version>2.0.0</version>
 </dependency>
 ```
 

@@ -5,22 +5,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>group.rxcloud</groupId>
         <artifactId>vrml</artifactId>
+        <groupId>group.rxcloud</groupId>
         <version>2.0.0</version>
     </parent>
 
-    <artifactId>vrml-data</artifactId>
-    <packaging>jar</packaging>
+    <artifactId>vrml-graalvm</artifactId>
 
-    <dependencies>
-        <!-- junit -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-            <optional>true</optional>
-        </dependency>
-    </dependencies>
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
 
 </project>
