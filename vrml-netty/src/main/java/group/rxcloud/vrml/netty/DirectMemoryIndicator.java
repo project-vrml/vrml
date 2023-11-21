@@ -2,10 +2,10 @@ package group.rxcloud.vrml.netty;
 
 import group.rxcloud.vrml.log.Logs;
 import io.netty.util.internal.PlatformDependent;
+import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ReflectionUtils;
 
-import javax.annotation.PostConstruct;
 import java.lang.reflect.Field;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;

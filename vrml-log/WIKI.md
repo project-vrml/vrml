@@ -40,6 +40,6 @@
 <dependency>
   <groupId>group.rxcloud</groupId>
   <artifactId>vrml-log</artifactId>
-  <version>1.1.4</version>
+  <version>2.0.0</version>
 </dependency>
 ```
