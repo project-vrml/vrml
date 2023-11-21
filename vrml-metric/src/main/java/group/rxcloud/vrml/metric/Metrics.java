@@ -735,7 +735,9 @@ public final class Metrics {
      */
     public static Map<String, String> showIndexs() {
         final Map<String, String> index = INDEX_TAG.get();
-        return new HashMap<>(index);
+        return index != null
+                ? new HashMap<>(index)
+                : new HashMap<>();
     }
 
     /**
@@ -746,7 +748,9 @@ public final class Metrics {
      */
     public static Map<String, String> showIndexs(String key) {
         final Map<String, String> index = KEY_INDEX_TAG.get().get(key);
-        return new HashMap<>(index);
+        return index != null
+                ? new HashMap<>(index)
+                : new HashMap<>();
     }
 
     /**
@@ -756,7 +760,9 @@ public final class Metrics {
      */
     public static Map<String, String> showStores() {
         final Map<String, String> store = STORED_TAG.get();
-        return new HashMap<>(store);
+        return store != null
+                ? new HashMap<>(store)
+                : new HashMap<>();
     }
 
     /**
@@ -767,6 +773,8 @@ public final class Metrics {
      */
     public static Map<String, String> showStores(String key) {
         final Map<String, String> store = KEY_STORED_TAG.get().get(key);
-        return new HashMap<>(store);
+        return store != null
+                ? new HashMap<>(store)
+                : new HashMap<>();
     }
 }
