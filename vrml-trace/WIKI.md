@@ -84,6 +84,6 @@ TraceAPI可以使用`MdcTraces`管理MDC，从而基于MDC进行日志的Tag管�
 <dependency>
   <groupId>group.rxcloud</groupId>
   <artifactId>vrml-trace</artifactId>
-  <version>1.1.3</version>
+  <version>1.1.4</version>
 </dependency>
 ```
