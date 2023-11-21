@@ -1,12 +1,14 @@
 package group.rxcloud.vrml.stopwatch.config;
 
+import group.rxcloud.vrml.metric.Metrics;
 import group.rxcloud.vrml.stopwatch.MonitorInfo;
+import group.rxcloud.vrml.stopwatch.metric.StopWatchMetric;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.slf4j.MDC;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * The Default monitor configuration.
@@ -85,8 +87,25 @@ public class DefaultStopWatchLoggerMonitorConfiguration implements StopWatchMoni
 
     @Override
     public void doStopWatchMonitor(MonitorInfo monitorInfo) {
+        String id = monitorInfo.getId();
         try {
             String record = this.getLogMessage(monitorInfo);
+
+            Map<String, String> indexes = Metrics.showIndexs(id);
+            if (!indexes.isEmpty()) {
+                StringBuilder builder = new StringBuilder();
+                builder.append("[[");
+                String tags = indexes.entrySet().stream()
+                        .map(entry -> entry.getKey() + "=" + entry.getValue())
+                        .collect(Collectors.joining(","));
+                builder.append(tags);
+                builder.append("]]");
+
+                builder.append(record);
+
+                record = builder.toString();
+            }
+
             String logLevel = this.getLogLevel(monitorInfo);
             switch (logLevel) {
                 case "info":
@@ -107,8 +126,7 @@ public class DefaultStopWatchLoggerMonitorConfiguration implements StopWatchMoni
                     log.warn(record);
             }
         } finally {
-            // log with MDC
-            MDC.clear();
+            Metrics.remove(id);
         }
     }
 
@@ -120,8 +138,7 @@ public class DefaultStopWatchLoggerMonitorConfiguration implements StopWatchMoni
         if (id != null) {
             builder.append("ID = [").append(id).append("], ");
             {
-                // mdc 1
-                MDC.put("ID", id);
+                Metrics.index(id, StopWatchMetric.ID, id);
             }
         }
 
@@ -129,8 +146,7 @@ public class DefaultStopWatchLoggerMonitorConfiguration implements StopWatchMoni
         if (taskName != null) {
             builder.append("TaskName = [").append(taskName).append("], ");
             {
-                // mdc 2
-                MDC.put("TaskName", taskName);
+                Metrics.index(id, StopWatchMetric.TaskName, taskName);
             }
         }
 
@@ -138,8 +154,7 @@ public class DefaultStopWatchLoggerMonitorConfiguration implements StopWatchMoni
         if (totalTimeMillis > 0) {
             builder.append("RunningTime = [").append(totalTimeMillis).append("]ms, ");
             {
-                // mdc 3
-                MDC.put("RunningTime", String.valueOf(totalTimeMillis));
+                Metrics.index(id, StopWatchMetric.RunningTime, String.valueOf(totalTimeMillis));
             }
         }
 

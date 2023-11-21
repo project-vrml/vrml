@@ -18,6 +18,10 @@
             <groupId>group.rxcloud</groupId>
             <artifactId>vrml-spi</artifactId>
         </dependency>
+        <dependency>
+            <groupId>group.rxcloud</groupId>
+            <artifactId>vrml-metric</artifactId>
+        </dependency>
 
         <!-- log -->
         <dependency>
