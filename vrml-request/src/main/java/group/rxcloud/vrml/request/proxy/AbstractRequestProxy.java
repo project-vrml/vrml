@@ -4,6 +4,10 @@ import group.rxcloud.vrml.core.serialization.Serialization;
 import group.rxcloud.vrml.error.code.ErrorCodeContext;
 import group.rxcloud.vrml.error.exception.ErrorCodeException;
 import group.rxcloud.vrml.log.Logs;
+import io.vavr.control.Either;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The abstract request proxy.
@@ -69,6 +73,34 @@ public abstract class AbstractRequestProxy<Request, Response, Excp extends Error
         } catch (Exception e) {
             throw this.throwsError(this.dependentErrorCode(), e);
         }
+    }
+
+    /**
+     * Invoke response with simple retry.
+     *
+     * @param request        the request
+     * @param invokeMaxCount invoke max count
+     * @return the left is errors when all is failure; the right is response when success
+     */
+    public Either<List<ErrorCodeException>, Response> invokeWithRetry(Request request, int invokeMaxCount) {
+        if (invokeMaxCount < 1) {
+            throw new IllegalArgumentException(String.format("[%s] invokeWithRetry invokeMaxCount[%s] is illegal.",
+                    this.requestName(), invokeMaxCount));
+        }
+
+        List<ErrorCodeException> retryErrors = new ArrayList<>();
+        for (int i = 0; i < invokeMaxCount; i++) {
+            try {
+                Response response = this.invoke(request);
+                return Either.right(response);
+            } catch (ErrorCodeException e) {
+                if (logs.isWarnEnabled()) {
+                    logs.warn("[{}] invokeWithRetry count[{}] error: ", this.requestName(), i + 1, e);
+                }
+                retryErrors.add(this.throwsError(this.dependentErrorCode(), e));
+            }
+        }
+        return Either.left(retryErrors);
     }
 
     /**

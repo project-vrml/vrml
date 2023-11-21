@@ -64,11 +64,9 @@ public final class Switches implements SwitchApi {
         if (CollectionUtils.isEmpty(sortedKeys)) {
             return false;
         }
-        if (sortedKeys.size() > 1) {
-            throw new IllegalArgumentException("Switches only support 1 param now");
-        }
         return getConfiguration()
-                .checkSwitches(sortedKeys);
+                .checkSwitches(sortedKeys)
+                .orElse(false);
     }
 
     @Override

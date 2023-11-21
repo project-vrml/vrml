@@ -1,17 +1,14 @@
 package group.rxcloud.vrml.switches;
 
 
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import org.junit.Test;
 import org.springframework.stereotype.Component;
-import org.springframework.util.CollectionUtils;
 
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * The Switches API test.
@@ -56,14 +53,49 @@ public class SwitchesTest {
     public void getSwitch_Obj() {
         Switches.configuration = new TestSwitchesConfiguration();
 
-        Switches.SwitchKey switchKey = Switches.SwitchKeyBuilder.builder()
-                .next("test1")
-                .next("test2")
-                .next("test3")
-                .build();
-        try {
-            Switches.INS.getSwitch(switchKey);
-        } catch (IllegalArgumentException e) {
+        {
+            Switches.SwitchKey switchKey1 = Switches.SwitchKeyBuilder.builder()
+                    .next("test1")
+                    .build();
+
+            boolean value1 = Switches.INS.getSwitch(switchKey1);
+            assertTrue(value1);
+        }
+        {
+            Switches.SwitchKey switchKey1 = Switches.SwitchKeyBuilder.builder()
+                    .next("test2")
+                    .next("test3")
+                    .next("test4")
+                    .build();
+
+            boolean value1 = Switches.INS.getSwitch(switchKey1);
+            assertTrue(value1);
+        }
+        {
+            Switches.SwitchKey switchKey1 = Switches.SwitchKeyBuilder.builder()
+                    .next("test2")
+                    .build();
+
+            boolean value1 = Switches.INS.getSwitch(switchKey1);
+            assertFalse(value1);
+        }
+        {
+            Switches.SwitchKey switchKey1 = Switches.SwitchKeyBuilder.builder()
+                    .next("test2")
+                    .next("test3")
+                    .build();
+
+            boolean value1 = Switches.INS.getSwitch(switchKey1);
+            assertFalse(value1);
+        }
+        {
+            Switches.SwitchKey switchKey1 = Switches.SwitchKeyBuilder.builder()
+                    .next("test5")
+                    .next("test6")
+                    .build();
+
+            boolean value1 = Switches.INS.getSwitch(switchKey1);
+            assertFalse(value1);
         }
     }
 
@@ -78,22 +110,12 @@ public class SwitchesTest {
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("test1", true);
             jsonObject.addProperty("test", true);
+            JsonObject value3 = new JsonObject();
+            value3.addProperty("test4", true);
+            JsonObject value2 = new JsonObject();
+            value2.add("test3", value3);
+            jsonObject.add("test2", value2);
             return jsonObject;
-        }
-
-        @Override
-        public boolean checkSwitches(List<String> switchKeys) {
-            if (CollectionUtils.isEmpty(switchKeys)) {
-                return false;
-            }
-            JsonObject params = getParams();
-            for (String switchKey : switchKeys) {
-                JsonElement jsonElement = params.get(switchKey);
-                if (jsonElement != null) {
-                    return jsonElement.getAsBoolean();
-                }
-            }
-            return false;
         }
     }
 }
