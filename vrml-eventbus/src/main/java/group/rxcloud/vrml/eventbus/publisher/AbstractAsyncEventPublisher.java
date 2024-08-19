@@ -34,24 +34,36 @@ public abstract class AbstractAsyncEventPublisher<Type extends AsyncEventBusEven
     /**
      * The default thread pool size.
      */
-    private static final int DEFAULT_THREAD_POOL_SIZE = 4;
+    private static final int DEFAULT_THREAD_POOL_CORE_SIZE = 4;
+    private static final int DEFAULT_THREAD_POOL_MAX_SIZE = 16;
 
     /**
      * The thread pool for dispatch events.
      */
-    private final ExecutorService executorService = new ThreadPoolExecutor(
-            DEFAULT_THREAD_POOL_SIZE,
-            DEFAULT_THREAD_POOL_SIZE,
-            0L,
-            TimeUnit.MILLISECONDS,
-            new LinkedBlockingDeque<>(MAX_EVENT_SIZE),
-            r -> {
-                Thread thread = new Thread(r);
-                thread.setName("eventbus-publisher-" + THREAD_COUNTER.incrementAndGet());
-                thread.setDaemon(true);
-                return thread;
-            },
-            new ThreadPoolExecutor.CallerRunsPolicy());
+    private volatile ExecutorService executorService;
+
+    protected ExecutorService getExecutorService() {
+        if (executorService == null) {
+            synchronized (this) {
+                if (executorService == null) {
+                    executorService = new ThreadPoolExecutor(
+                            DEFAULT_THREAD_POOL_CORE_SIZE,
+                            DEFAULT_THREAD_POOL_MAX_SIZE,
+                            0L,
+                            TimeUnit.MILLISECONDS,
+                            new LinkedBlockingDeque<>(MAX_EVENT_SIZE),
+                            r -> {
+                                Thread thread = new Thread(r);
+                                thread.setName("eventbus-publisher-" + THREAD_COUNTER.incrementAndGet());
+                                thread.setDaemon(true);
+                                return thread;
+                            },
+                            new ThreadPoolExecutor.CallerRunsPolicy());
+                }
+            }
+        }
+        return executorService;
+    }
 
     /**
      * Publish the event async.
@@ -61,7 +73,7 @@ public abstract class AbstractAsyncEventPublisher<Type extends AsyncEventBusEven
     public void publishEventAsync(Type event) {
         Optional<Type> cloneEventOp = this.tryCloneEvent(event);
         cloneEventOp.ifPresent(cloneEvent ->
-                executorService.submit(wrapRunnable(cloneEvent)));
+                getExecutorService().submit(wrapRunnable(cloneEvent)));
     }
 
     protected Runnable wrapRunnable(Type cloneEvent) {
