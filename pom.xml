@@ -59,6 +59,7 @@
         <module>vrml-maven</module>
         <module>vrml-metric</module>
         <module>vrml-netty</module>
+        <module>vrml-ratecontrol</module>
         <module>vrml-reactor</module>
         <module>vrml-reflect</module>
         <module>vrml-request</module>
@@ -161,6 +162,11 @@
             <dependency>
                 <groupId>group.rxcloud</groupId>
                 <artifactId>vrml-netty</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>group.rxcloud</groupId>
+                <artifactId>vrml-ratecontrol</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
