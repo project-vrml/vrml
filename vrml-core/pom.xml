@@ -17,6 +17,28 @@
     </properties>
 
     <dependencies>
+        <!-- vrml modules (optional for integration) -->
+        <dependency>
+            <groupId>group.rxcloud</groupId>
+            <artifactId>vrml-metric</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>group.rxcloud</groupId>
+            <artifactId>vrml-log</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>group.rxcloud</groupId>
+            <artifactId>vrml-trace</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>group.rxcloud</groupId>
+            <artifactId>vrml-alert</artifactId>
+            <optional>true</optional>
+        </dependency>
+
         <!-- log -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -42,6 +64,12 @@
         <dependency>
             <groupId>org.jmockit</groupId>
             <artifactId>jmockit</artifactId>
+            <scope>test</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
             <scope>test</scope>
             <optional>true</optional>
         </dependency>

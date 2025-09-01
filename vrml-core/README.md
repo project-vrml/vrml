@@ -1,8 +1,35 @@
-[![Build Status](https://travis-ci.org/vavr-io/vavr-gson.svg?branch=master)](https://travis-ci.org/vavr-io/vavr-gson)
+# VRML-Core 核心模块
 
-# vrml-core
+VRML的核心模块，提供统一的API抽象、SPI机制和集成管理功能。
 
-The core API for all vrml lib for [vrml](https://github.com/kevinten10/vrml) library
+## 功能特性
+
+### 🎯 核心API抽象
+- **VrmlApi**: 所有VRML模块API的标记接口
+- **VrmlOperations**: 统一的操作接口，支持监控、链路追踪和错误处理
+- **VrmlConfiguration**: 统一的配置接口
+- **AbstractVrmlOperations**: 抽象基类，提供通用的集成功能
+
+### 🔌 SPI机制
+- **VrmlProvider**: 服务提供者接口，支持可插拔的适配器
+- **VrmlProviderRegistry**: 服务提供者注册表，支持自动发现和手动注册
+- 支持优先级排序和健康检查
+
+### 🔧 集成管理
+- **VrmlIntegrationManager**: 统一管理各模块的集成状态
+- **VrmlMetricIntegration**: 监控指标集成
+- **VrmlLogIntegration**: 日志集成
+- **VrmlAlertIntegration**: 告警集成
+- **VrmlTraceIntegration**: 链路追踪集成
+
+### ⚙️ 配置管理
+- **VrmlConfigurationManager**: 统一的配置管理器
+- 支持多种配置源：配置提供者、系统属性、环境变量
+- 支持类型转换和缓存
+
+### 🏗️ Spring集成
+- **SpringContextConfigurator**: Spring上下文静态访问器
+- 支持Bean的获取和管理
 
 ## Usage
 
