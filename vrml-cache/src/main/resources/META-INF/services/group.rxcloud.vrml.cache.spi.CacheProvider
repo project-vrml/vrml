@@ -1,0 +1,3 @@
+group.rxcloud.vrml.cache.caffeine.CaffeineCacheProvider
+group.rxcloud.vrml.cache.redis.RedisCacheProvider
+group.rxcloud.vrml.cache.multilevel.MultilevelCacheProvider

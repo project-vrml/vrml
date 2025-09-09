@@ -58,6 +58,38 @@ public final class VrmlMetricIntegration {
     }
     
     /**
+     * 记录时间指标
+     * 
+     * @param metricName 指标名称
+     * @param duration 时间
+     */
+    public static void recordTime(String metricName, Duration duration) {
+        recordMetric(metricName, duration, true);
+    }
+    
+    /**
+     * 记录仪表盘指标
+     * 
+     * @param metricName 指标名称
+     * @param value 指标值
+     */
+    public static void recordGauge(String metricName, double value) {
+        if (!isMetricsAvailable()) {
+            log.debug("[VRML] Gauge: {} = {}", metricName, value);
+            return;
+        }
+        
+        try {
+            Class<?> metricsClass = Class.forName("group.rxcloud.vrml.metric.Metrics");
+            metricsClass.getMethod("gauge", String.class, double.class)
+                .invoke(null, metricName, value);
+        } catch (Exception e) {
+            log.debug("[VRML] Failed to record gauge metric: {}", metricName, e);
+            log.debug("[VRML] Gauge: {} = {}", metricName, value);
+        }
+    }
+    
+    /**
      * 记录指标
      * 
      * @param metricName 指标名称

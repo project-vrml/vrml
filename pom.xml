@@ -48,6 +48,7 @@
         <module>vrml-alert</module>
         <module>vrml-all</module>
         <module>vrml-api</module>
+        <module>vrml-cache</module>
         <module>vrml-compute</module>
         <module>vrml-core</module>
         <module>vrml-data</module>
@@ -107,6 +108,11 @@
             <dependency>
                 <groupId>group.rxcloud</groupId>
                 <artifactId>vrml-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>group.rxcloud</groupId>
+                <artifactId>vrml-cache</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
