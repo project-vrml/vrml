@@ -16,6 +16,10 @@ Because VRML provides a modular mechanism, you can easily refer to the functiona
 
 To stay up to date, Please follow the [blog](./README.md).
 
+## Architecture
+
+![VRML Architecture](./resources/vrml-architecture.png)
+
 ## Vrml API
 
 The core concept of VRML design is the same as [Cloud-Runtimes](https://github.com/capa-cloud/cloud-runtimes-jvm) API design concept.

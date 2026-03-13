@@ -16,6 +16,10 @@ Vrml主要基于Spring（以及其他常用库）进行构建，编码参考了V
 
 要保持最新状态，请关注[blog](./README.md) 。
 
+## 架构概览
+
+![VRML Architecture](./resources/vrml-architecture.png)
+
 ## Vrml API
 
 Vrml设计的核心理念同 [cloud-runtimes](https://github.com/capa-cloud/cloud-runtimes-jvm) API设计理念相同。
